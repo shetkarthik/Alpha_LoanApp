@@ -1,0 +1,183 @@
+<div class="container-fluid">
+    <div class="d-flex rule_container">
+        <div class="row">
+            <div class="col-lg-3 col-md-2 col-0">
+                
+            </div>
+            <div class="col-lg-6 col-md-8 col-12">
+                <h3 class="rule_heading">Eligibility criteria:</h3>
+                <ul>
+                    <li>You need to be an employee of a private limited company or an employee in a public sector undertakings,
+                        including central, state and local bodies. </li>
+                    <li>You need to be between the ages of 21-60 years.</li>
+                    <li> You need to have a net income of 25,000 per month.</li>
+                    <li>Bank requires a minimum credit score of 650 to be eligible for Loans.</li>
+                    <li>If you have a good track record of repayment with previous loans, approval of the loan is faster and
+                        easier.</li>
+                    <li>You need to have a job for at least two years, with a minimum of 1 year with your current employer.</li>
+                </ul>
+            </div>
+            
+            <div class="col-lg-3 col-md-2 col-0">
+
+            </div>
+        </div>
+        
+    </div>
+    <div class="form_container">
+        <h4 class="text-center text-success mb-3 text-decoration-underline fw-bold">Check Loan Eligibility</h4>
+      <!-- <form> -->
+        <div class="row">
+         
+            <div class="col-lg-3 col-md-1 col-0">
+
+            </div>
+            <div class="col-lg-3 col-md-5 col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                  
+                <div class="form-group">
+                    <!-- <label for="basic-url" class="form-label">Your vanity URL</label> -->
+                    <label for="" class="form-label">Name</label>
+                    <div class="input-group mb-3">
+                        <input type="text" value="Dexter" class="form-control" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="loanType" class="form-label">Loan-Type</label>
+                    <div class="input-group mb-3">
+                        <select id="loanType" class="form-select" (change)="loanType()" required>
+                            <option value="9.15">House Loan</option>
+                            <option value="11">Personal Loan</option>
+                            <option value="8.65">Gold Loan</option>
+                            <option value="8.55">Education Loan</option>
+                            <option value="10">Vehicle Loan</option>
+                        </select>
+                    </div>
+                    <!-- <ng-container *ngIf="interest === undefined">
+                        <small> Please select the type of loan</small>
+                     </ng-container> -->
+                </div>
+                <div class="form-group">
+                    <label for="monthlyIncome" class="form-label">Monthly-Income</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">₹</span>
+                        <input type="text" class="form-control" id="monthlyIncome" name="monthlyIncome"
+                            (change)="onChangeEvent($event)" required>
+                    </div>
+                    <!-- <ng-container *ngIf="monthlyIncome === undefined">
+                       <small> Enter your monthly Income</small>
+                    </ng-container> -->
+                </div>
+                <div class="form-group">
+                    <label for="annualIncome" class="form-label">Annual-Income</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">₹</span>
+                        <input type="text" class="form-control" id="annualIncome" name="annualIncome"
+                            (change)="onChangeEvent2($event)" required>
+                        </div>
+                            <!-- <ng-container *ngIf="annualIncome === undefined">
+                                <small> Enter your Annual-Income</small>
+                             </ng-container> -->
+                </div>
+                <div class="form-group">
+                    <label for="loanAmount" class="form-label">Loan-Amount</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">₹</span>
+                        <input type="text" class="form-control" id="loanAmount" name="loanAmount"
+                            (change)="onChangeEvent4($event)" required>
+                        </div>
+                            <!-- <ng-container *ngIf="loanAmount === undefined">
+                                <small> Enter your Loan-Amount</small>
+                             </ng-container> -->
+                </div>
+            </div>
+        </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-12">
+                <div class="card">
+                    <div class="card-body">
+                <div class="form-group">
+                    <label for="" class="form-label">Interest</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" value={{interest}}% class="form-control" disabled required>
+                        
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tenure" class="form-label">Tenure</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="tenure" name="tenure"
+                            (change)="onChangeEvent3($event)" required>
+                        </div>
+                            <!-- <ng-container *ngIf="tenure === undefined">
+                                <small> Enter your tenure in years</small>
+                             </ng-container> -->
+                </div>
+                <div class="form-group">
+                    <label for="workexp" class="form-label">Workexp</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="workexp" name="workexp"
+                            (change)="onChangeEvent7($event)" required>
+                        </div>
+                            <!-- <ng-container *ngIf="workexp === undefined">
+                                <small> Enter your Work Experience</small>
+                             </ng-container> -->
+                </div>
+                <div class="form-group">
+                    <label for="age" class="form-label">Age</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="age" name="age" (change)="onChangeEvent6($event)" required>
+                    </div>
+                        <!-- <ng-container *ngIf="age === undefined">
+                            <small> Enter your Age</small>
+                         </ng-container> -->
+                </div>
+                <div class="form-group">
+                    <label for="otheremi" class="form-label">Other-EMI</label>
+                    <div class="input-group mb-4">
+                        <span class="input-group-text" id="basic-addon1">₹</span>
+                        <input type="text" class="form-control" id="otheremi" name="otheremi"
+                        (change)="onChangeEvent5($event)" required>
+                    </div>
+                            <!-- <ng-container *ngIf="otheremi === undefined">
+                                <small> Enter your Other expenses</small>
+                             </ng-container> -->
+                </div>
+            </div>
+        </div>
+    </div>
+            <div class="col-lg-3 col-md-1 col-0">
+            </div>
+
+        </div>
+       
+        <div class="result_container">
+            <p id="resulta" class="text-{{color}} fw-bold"></p>
+            <p id="resultb" class="text-{{color}} fw-bold"></p>
+            <p id="app" class="text-{{color}} fw-bold"></p>
+        </div>
+     
+        <div class="button-container">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-3 col-0">
+
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 d-flex justify-content-evenly">
+                    <!-- <input type="submit" (click)="onSubmit()" class="btn btn-primary"> -->
+                    <button (click)="onSubmit()" class="btn btn-primary">Check</button>
+                    <button class="btn btn-success">Apply Loan</button>
+                </div>
+                <div class="col-lg-4 col-md-3 col-0">
+
+                </div>
+            </div>
+
+       
+</div>
+    <!-- </form> -->
+    </div>
+
+</div>

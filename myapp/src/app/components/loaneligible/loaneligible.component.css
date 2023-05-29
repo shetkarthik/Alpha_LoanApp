@@ -1,0 +1,42 @@
+.rule_heading{
+    text-align: start;
+    font-size: 22px;
+    margin-top: 20px;
+    margin-left: 23px;
+    color: blue;
+    font-weight: bold;
+}
+
+.result_container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rule_container{
+    justify-content:space-around ;
+}
+
+input,label{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+ul{
+    font-size: 15px;
+}
+
+
+small{
+    font-size: 13px;
+}
+
+::placeholder{
+    font-size: 14px;
+}
+
+small{
+    color: red;
+    padding: 0;
+}

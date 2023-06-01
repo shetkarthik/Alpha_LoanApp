@@ -40,7 +40,7 @@ export class SignupComponent {
 
  onSubmit(){
   if(this.signupForm.valid){
-    // this.loading = true;
+     this.loading = true;
 
  
 
@@ -76,7 +76,7 @@ export class SignupComponent {
         this.router.navigate(['login']);
       }),
        error:(err=>{
-        // this.loading = false;
+        this.loading = false;
         //  alert(err?.error.message);
         console.log(err);
         this.toast.error({detail:"Error",summary:err.error.message,duration:5000})

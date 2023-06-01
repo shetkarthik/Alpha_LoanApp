@@ -6,12 +6,15 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoaneligibleComponent } from './components/loaneligible/loaneligible.component';
 import { AuthlogComponent } from './components/authlog/authlog.component';
+import { LoandetailsComponent } from './components/loandetails/loandetails.component';
+
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'loaneligible',component:LoaneligibleComponent},
   {path:'authlog',component:AuthlogComponent},
+  {path:'applyLoan',component:LoandetailsComponent},
   {path:"",component:HomeComponent,canActivate:[AuthGuard]},
 ];
 

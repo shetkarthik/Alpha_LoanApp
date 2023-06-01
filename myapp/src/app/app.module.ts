@@ -13,6 +13,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { LoaneligibleComponent } from './components/loaneligible/loaneligible.component';
 import { AuthlogComponent } from './components/authlog/authlog.component';
 import { NgxLoadingModule } from "ngx-loading";
+import { LoandetailsComponent } from './components/loandetails/loandetails.component';
+import { FileComponent } from './components/file/file.component';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import { NgxLoadingModule } from "ngx-loading";
     HomeComponent,
     LoaneligibleComponent,
     AuthlogComponent,
+    LoandetailsComponent,
+    FileComponent,
     
   ],
   imports: [

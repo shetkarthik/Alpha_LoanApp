@@ -35,14 +35,14 @@ export class HomeComponent {
       let accountFromToken = this.auth.getAccountNumFromToken();
       this.accountnumber = val || accountFromToken;
     })
-
-    this.auth.getUserDetails(this.accountnumber).subscribe(res => {
-      this.users = res;
-      this.cust_name = this.users["userName"]
-      console.log(this.users);
-    });
-
-
+    if(this.role == "user")
+    {
+      this.auth.getUserDetails(this.accountnumber).subscribe(res => {
+        this.users = res;
+        this.cust_name = this.users["userName"]
+        console.log(this.users);
+      });
+    }
     // this.ngOnInit();
   }
 

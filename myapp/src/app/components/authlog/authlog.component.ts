@@ -30,7 +30,8 @@ export class AuthlogComponent {
     private toast: NgToastService,
     private userStore:UserstoreService,
     private shared:SharedService
-    ){
+    )
+  {
       this.shared.formData$.subscribe(data => {
         if(data){
           this.text = data;
@@ -41,7 +42,7 @@ export class AuthlogComponent {
         }
         
       });
-  }
+   }
 
   ngOnInit():void {
      this.authLogForm = this.fb.group({

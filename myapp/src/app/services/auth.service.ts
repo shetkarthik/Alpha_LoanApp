@@ -9,7 +9,7 @@ import {JwtHelperService} from '@auth0/angular-jwt'
 })
 export class AuthService {
 
-  private baseUrl2:string = "https://localhost:7080/api/UserReg/"
+  private baseUrl:string = "https://localhost:7080/api/UserReg/"
   private userPayload:any;
 
   constructor(private http:HttpClient,private router:Router) { 
@@ -18,23 +18,22 @@ export class AuthService {
   
   signUp(userObj:any)
   {
-    return this.http.post<any>(`${this.baseUrl2}registers`,userObj)
+    return this.http.post<any>(`${this.baseUrl}registers`,userObj)
   }
 
   login(userObj:any)
   {
-    return this.http.post<any>(`${this.baseUrl2}authenticate`,userObj)
+    return this.http.post<any>(`${this.baseUrl}authenticate`,userObj)
   }
 
   getUserDetails(accountnum:string){
-    return this.http.get<any>(`${this.baseUrl2}getByAccountNum/?accountnum=`+accountnum);
+    return this.http.get<any>(`${this.baseUrl}getByAccountNum/?accountnum=`+accountnum);
   }
 
   authlog(userObj:any,tokenString:string)
   {
-    // let queryParams = new HttpParams();
-    // queryParams = queryParams.append("tokenentry",tokenString);
-    return this.http.post<any>(`${this.baseUrl2}authenticate/2F?tokenentry=`+tokenString,userObj);
+    
+    return this.http.post<any>(`${this.baseUrl}authenticate/2F?tokenentry=`+tokenString,userObj);
   }
 
   storeToken(tokenValue:string){
@@ -76,6 +75,5 @@ export class AuthService {
     if(this.userPayload)
        return this.userPayload.role;
   }
-
   }
 

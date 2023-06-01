@@ -6,6 +6,8 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SharedService {
 
+  private response:any;
+
   private formData = new BehaviorSubject<any>(null);
   formData$ = this.formData.asObservable();
 
@@ -13,4 +15,7 @@ export class SharedService {
     if(data)
      this.formData.next(data);
   }
+
+
+
 }

@@ -1,0 +1,57 @@
+.input-field{
+    /* border-radius: 5px; */
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    /* border: 1px solid rgb(0, 0, 0); */
+    border-bottom: 1px solid black;
+    /* text-decoration: underline; */
+   
+}
+
+.container-fluid{
+    background:url("https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2021/02/960x0_29.jpg");
+    background-position: contain;
+    background-size: cover;
+    /* height: 100vh;  */
+}
+
+input,label,select{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+option{
+    font-size: 13px;
+}
+small{
+    font-size: 13px;
+}
+
+.interest_div
+{
+    border: 1px solid;
+    text-align: center;
+    font-size: 18px;
+    width: 40%;
+    background: rgba(170, 170, 170,0.1);
+
+}
+
+::placeholder{
+    font-size: 14px;
+}
+
+.error{
+    color: red;
+}
+
+input{
+    border: none;
+    outline: none;
+    text-decoration: none;
+    width: 100%;
+}
+
+

@@ -49,8 +49,7 @@ export class AuthService {
   }
 
   signOut(){
-    localStorage.clear();
-    
+    localStorage.clear();  
     this.router.navigate(["login"]);
   }
   

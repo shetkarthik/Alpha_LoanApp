@@ -14,7 +14,7 @@ import { LoaneligibleComponent } from './components/loaneligible/loaneligible.co
 import { AuthlogComponent } from './components/authlog/authlog.component';
 import { NgxLoadingModule } from "ngx-loading";
 import { LoandetailsComponent } from './components/loandetails/loandetails.component';
-import { FileComponent } from './components/file/file.component';
+
 
 
 @NgModule({
@@ -26,7 +26,7 @@ import { FileComponent } from './components/file/file.component';
     LoaneligibleComponent,
     AuthlogComponent,
     LoandetailsComponent,
-    FileComponent,
+  
     
   ],
   imports: [

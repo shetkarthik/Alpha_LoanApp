@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { NgToastService } from 'ng-angular-popup';
 // import "./index";
 
 @Component({
@@ -10,65 +12,57 @@ import { Component } from '@angular/core';
 
 
 export class LoaneligibleComponent {
-
-  clicked:boolean = false;
+  type:any;
   monthlyIncome: any;
   annualIncome: any;
-  workexp: any;
   tenure: any;
   loanAmount: any;
   otheremi: any;
-  age: any;
-  interest: any = 9.15;
+  interest: any;
   result: any;
   conclusionA: any;
   conclusionB: any;
   color: string = "danger";
   isLoanType = false;
 
-  constructor() { }
+  constructor(private toast:NgToastService) { }
 
   
+ 
 
   onChangeEvent(event: any) {
     this.monthlyIncome = parseFloat(event.target.value);
-    // console.log(num1);
   }
-  onChangeEvent7(event: any) {
-    this.workexp = parseFloat(event.target.value);
-    // console.log(num1);
-  }
+  
   onChangeEvent2(event: any) {
     this.annualIncome = parseFloat(event.target.value);
-    // console.log(num2);
   }
   onChangeEvent3(event: any) {
     this.tenure = parseFloat(event.target.value);
-    // console.log(num2);
   }
   onChangeEvent4(event: any) {
     this.loanAmount = parseFloat(event.target.value);
-    // console.log(num2);
   }
   onChangeEvent5(event: any) {
     this.otheremi = parseFloat(event.target.value);
-    // console.log(num2);
   }
-  onChangeEvent6(event: any) {
-    this.age = parseFloat(event.target.value);
-    // console.log(num2);
-  }
+
 
   loanType() {
     let loan_cred: any = document.getElementById("loanType");
-    this.interest = parseFloat(loan_cred.value);
-    console.log(this.interest);
-    this.isLoanType = true;
+    if(loan_cred.value != "")
+    {
+      this.interest = parseFloat(loan_cred.value);
+      console.log(this.interest);
+      this.isLoanType = true;
+    }
+    else{
+      this.interest = "";
+    }
   }
 
     
   onSubmit() {
-    this.clicked = true;
     this.result = document.getElementById("app") as HTMLElement;
     this.conclusionA = document.getElementById("resulta") as HTMLElement;
     this.conclusionB = document.getElementById("resultb") as HTMLElement;
@@ -85,18 +79,18 @@ export class LoaneligibleComponent {
     console.log(`this is total loan emi ${totalloanemi}`);
     console.log(`this is available:${availableamount}`);
 
-    if(Number.isNaN(totalloanemi)===true || Number.isNaN(availableamount)===true
-    || this.age < 21 ||
-    this.age > 60 ||
-    this.monthlyIncome <= 25000 ||
-    this.annualIncome <= 350000 ||
-    this.workexp <= 1
-    ){
-      console.log("age below 21");
+    if(Number.isNaN(totalloanemi)===true || Number.isNaN(availableamount)===true)
+    {
       this.color = "danger";
       this.result.innerHTML = "Invalid Input, Please Check Inputs again"
       this.conclusionA.innerHTML = ``
       this.conclusionB.innerHTML = ``
+    }
+    else if( this.monthlyIncome <= 25000 ||
+      this.annualIncome <= 350000){
+        this.result.innerHTML = "Sorry you don't match the eligibility criteria"
+        this.conclusionA.innerHTML = ``
+        this.conclusionB.innerHTML = ``
     }
     else if (
       totalloanemi> availableamount

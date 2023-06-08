@@ -7,6 +7,9 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoaneligibleComponent } from './components/loaneligible/loaneligible.component';
 import { AuthlogComponent } from './components/authlog/authlog.component';
 import { LoandetailsComponent } from './components/loandetails/loandetails.component';
+import { LoanFormComponent } from './components/loan-form/loan-form.component';
+import { LoancaltrComponent } from './components/loancaltr/loancaltr.component';
+import { LoantypeComponent } from './components/loantype/loantype.component';
 
 
 const routes: Routes = [
@@ -15,6 +18,9 @@ const routes: Routes = [
   {path:'loaneligible',component:LoaneligibleComponent},
   {path:'authlog',component:AuthlogComponent},
   {path:'applyLoan',component:LoandetailsComponent},
+  {path:'loancaltr',component:LoancaltrComponent},
+  {path:'loantype',component:LoantypeComponent},
+  {path:'loanForm',component:LoanFormComponent},
   {path:"",component:HomeComponent,canActivate:[AuthGuard]},
 ];
 

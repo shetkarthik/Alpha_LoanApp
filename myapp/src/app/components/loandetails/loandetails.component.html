@@ -32,7 +32,8 @@
                                         Please select a Loan Type.
                                     </small>
                                 </div>
-                                <ng-container *ngIf="this.type != undefined">
+                                <!-- <ng-container *ngIf="this.type != undefined"> -->
+                                <ng-container *ngIf="this.type == 'houseLoan'">
                                     <div class="mb-2">
                                         <label for="LoanPurpose" class="form-label">Loan Purpose :</label>
                                         <select class="form-select" class="input-field" formControlName="loanPurpose">
@@ -44,7 +45,7 @@
                                         </select>
                                     </div>
                                     <small
-                                        *ngIf="loanBasic.get('loanPurpose')?.invalid && loanBasic.get('loanPurpose')?.touched"
+                                        *ngIf="loanBasic.get('loanPurpose')?.invalid && loanBasic.get('loanPurpose')?.touched && shouldApplyValidators()"
                                         class="error">
                                         Please choose Loan Purpose.
                                     </small>
@@ -79,7 +80,7 @@
                                         placeholder="Enter your Property Value" class="input-field"
                                         formControlName="propertyValue">
                                     <small
-                                        *ngIf="loanBasic.get('propertyValue')?.invalid && loanBasic.get('propertyValue')?.touched"
+                                        *ngIf="loanBasic.get('propertyValue')?.invalid && loanBasic.get('propertyValue')?.touched && shouldApplyValidators()"
                                         class="error">
                                         Property Value is required.
                                     </small>
@@ -94,7 +95,7 @@
                                     <input type="text" class="form-control" id="exampleFormControlInput1"
                                         placeholder="Enter in sqfts" class="input-field" formControlName="propertyArea">
                                     <small
-                                        *ngIf="loanBasic.get('propertyArea')?.invalid && loanBasic.get('propertyArea')?.touched"
+                                        *ngIf="loanBasic.get('propertyArea')?.invalid && loanBasic.get('propertyArea')?.touched && shouldApplyValidators()"
                                         class="error">
                                         Property Area is required.
                                     </small>
@@ -174,7 +175,7 @@
                                             placeholder="Enter your Property Location" class="input-field"
                                             formControlName="propertyLoc">
                                         <small
-                                            *ngIf="loanBasic.get('propertyLoc')?.invalid && loanBasic.get('propertyLoc')?.touched"
+                                            *ngIf="loanBasic.get('propertyLoc')?.invalid && loanBasic.get('propertyLoc')?.touched && shouldApplyValidators()"
                                             class="error">
                                             PropertyLocation is required.
                                         </small>

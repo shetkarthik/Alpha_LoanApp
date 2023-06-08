@@ -22,7 +22,6 @@ export class AuthlogComponent {
   customer:string = "";
   text :any = "";
 
- 
 
   constructor (private fb: FormBuilder,
     private auth:AuthService, 

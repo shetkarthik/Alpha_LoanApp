@@ -1,0 +1,118 @@
+
+.grid-container {
+display: grid;
+/* grid-template-columns: auto auto ; */
+gap: 10px;
+padding: 10px;
+
+}
+.form-container{
+    font:caption;
+    overflow-x: hidden;
+}
+
+.grid-container > div {
+background-color: rgba(255, 255, 255, 0.8);
+/* border: 1px solid black; */
+text-align: center;
+font-size: 30px;
+}
+.main-container{
+display: flex;
+}
+.title1{
+width: 40%;
+font-size: 16px;
+font-weight: bold;
+text-align: left;
+margin-left: 15px;
+margin-top: 30px;
+
+}
+.title{
+width: 40%;
+font-size: 16px;
+font-weight: bold;
+text-align: left;
+margin-left: 15px;
+
+}
+.sub-container{
+width: 100%;
+}
+.content1{
+    width: 75%;
+    border-bottom: 1px solid black;
+    font-size: 16px;
+    margin-top: 30px;
+    text-align: center;
+}
+.content{
+width: 75%;
+border-bottom: 1px solid black;
+font-size: 16px;
+margin-bottom: 10px;
+text-align: center;
+}
+.header{
+background-color: rgb(120, 150, 247);margin-bottom: 10px;
+}
+.header-title{
+color: rgb(11, 11, 161);
+font-weight:bold;
+font-size: 2rem;
+}
+.header-sub-title{
+color: rgb(11, 11, 161);
+font-weight:bold;
+font-style: italic;
+font-size: 1rem;
+margin-bottom: 10px;
+}
+.form-title{
+text-align: center;
+font-weight:bold;
+}
+p{
+    font-weight: bold;
+}
+.loan_heading{
+    font-size: 1.5rem;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.privacy{
+    background-color: rgb(120, 150, 247);
+    margin-bottom: 10px;
+    padding-left: 10px;
+    font-size: 13px;
+    font-style: italic;
+    color: white;
+}
+.font{
+    font-weight: bold;
+    font-style: italic;
+    color: white;
+    font-size: 11px;
+    margin-bottom: 9px;
+}
+@media screen and (max-width: 600px) {
+.col-md-6  {
+width: 100%;
+margin-top: 5px;
+margin-left: 40px;
+font-size: small;
+font-weight: bold;
+
+}
+.col-md-4  {
+width: 100%;
+margin-left: 40px;
+font-size: small;
+font-weight: bold;
+}
+.privacy{
+    font-size: 12px;
+}
+}

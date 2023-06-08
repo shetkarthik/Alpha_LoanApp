@@ -1,47 +1,81 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">{{fullName}}</a>
-          </li>
-          <ng-container *ngIf="role==='user'">
-          <li class="nav-item">
-            <a class="nav-link">{{cust_name}}</a>
-          </li>
-        </ng-container>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="loaneligible">Check</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="applyLoan">Apply Loan</a>
-          </li>
-          <ng-container *ngIf="role==='admin'">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Loan Requests</a>
-              </li>
-          </ng-container>
-
-          <li class="nav-item">
-            <button (click)="signOut()" class="btn btn-danger">Logout</button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<app-navbar></app-navbar>
+<div class="container">
+    <section id="about" class="about section-padding">
+        <div class="container1">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-12">
+                    <div class="about-img">
+                        <img src="https://media.istockphoto.com/id/1277143096/photo/bank-sign-on-a-modern-glass-building-3d-render.jpg?s=170667a&w=0&k=20&c=Av2yrA04Q7iWIaT2oKH4BZC2GExl7hTeGGR-whZMD0E=" alt="" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">
+                    <div class="about-text">
+                         
+                          <h4 >WELCOME TO ALPHA BANK</h4>
+                          <p>ALPHA Bank was formed in 1955 at the initiative of the World Bank, the Government of India and representatives of Indian industry. The principal objective was to create a development financial institution for providing medium-term and long-term project financing to Indian businesses.</p>
+                          <!-- <a href="#" class="btn btn-primary">Learn More</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+      <!-- portfolio strats -->
+      <section id="portfolio" class="portfolio section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-header text-center pb-5">
+                        <h1>Services</h1>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-4">
+                    <div class="card text-light text-center bg-white pb-2">
+                        <div class="card-body text-dark">
+                          <div class="img-area mb-4">
+                              <img src="https://leverageedublog.s3.ap-south-1.amazonaws.com/blog/wp-content/uploads/2020/01/18184732/GATE-Eligibility.png" class="img-fluid" alt="">
+                          </div>
+                            <h3 class="card-title">Check Eligibilty</h3>
+                            <p class="lead">Eligibility criteria to get a loan varies based on the type of loan.So check  eligibility and apply for the right loan with better interest rate .</p><hr>
+                             <button class="btn bg-primary text-light"><a routerLink="loaneligible"  class="btn-dec">Check </a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-4">
+                    <div class="card text-light text-center bg-white pb-2">
+                        <div class="card-body text-dark">
+                          <div class="img-area mb-4">
+                              <img src="https://paytmblogcdn.paytm.com/wp-content/uploads/2021/07/Creditcard_12_Credit-Card-Loan-Vs-Personal-Loan-800x500.png" class="img-fluid" alt="">
+                          </div>
+                            <h3 class="card-title">Loan</h3>
+                            <p class="lead">We offer a wide range of loan options to suit your unique needs and financial situation ,we have the right loan for you.</p><hr>
+                            <button class="btn bg-primary text-light"><a routerLink="loancaltr"  class="btn-dec">Apply </a></button>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-4">
+                    <div class="card text-light text-center bg-white pb-2">
+                        <div class="card-body text-dark">
+                          <div class="img-area mb-4">
+                              <img src="https://img.freepik.com/premium-vector/time-is-money-business-finance-concept-quick-payment-clock-cash-fast-loan-easy-credit-time-money-saving-timer-finance-quick-money-3d-rendering-vector-illustration_165488-3904.jpg" class="img-fluid" alt="">
+                          </div>
+                            <h3 class="card-title">Loan Status</h3>
+                            <p class="lead">Track your Loan application and know step by step  updates  about your application and enjoy our services.</p><hr>
+                            <!-- <button class="btn bg-primary text-light" ><a href="LoanStatus.html" class="btn-dec">View now</a></button> -->
+                            <button class="btn bg-primary text-light"><a routerLink="status"  class="btn-dec">View</a></button>
+                           
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+</div>
   
-
-<!-- <ul *ngFor="let user of users">
-    <li>{{user.userName}}</li>
-</ul> -->
 

@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+<div class="loan-calculator">
+    <div class="top">
+      <h2>Loan Calculator</h2>
+      <form>
+        <div class="group">
+          <div class="title" for="loan-amount">Amount</div>
+          <input type="number" class="loan-amount" id="loan-amount" />
+        </div>
+  
+        <div class="group">
+          <div class="title" for="interest-rate">Interest Rate</div>
+          <input type="number" id="interest-rate" class="interest-rate" />
+        </div>
+  
+        <div class="group">
+          <div class="title" for="loan-tenure">Tenure(in years)</div>
+          <input type="number" id="loan-tenure" class="loan-tenure"/>
+        </div>
+      </form>
+    </div>
+  
+    <div class="result">
+      <div class="left">
+        <div class="loan-emi">
+          <h3>Loan EMI</h3>
+          <div class="value" id="emi"></div>
+        </div>
+  
+        <div class="total-interest">
+          <h3>Total interest payable</h3>
+          <div class="value" id="total-interest"></div>
+        </div>
+  
+        <div class="total-amount">
+          <h3>Total Amount</h3>
+          <div class="value" id="total-amount"></div>
+        </div>
+  
+        <button (click)="calculateEMI()" class="calculate-btn1">CALCULATE</button>
+        <button  (click)="routeToLoan()" class="calculate-btn2">APPLY NOW</button>
+        <!-- <button (click)="routeToLoan()" class="calculate-btn2">APPLY NOW</button> -->
+        <!-- <button class="btn bg-primary text-light"><a routerLink="Loanstatus"  class="btn-dec">View now</a></button>
+        <button routerLink="Loantype">Go to Calculator</button> -->
+      </div>
+    </div>
+  </div>
+  

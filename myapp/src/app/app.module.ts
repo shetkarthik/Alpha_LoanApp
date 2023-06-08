@@ -14,6 +14,10 @@ import { LoaneligibleComponent } from './components/loaneligible/loaneligible.co
 import { AuthlogComponent } from './components/authlog/authlog.component';
 import { NgxLoadingModule } from "ngx-loading";
 import { LoandetailsComponent } from './components/loandetails/loandetails.component';
+import { LoanFormComponent } from './components/loan-form/loan-form.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoancaltrComponent } from './components/loancaltr/loancaltr.component';
+import { LoantypeComponent } from './components/loantype/loantype.component';
 
 
 
@@ -26,6 +30,10 @@ import { LoandetailsComponent } from './components/loandetails/loandetails.compo
     LoaneligibleComponent,
     AuthlogComponent,
     LoandetailsComponent,
+    LoanFormComponent,
+    NavbarComponent,
+    LoancaltrComponent,
+    LoantypeComponent,
   
     
   ],

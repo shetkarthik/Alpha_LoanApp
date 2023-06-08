@@ -19,9 +19,19 @@ export class ApiService {
   applyLoan(loanObj:any){
     const url = `${this.baseUrl}applyLoan`;
     return this.http.post<any>(url,loanObj);
+    
   }
 
   uploadFile(formData:any){
     return this.http.post<any>(this.fileurl,formData);
   }
+  sendFile(formData:any){
+    return this.http.post<any>(`${this.fileurl}/sendFile`,formData);
+  }
+  
+  getLoanDetails(accountnum:string){
+    const url = `${this.baseUrl}getLoanByAccountNum?accountnum=${accountnum}`; 
+    return this.http.get<any>(url);
+  }
+  
 }

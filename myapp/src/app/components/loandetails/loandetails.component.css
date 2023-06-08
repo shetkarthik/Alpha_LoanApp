@@ -11,9 +11,10 @@
 }
 
 .container-fluid{
-    background:url("https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2021/02/960x0_29.jpg");
+    /* background:url("https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2021/02/960x0_29.jpg");
     background-position: contain;
-    background-size: cover;
+    background-size: cover; */
+    margin-top:90px;
     /* height: 100vh;  */
 }
 
@@ -54,4 +55,8 @@ input{
     width: 100%;
 }
 
+.card-title{
+   color:#0275d8;
+   font-family: inherit;
+}
 

@@ -13,13 +13,34 @@
     <li class="nav-item">
       <a class="nav-link" href="#portfolio">Services</a>
     </li>
+    <ng-container *ngIf="role==='user'">
+      <li class="nav-item user_profile_info">
+      
+          <p>Cust ID  : {{fullName}}</p>
+          <span></span>
+         
+        </li>
+      <li class="nav-item user_profile_info">
+        
+          <p >Acc Num :{{accountnumber}}</p>
+         
+        </li>
+      <li class="nav-item user_profile_info">
+     
+          <button  class="btn btn-danger user_profile_info" (click)="signOut()">Logout</button>
+         
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="loantype">Loans</a>
+        </li>
+        
+    </ng-container>
     <ng-container *ngIf="role==='admin'">
         <li class="nav-item">
             <a class="nav-link" href="#">Loan Requests</a>
           </li>
       </ng-container>
-    <li class="nav-item ">
-      <!-- <img src="https://cdn-icons-png.flaticon.com/128/1177/1177568.png" class="user-pic"  onclick="toggleMenu()"> -->
+    <li class="nav-item user_profile_container">
         <div class="user-profile"  (click)="toggleSubMenu()">
           <div class="profile-symbol">{{initials}}</div>
           <div class="profile-name"><a href="">{{username}}</a></div>
@@ -30,19 +51,16 @@
               </div>
     
                <a href="#" class="sub-menu-link">
-                <!-- <img src="https://cdn-icons-png.flaticon.com/128/10565/10565616.png" style="width: 30px;height: 30px;"> -->
                 <p>Cust ID  : {{fullName}}</p>
                 <span></span>
                </a>
     
                <a href="#" class="sub-menu-link">
-                <!-- <img src="https://cdn-icons-png.flaticon.com/128/6712/6712837.png" style="width: 30px;height: 30px;"> -->
                 <p >Acc Num :{{accountnumber}}</p>
                 <span></span>
                </a>
     
                <a href="#" class="sub-menu-link">
-                <!-- <img src="https://cdn-icons-png.flaticon.com/128/10627/10627076.png" style="width: 30px;height: 30px;"> -->
                 <button  class="btn btn-danger d-block m-auto" (click)="signOut()">Logout</button>
                 <span></span>
                </a>
@@ -50,12 +68,6 @@
             </div>
           </div>
         </div>
-     
-  
-         
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="logincomponent.html" >Logout</a>
-          </li>          -->
         </ul>
       </div>
     </div>

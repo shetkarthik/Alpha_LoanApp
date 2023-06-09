@@ -12,16 +12,18 @@ import { LoancaltrComponent } from './components/loancaltr/loancaltr.component';
 import { LoantypeComponent } from './components/loantype/loantype.component';
 
 
+
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'loaneligible',component:LoaneligibleComponent},
   {path:'authlog',component:AuthlogComponent},
   {path:'applyLoan',component:LoandetailsComponent},
-  {path:'loantype/loancaltr',component:LoancaltrComponent},
+  {path:'loancaltr',component:LoancaltrComponent},
   {path:'loantype',component:LoantypeComponent},
   {path:'loanForm',component:LoanFormComponent},
   {path:"",component:HomeComponent,canActivate:[AuthGuard]},
+  
 ];
 
 @NgModule({

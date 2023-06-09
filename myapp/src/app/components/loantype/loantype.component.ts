@@ -15,4 +15,11 @@ export class LoantypeComponent {
     this.router.navigate(["applyLoan"])
   }
 
+  navigateToCalc(){
+    this.router.navigate(["loancaltr"])
+
+  }
+  
+
+
 }

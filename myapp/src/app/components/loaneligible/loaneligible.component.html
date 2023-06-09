@@ -24,103 +24,132 @@
                     <div class="row">
                         <div class="col-lg-1 col-md-0 col-0">
                         </div>
-                        <div class="col-lg-5 col-md-6 col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="loanType" class="form-label">Loan-Type</label>
-                                        <div class="input-group mb-3">
-                                            <select id="loanType" class="form-select" (change)="loanType()" required>
-                                                <option value="" selected>Choose a Loan type</option>
-                                                <option value="9.15">House Loan</option>
-                                                <option value="11">Personal Loan</option>
-                                                <option value="8.55">Education Loan</option>
-                                                <option value="10">Vehicle Loan</option>
+                        <div class="col-lg-10 col-md-10 col-12 pt-3">
+                            <form [formGroup]="loanEligible">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="mb-2">
+                                            <label for="loanType" class="form-label">Loan Type :</label>
+                                            <select class="form-select" class="input-field" formControlName="loanType"
+                                                (change)="onChange($event)">
+                                                <option value="" selected>Choose type of Loan</option>
+                                                <option value="houseLoan">House Loan</option>
+                                                <option value="personalLoan">Personal Loan</option>
+                                                <option value="educationLoan">Education Loan</option>
+                                                <option value="vehicleLoan">Vehicle Loan</option>
                                             </select>
+        
+                                            <small
+                                                *ngIf="loanEligible.get('loanType')?.invalid && loanEligible.get('loanType')?.touched"
+                                                class="error">
+                                                Please select a Loan Type.
+                                            </small>
                                         </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="monthlyIncome" class="form-label">Monthly-Income</label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon1">₹</span>
-                                            <input type="text" class="form-control" id="monthlyIncome"
-                                                name="monthlyIncome" (change)="onChangeEvent($event)" required>
+                                      
+        
+                                        <div class="mb-2">
+                                            <label for="loanAmount" class="form-label">Loan Amount :</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1"
+                                                placeholder="Enter your Loan Amount" class="input-field"
+                                                formControlName="loanAmount">
+                                            <small
+                                                *ngIf="loanEligible.get('loanAmount')?.invalid && loanEligible.get('loanAmount')?.touched"
+                                                class="error">
+                                                Loan Amount is required.
+                                            </small>
+                                            <ng-container
+                                                *ngIf="loanEligible.controls['loanAmount'].dirty && loanEligible.hasError('pattern','loanAmount')">
+                                                <small class="error">Please enter proper credentials</small>
+                                            </ng-container>
                                         </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="annualIncome" class="form-label">Annual-Income</label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon1">₹</span>
-                                            <input type="text" class="form-control" id="annualIncome"
-                                                name="annualIncome" (change)="onChangeEvent2($event)" required>
+                                        <br>
+                                        <div class="mb-2">
+                                            <label for="interest" class="form-label">Interest :</label>
+                                            <div class="interest_div" disabled>{{interest}}%</div>
                                         </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="loanAmount" class="form-label">Loan-Amount</label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon1">₹</span>
-                                            <input type="text" class="form-control" id="loanAmount" name="loanAmount"
-                                                (change)="onChangeEvent4($event)" required>
+                                        <br>
+                                        <div class="mb-2">
+                                            <label for="tenure" class="form-label">Tenure :</label>
+                                            <input type="number" class="form-control" id="exampleFormControlInput1"
+                                                placeholder="Enter in months" class="input-field" formControlName="tenure">
+                                            <small *ngIf="loanEligible.get('tenure')?.invalid && loanEligible.get('tenure')?.touched"
+                                                class="error">
+                                                Tenure is required.
+                                            </small>
                                         </div>
+                                        <br>
+                                      
                                     </div>
-
+                                    
+                                    <div class="col-lg-6 col-md-6 col-12">
+        
+                                       
+                                        <div class="mb-2">
+                                            <label for="monthlyIncome" class="form-label">Monthly Income :</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1"
+                                                placeholder="Enter your Monthly Income" class="input-field"
+                                                formControlName="monthlyIncome">
+                                            <small
+                                                *ngIf="loanEligible.get('monthlyIncome')?.invalid && loanEligible.get('monthlyIncome')?.touched"
+                                                class="error">
+                                                MonthlyIncome is required.
+                                            </small>
+                                            <ng-container
+                                                *ngIf="loanEligible.controls['monthlyIncome'].dirty && loanEligible.hasError('pattern','monthlyIncome')">
+                                                <small class="error">Please enter proper credentials</small>
+                                            </ng-container>
+                                        </div>
+                                        <br>
+                                        <div class="mb-2">
+                                            <label for="annualIncome" class="form-label">Annual Income :</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1"
+                                                placeholder="Enter your Annual Income" class="input-field"
+                                                formControlName="annualIncome">
+                                            <small
+                                                *ngIf="loanEligible.get('annualIncome')?.invalid && loanEligible.get('annualIncome')?.touched"
+                                                class="error">
+                                                Annual Income is required.
+                                            </small>
+                                            <ng-container
+                                                *ngIf="loanEligible.controls['annualIncome'].dirty && loanEligible.hasError('pattern','annualIncome')">
+                                                <small class="error">Please enter proper credentials</small>
+                                            </ng-container>
+                                        </div>
+                                        <br>
+                                        <div class="mb-2">
+                                            <label for="otherEmi" class="form-label">OtherEmi :</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1"
+                                                placeholder="Enter your Expenses" class="input-field"
+                                                formControlName="otherEmi">
+                                            <small
+                                                *ngIf="loanEligible.get('otherEmi')?.invalid && loanEligible.get('otherEmi')?.touched"
+                                                class="error">
+                                                OtherEmi is required.
+                                            </small>
+                                            <ng-container
+                                                *ngIf="loanEligible.controls['otherEmi'].dirty && loanEligible.hasError('pattern','otherEmi')">
+                                                <small class="error">Please enter proper credentials</small>
+                                            </ng-container>
+                                        </div>
+                                        <br>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 col-md-6 col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="" class="form-label">Interest</label>
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" value={{interest}}%
-                                                class="form-control" disabled required>
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="tenure" class="form-label">Tenure</label>
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" id="tenure" name="tenure"
-                                                (change)="onChangeEvent3($event)" required>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label for="otheremi" class="form-label">Other-EMI</label>
-                                        <div class="input-group mb-4">
-                                            <span class="input-group-text" id="basic-addon1">₹</span>
-                                            <input type="text" class="form-control" id="otheremi" name="otheremi"
-                                                (change)="onChangeEvent5($event)" required>
-                                        </div>
-                                    </div>
+                                <div class="result_container mt-2">
+                                    <p id="resulta" class="text-{{color}} fw-bold"></p>
+                                    <p id="resultb" class="text-{{color}} fw-bold"></p>
+                                    <p id="app" class="text-{{color}} fw-bold"></p>
                                 </div>
-                            </div>
-
+                                <button class="btn btn-primary m-auto d-block w-50" type="submit" (click)="onSubmit()">Check</button>
+                            </form>
                         </div>
                         <div class="col-lg-1 col-md-0 col-0">
                         </div>
 
                     </div>
-
-                    <div class="result_container mt-2">
-                        <p id="resulta" class="text-{{color}} fw-bold"></p>
-                        <p id="resultb" class="text-{{color}} fw-bold"></p>
-                        <p id="app" class="text-{{color}} fw-bold"></p>
-                        <div>
-                            <button (click)="onSubmit()" class="btn btn-primary  me-3">Check</button>
-                            <button class="btn btn-success">Apply Loan</button>
+                           
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-    </div>
-
-
-</div>

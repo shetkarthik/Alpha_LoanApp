@@ -34,8 +34,6 @@ import { LoantypeComponent } from './components/loantype/loantype.component';
     NavbarComponent,
     LoancaltrComponent,
     LoantypeComponent,
-  
-    
   ],
   imports: [
     BrowserModule,

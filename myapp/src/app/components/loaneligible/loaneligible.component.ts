@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { NgToastService } from 'ng-angular-popup';
-// import "./index";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
+
 
 @Component({
   selector: 'app-loaneligible',
@@ -12,102 +13,75 @@ import { NgToastService } from 'ng-angular-popup';
 
 
 export class LoaneligibleComponent {
-  type:any;
-  monthlyIncome: any;
-  annualIncome: any;
-  tenure: any;
-  loanAmount: any;
-  otheremi: any;
+  loanEligible!: FormGroup;
   interest: any;
+  type: any;
+  color!: string;
   result: any;
   conclusionA: any;
   conclusionB: any;
-  color: string = "danger";
-  isLoanType = false;
-
-  constructor(private toast:NgToastService) { }
-
-  
- 
-
-  onChangeEvent(event: any) {
-    this.monthlyIncome = parseFloat(event.target.value);
-  }
-  
-  onChangeEvent2(event: any) {
-    this.annualIncome = parseFloat(event.target.value);
-  }
-  onChangeEvent3(event: any) {
-    this.tenure = parseFloat(event.target.value);
-  }
-  onChangeEvent4(event: any) {
-    this.loanAmount = parseFloat(event.target.value);
-  }
-  onChangeEvent5(event: any) {
-    this.otheremi = parseFloat(event.target.value);
-  }
 
 
-  loanType() {
-    let loan_cred: any = document.getElementById("loanType");
-    if(loan_cred.value != "")
-    {
-      this.interest = parseFloat(loan_cred.value);
-      console.log(this.interest);
-      this.isLoanType = true;
+
+  constructor(private formBuilder: FormBuilder,
+    private api: ApiService,private router:Router
+  ) { }
+
+  ngOnInit() {
+   
+    this.loanEligible = this.formBuilder.group({
+      loanType: ['', Validators.required],
+      loanAmount: ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
+      tenure: ['', Validators.required],
+      monthlyIncome: ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
+      annualIncome: ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
+      otherEmi: ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
+    });
+
+  }
+
+  onChange(event: any) {
+    const target = event.target as HTMLInputElement;
+    const name = target.getAttribute('formControlName');
+    this.type = target.value;
+    console.log(name);
+    if (name == "loanType") {
+      console.log(target.value)
+
+      this.api.getInterestByLoanType(target.value).subscribe(
+        (interest: number) => {
+          this.interest = interest;
+          console.log(interest);
+        },
+        (error: any) => {
+
+          console.error(error);
+        }
+      );
     }
-    else{
-      this.interest = "";
-    }
-  }
-
     
+  }
+
   onSubmit() {
     this.result = document.getElementById("app") as HTMLElement;
     this.conclusionA = document.getElementById("resulta") as HTMLElement;
     this.conclusionB = document.getElementById("resultb") as HTMLElement;
 
-    let monthemi = Math.round(this.monthlyIncome / 2);
-    let annualemi = Math.round(this.annualIncome / 24);
+    if (this.loanEligible.valid) {
 
-    let avgemi = Math.round((monthemi + annualemi) / 2);
+      console.log(this.loanEligible.value);
 
-    let availableamount = avgemi - this.otheremi;
-    
-    let totalloanemi = Math.round((this.loanAmount * (this.interest/1200) * Math.pow(1 + (this.interest/1200), (this.tenure * 12))) / (Math.pow(1 + (this.interest/1200), (this.tenure*12)) - 1));
+      this.api.checkEligible(this.loanEligible.value).subscribe(res => {
+        this.result.innerHTML = res["results"]
+        this.conclusionA.innerHTML = res["availableEMI"]
+        this.conclusionB.innerHTML = res["loanEMI"]
+        this.color = res["color"]
+      }, (err: any) => {
+        console.log(err);
+      })
 
-    console.log(`this is total loan emi ${totalloanemi}`);
-    console.log(`this is available:${availableamount}`);
-
-    if(Number.isNaN(totalloanemi)===true || Number.isNaN(availableamount)===true)
-    {
-      this.color = "danger";
-      this.result.innerHTML = "Invalid Input, Please Check Inputs again"
-      this.conclusionA.innerHTML = ``
-      this.conclusionB.innerHTML = ``
+    } else {
+      this.loanEligible.markAllAsTouched();
     }
-    else if( this.monthlyIncome <= 25000 ||
-      this.annualIncome <= 350000){
-        this.result.innerHTML = "Sorry you don't match the eligibility criteria"
-        this.conclusionA.innerHTML = ``
-        this.conclusionB.innerHTML = ``
-    }
-    else if (
-      totalloanemi> availableamount
-    ) {
-      this.color = "danger";
-      this.result.innerHTML = "Sorry your Loan can not be approved, Please contact our Customer support for more info"
-      this.conclusionA.innerHTML = `Your Total Available EMI is : ₹ ${availableamount}`
-      this.conclusionB.innerHTML = `Your Total Loan EMI for the current input is : ₹ ${totalloanemi}`
-    }
-    
-     
-    else {
-      this.color = "success";
-      this.result.innerHTML = "Congratulations!!! You are Eligible for the Loan"
-      this.conclusionA.innerHTML = `Your Total Available EMI is : ₹ ${availableamount}`
-      this.conclusionB.innerHTML = `Your Total Loan EMI for the current input is : ₹ ${totalloanemi}`
-    }   
   }
-
 }

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class ApiService {
   private baseUrl: string = "https://localhost:7080/api/Loan/";
   private fileurl = "https://localhost:7080/api/Files";
+  private checkurl = "https://localhost:7080/api/LoanEligible/checkEligible";
 
   constructor(private http:HttpClient) { }
 
@@ -20,6 +21,10 @@ export class ApiService {
     const url = `${this.baseUrl}applyLoan`;
     return this.http.post<any>(url,loanObj);
     
+  }
+
+  checkEligible(checkObJ:any){
+    return this.http.post<any>(this.checkurl,checkObJ);
   }
 
   uploadFile(formData:any){

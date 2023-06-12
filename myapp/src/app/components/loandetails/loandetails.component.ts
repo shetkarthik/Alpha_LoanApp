@@ -18,11 +18,13 @@ import { UserstoreService } from 'src/app/services/userstore.service';
 })
 export class LoandetailsComponent {
   disabled: boolean = false;
+  section:boolean = false;
   loanBasic!: FormGroup;
   accountNum!: string;
   formData: any = {};
   interest: any;
   type: any;
+  types:any;
   selectedFiles!: File[];
   files: File[] = [];
 
@@ -53,14 +55,53 @@ export class LoandetailsComponent {
       otherEmi: ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
       loanPurpose: ['',],
       propertyLoc: ['',],
-      propertyArea: ['', [Validators.pattern('^[0-9]*$')]],
-      propertyValue: ['', [Validators.pattern('^[0-9]*$')]],
+      propertyArea: ['', ],
+      propertyValue: ['', ],
+      ongoingLoan: [''],  
     });
 
-   
+    this.loanBasic.controls['loanType'].valueChanges.subscribe(value => {
+     this.types = value;
+      this.updateValidators();
+    });
+  
 
   }
 
+
+  updateValidators(){
+      const propArea = this.loanBasic.controls['propertyArea']; 
+    const propLoc = this.loanBasic.controls['propertyLoc']; 
+    const propVal = this.loanBasic.controls['propertyValue']; 
+    const loanPurpose = this.loanBasic.controls['loanPurpose']; 
+    const ongoingLoan = this.loanBasic.controls['ongoingLoan']; 
+
+    if(this.types == 'houseLoan'){
+      propArea.setValidators([Validators.required,Validators.pattern('^[0-9]*$')]);
+      propLoc.setValidators(Validators.required);
+      propVal.setValidators([Validators.required,Validators.pattern('^[0-9]*$')]);
+      loanPurpose.setValidators([Validators.required]);
+    }
+    else if(this.types == 'personalLoan')
+    {
+            propArea.clearValidators();
+            propLoc.clearValidators();
+            propVal.clearValidators();
+            loanPurpose.setValidators([Validators.required]);
+            ongoingLoan.setValidators([Validators.required]);
+    }
+    
+    propArea.updateValueAndValidity();
+    propVal.updateValueAndValidity();
+    propLoc.updateValueAndValidity();
+    loanPurpose.updateValueAndValidity();
+    ongoingLoan.updateValueAndValidity();
+  }
+
+  next(){
+   this.section = !this.section;
+   return this.section;
+  }
   
 
   onFileSelected(event: any): void {
@@ -94,32 +135,49 @@ export class LoandetailsComponent {
   // }
 
 
-  shouldApplyValidators() : boolean
-  {
-    let shouldValidate = false;
-    const propArea = this.loanBasic.get('propertyArea'); 
-    const propLoc = this.loanBasic.get('propertyLoc'); 
-    const propVal = this.loanBasic.get('propertyValue'); 
-    const loanPurpose = this.loanBasic.get('loanPurpose'); 
-    if (this.type == 'houseLoan') 
-    if(propArea && propLoc && propVal && loanPurpose)
-    {
-      propArea.setValidators([Validators.required]);
-      propLoc.setValidators([Validators.required]);
-      propVal.setValidators([Validators.required]);
-      loanPurpose.setValidators([Validators.required]);
-      shouldValidate = true;
-    } 
-     else{
-      propArea?.clearValidators();
-      propLoc?.clearValidators();
-      propVal?.clearValidators();
-      loanPurpose?.clearValidators();
-      shouldValidate = false;
-    }
+  // shouldApplyValidators() : boolean
+  // {
+  //   let shouldValidate = false;
+  //   const propArea = this.loanBasic.get('propertyArea'); 
+  //   const propLoc = this.loanBasic.get('propertyLoc'); 
+  //   const propVal = this.loanBasic.get('propertyValue'); 
+  //   const loanPurpose = this.loanBasic.get('loanPurpose'); 
+  //   if (this.type == 'houseLoan') 
+  //   {
+  //     if(propArea && propLoc && propVal && loanPurpose)
+  //     {
+  //       propArea.setValidators([Validators.required]);
+  //       propLoc.setValidators([Validators.required]);
+  //       propVal.setValidators([Validators.required]);
+  //       loanPurpose.setValidators([Validators.required]);
+  //       shouldValidate = true;
+  //       // console.log("perosnal")
+  //     }
+  //   }
+ 
+  //   else if(this.type == 'personalLoan') 
+  //   {
+  //     if(propArea && propLoc && propVal && loanPurpose)
+  //     {
+  //       propArea.clearValidators();
+  //       propLoc.clearValidators();
+  //       propVal.clearValidators();
+  //       loanPurpose.clearValidators();
+  //       shouldValidate = true;
+  //      console.log("personal");
+  //     }
+  //   }
     
-    return shouldValidate
-  }
+  //    else{
+  //     propArea?.clearValidators();
+  //     propLoc?.clearValidators();
+  //     propVal?.clearValidators();
+  //     loanPurpose?.clearValidators();
+  //     shouldValidate = false;
+  //   }
+    
+  //   return shouldValidate
+  // }
 
 
   onChange(event: any) {
@@ -136,12 +194,11 @@ export class LoandetailsComponent {
           console.log(interest);
         },
         (error: any) => {
-
           console.error(error);
         }
       );
     }
-    this.shouldApplyValidators();
+    // this.shouldApplyValidators();
   }
 
 
@@ -205,6 +262,7 @@ export class LoandetailsComponent {
     }
     else {
       this.loanBasic.markAllAsTouched();
+      this.next();
     }
   }
   

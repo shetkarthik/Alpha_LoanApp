@@ -10,9 +10,20 @@
    
 }
 
+.upload_label{
+    font-size: 18px;
+    font-weight: 700;
+}
+.document_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 .container-fluid{
     margin-top:60px;
     background-color: aliceblue;
+    height: 100vh;
  
 }
 

@@ -17,7 +17,12 @@
             </div>
         </div>
     </div>
-        <div class="col-lg-2 col-md-2 col-0"></div>
+        <div class="col-lg-2 col-md-2 col-0">
+            <div class="floating-button">
+                <button class="btn btn-primary" (click)="downloadPdf()">
+                    <i class="fa fa-download" aria-hidden="true"></i></button>
+              </div>
+        </div>
 
     </div>
 </div>
@@ -204,19 +209,19 @@
             <div>
             <div class="main-container" >
                 <p class="title1" >Loan Purpose </p>
-                <div class="sub-container"><p class="content1"></p></div>
+                <div class="sub-container"><p class="content1">{{this.loans["loanPurpose"]}}</p></div>
             </div>
             <div class="main-container" >
                 <p class="title">Ongoing Loan(Yes/No)</p>
-                <div class="sub-container"><p class="content"></p></div>
+                <div class="sub-container"><p class="content">{{this.loans["ongoingLoan"]}}</p></div>
             </div>
             <div class="main-container" >
                 <p class="title">Loan Start Date</p>
-                <div class="sub-container"><p class="content"></p></div>
+                <div class="sub-container"><p class="content">{{this.loans["loanStartDate"]}}</p></div>
             </div>
             <div class="main-container" >
                 <p class="title">Loan End Date</p>
-                <div class="sub-container"><p class="content"></p></div>
+                <div class="sub-container"><p class="content">{{this.loans["loanEndDate"]}}</p></div>
             </div>
           </div>
         </ng-container>

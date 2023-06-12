@@ -19,6 +19,10 @@
                                         </div>
                                     </div>
                                     <small *ngIf="signupForm.controls['userName'].dirty && signupForm.hasError('required','userName')" class="text-danger">*userName is required</small>
+                                    <ng-container
+                                        *ngIf="signupForm.controls['userName'].dirty && signupForm.hasError('pattern','userName')">
+                                        <small class="text-danger">Please enter your registered name</small>
+                                    </ng-container>
                                 </div>
                                 <div class="col-lg-6 col-12">
                                     <div class="form-group pt-3">

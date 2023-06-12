@@ -7,6 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <form [formGroup]="loanBasic">
+                        <ng-container *ngIf="next()">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="mb-2">
@@ -33,7 +34,7 @@
                                     </small>
                                 </div>
                                 <!-- <ng-container *ngIf="this.type != undefined"> -->
-                                <ng-container *ngIf="this.type == 'houseLoan'">
+                                <ng-container *ngIf="this.type == 'houseLoan' || this.type == 'personalLoan'">
                                     <div class="mb-2">
                                         <label for="LoanPurpose" class="form-label">Loan Purpose :</label>
                                         <select class="form-select" class="input-field" formControlName="loanPurpose">
@@ -42,10 +43,16 @@
                                                 <option value="purchase of new Home">New Home Purchase</option>
                                                 <option value="renovation of old Home">Old home renovation</option>
                                             </ng-container>
+                                            <ng-container *ngIf="this.type == 'personalLoan'">
+                                                <option value="vacation">Vacation</option>
+                                                <option value="wedding">Wedding</option>
+                                                <option value="medical emergency">Medical Emergency</option>
+                                                <option value="others">Others</option>
+                                            </ng-container>
                                         </select>
                                     </div>
                                     <small
-                                        *ngIf="loanBasic.get('loanPurpose')?.invalid && loanBasic.get('loanPurpose')?.touched && shouldApplyValidators()"
+                                        *ngIf="loanBasic.get('loanPurpose')?.invalid && loanBasic.get('loanPurpose')?.touched"
                                         class="error">
                                         Please choose Loan Purpose.
                                     </small>
@@ -73,6 +80,21 @@
                                     <div class="interest_div" disabled>{{interest}}%</div>
                                 </div>
                                 <br>
+                                <ng-container *ngIf="this.type == 'personalLoan'">
+                                    <div class="mb-2">
+                                        <label for="ongoingLoan" class="form-label">Any Ongoing Loan :</label>
+                                        <select class="form-select" class="input-field" formControlName="ongoingLoan">
+                                            <option value="" selected>Choose Yes/No</option>
+                                                <option value="yes">Yes</option>
+                                                <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                    <small
+                                        *ngIf="loanBasic.get('ongoingLoan')?.invalid && loanBasic.get('ongoingLoan')?.touched"
+                                        class="error">
+                                        Please choose Yes/No.
+                                    </small>
+                                </ng-container>
                                 <ng-container *ngIf="this.type == 'houseLoan'">
                                 <div class="mb-2">
                                     <label for="propertyValue" class="form-label">Property Value :</label>
@@ -80,7 +102,7 @@
                                         placeholder="Enter your Property Value" class="input-field"
                                         formControlName="propertyValue">
                                     <small
-                                        *ngIf="loanBasic.get('propertyValue')?.invalid && loanBasic.get('propertyValue')?.touched && shouldApplyValidators()"
+                                        *ngIf="loanBasic.get('propertyValue')?.invalid && loanBasic.get('propertyValue')?.touched"
                                         class="error">
                                         Property Value is required.
                                     </small>
@@ -95,7 +117,7 @@
                                     <input type="text" class="form-control" id="exampleFormControlInput1"
                                         placeholder="Enter in sqfts" class="input-field" formControlName="propertyArea">
                                     <small
-                                        *ngIf="loanBasic.get('propertyArea')?.invalid && loanBasic.get('propertyArea')?.touched && shouldApplyValidators()"
+                                        *ngIf="loanBasic.get('propertyArea')?.invalid && loanBasic.get('propertyArea')?.touched"
                                         class="error">
                                         Property Area is required.
                                     </small>
@@ -113,7 +135,7 @@
                                 <div class="mb-2">
                                     <label for="tenure" class="form-label">Tenure :</label>
                                     <input type="number" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Enter in years" class="input-field" formControlName="tenure">
+                                        placeholder="Enter in months" class="input-field" formControlName="tenure" min="3" max="300">
                                     <small *ngIf="loanBasic.get('tenure')?.invalid && loanBasic.get('tenure')?.touched"
                                         class="error">
                                         Tenure is required.
@@ -175,7 +197,7 @@
                                             placeholder="Enter your Property Location" class="input-field"
                                             formControlName="propertyLoc">
                                         <small
-                                            *ngIf="loanBasic.get('propertyLoc')?.invalid && loanBasic.get('propertyLoc')?.touched && shouldApplyValidators()"
+                                            *ngIf="loanBasic.get('propertyLoc')?.invalid && loanBasic.get('propertyLoc')?.touched"
                                             class="error">
                                             PropertyLocation is required.
                                         </small>
@@ -183,14 +205,37 @@
                                     <br>
 
                                 </ng-container>
-                                <div class="mb-2">
-                                    <label class="form-label" for="file">Upload Documents :</label>
-                                    <input class="form-control" multiple type="file"
-                                        (change)="onFileSelected($event)" />
-                                </div>
+                            <button class="btn btn-success m-auto d-block w-50" (click)="next()">Next</button>
                             </div>
                         </div>
-                        <button class="btn btn-primary m-auto d-block w-50" type="submit" (click)="onFinalSubmit()">Apply</button>
+                    </ng-container>
+                        <ng-container *ngIf="next()">
+                        <div class="mb-2">
+                            <label class="form-label upload_label" for="file">Upload Documents :</label>
+                            <div class="document_container">
+                                <h5 class="card-title">Documents</h5>
+                                <ng-container *ngIf="this.type == 'houseLoan'">
+                                    <ul class="card-title">
+                                        <li>Bank statement of 3 previous months</li>
+                                        <li>Property Documents</li>
+                                    </ul>   
+                                </ng-container>
+                                <ng-container *ngIf="this.type == 'personalLoan'">
+                                    <ul class="card-title">
+                                        <li>Recent Salary slip</li>
+                                        <li>Income certificate</li>
+                                    </ul>   
+                                </ng-container>
+                            </div>
+                            <input class="form-control" multiple type="file"
+                                (change)="onFileSelected($event)" />
+                        </div>
+                        <div class="d-flex justify-content-evenly">
+                            <button class="btn btn-primary w-25" type="submit" (click)="onFinalSubmit()">Apply</button>
+                            <button class="btn btn-danger w-25" (click)="next()">Back</button>
+                        </div>    
+                   
+                      </ng-container>
                     </form>
                 </div>
             </div>

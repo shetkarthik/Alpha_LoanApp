@@ -71,7 +71,7 @@
                                         <div class="mb-2">
                                             <label for="tenure" class="form-label">Tenure :</label>
                                             <input type="number" class="form-control" id="exampleFormControlInput1"
-                                                placeholder="Enter in months" class="input-field" formControlName="tenure">
+                                                placeholder="Enter in months" class="input-field" formControlName="tenure" min="3" max="300">
                                             <small *ngIf="loanEligible.get('tenure')?.invalid && loanEligible.get('tenure')?.touched"
                                                 class="error">
                                                 Tenure is required.

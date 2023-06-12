@@ -47,10 +47,7 @@ export class LoanFormComponent {
       , (err) => {
         console.log(err);
       })
-    setTimeout(() => {
-      this.downloadPdf();
-    }, 3000);
-
+      
   }
 
   downloadPdf() {
@@ -64,20 +61,15 @@ export class LoanFormComponent {
 
     };
     const content = this.htmlData.nativeElement;
-
-    // pdf.html(content, options).save(`${this.accountnumber}loanApplication.pdf`);
     pdf.html(content, options).save(`${this.accountnumber}loanApplication.pdf`).then(() => {
       const pdfBlob = pdf.output('blob');
       const formData = new FormData();
       formData.append('file', pdfBlob, options.filename);
-      this.api.uploadFile(formData).subscribe(
-        response => {
-          console.log('PDF uploaded successfully:', response);
-        },
-        error => {
-          console.error('Error uploading PDF:', error);
-        }
-      );
+      this.api.sendFile(formData).subscribe(res=>{
+        console.log(res);
+      },err=>{
+        console.log(err);
+      })
     });
   }
 

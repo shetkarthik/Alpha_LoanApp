@@ -68,6 +68,9 @@
                                     </div>
                                 </div>
                                 <small *ngIf="signupForm.controls['customerid'].dirty && signupForm.hasError('required','customerid')" class="text-danger">*Customerid is required</small>
+                                <ng-container *ngIf="signupForm.controls['customerid'].dirty && signupForm.hasError('pattern','customerid')" >
+                                    <small class="text-danger">*Customerid should not have spaces</small>
+                                </ng-container>
                             </div>
                             <div class="col-lg-6 col-12">
                                 <div class="form-group pt-3">

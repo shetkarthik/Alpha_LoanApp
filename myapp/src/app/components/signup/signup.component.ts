@@ -26,7 +26,7 @@ export class SignupComponent {
       email : ["",Validators.required],
       contactNum : ["",Validators.required],
       password:["",Validators.required],
-      customerid:["",Validators.required]
+      customerid:["",[Validators.required,Validators.pattern(/^[^\s]*$/)]]
     })
  }
 

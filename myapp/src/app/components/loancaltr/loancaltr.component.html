@@ -5,17 +5,17 @@
       <form>
         <div class="group">
           <div class="title" for="loan-amount">Amount</div>
-          <input type="number" class="loan-amount" id="loan-amount" />
+          <input type="number" class="loan-amount" id="loan-amount" value="30000" />
         </div>
   
         <div class="group">
           <div class="title" for="interest-rate">Interest Rate</div>
-          <input type="number" id="interest-rate" class="interest-rate" />
+          <input type="number" id="interest-rate" class="interest-rate" value="8.5" />
         </div>
   
         <div class="group">
           <div class="title" for="loan-tenure">Tenure(in years)</div>
-          <input type="number" id="loan-tenure" class="loan-tenure"/>
+          <input type="number" id="loan-tenure" class="loan-tenure" value="240" />
         </div>
       </form>
     </div>
@@ -38,8 +38,8 @@
         </div>
   
         <button (click)="calculateEMI()" class="calculate-btn1">CALCULATE</button>
-        <!-- <button  (click)="routeToLoan()" class="calculate-btn2"></button> -->
-        <button (click)="routeToLoan()" class="calculate-btn2">BACK</button>
+        <button  (click)="routeToLoan()" class="calculate-btn2">APPLY NOW</button>
+        <!-- <button (click)="routeToLoan()" class="calculate-btn2">APPLY NOW</button> -->
         <!-- <button class="btn bg-primary text-light"><a routerLink="Loanstatus"  class="btn-dec">View now</a></button>
         <button routerLink="Loantype">Go to Calculator</button> -->
       </div>

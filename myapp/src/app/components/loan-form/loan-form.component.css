@@ -6,16 +6,20 @@ gap: 10px;
 padding: 10px;
 
 }
-.form-container{
+.container-fluid{
     font:caption;
     overflow-x: hidden;
-    /* width: 70%; */
+    width: 70%;
+    padding:0;
     display: block;
     margin: auto;
     /* flex-direction: column; */
-    border: 2px solid black;
+    
 }
-
+.form-container{
+    border: 2px solid black;
+   
+}
 .floating-button {
     position: fixed;
     bottom: 20px;
@@ -144,3 +148,9 @@ font-weight: bold;
     font-size: 12px;
 }
 }
+
+@media screen and (max-width: 500px){
+    /* .form-container{
+        width: 100%;
+    } */
+} 

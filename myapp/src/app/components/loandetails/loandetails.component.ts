@@ -229,8 +229,6 @@ export class LoandetailsComponent {
       formData.append('accountNumber', this.accountNum);
       formData.append('loanType', this.type);
       for (const file of this.files) {
-        formData.append('accountNumber', this.accountNum);
-        formData.append('loanType', this.type);
         formData.append('files', file);
       }
 

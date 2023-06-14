@@ -32,8 +32,8 @@ export class LoancaltrComponent {calculate!: FormGroup;
   onSubmit() {
     
     this.Emi = document.getElementById("resulta") as HTMLElement;
-    this.TotalAmt = document.getElementById("resultb") as HTMLElement;
-    this.TotalInt = document.getElementById("resultc") as HTMLElement;
+    this.TotalInt = document.getElementById("resultb") as HTMLElement;
+    this.TotalAmt = document.getElementById("resultc") as HTMLElement;
 
     if (this.calculate.valid ) {
 

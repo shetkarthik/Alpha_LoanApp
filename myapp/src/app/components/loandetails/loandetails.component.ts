@@ -24,7 +24,7 @@ export class LoandetailsComponent {
   formData: any = {};
   interest: any;
   type: any;
-  types:any;
+  loantypes:any;
   selectedFiles!: File[];
   files: File[] = [];
 
@@ -53,15 +53,26 @@ export class LoandetailsComponent {
       monthlyIncome: ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
       annualIncome: ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
       otherEmi: ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
-      loanPurpose: ['',],
+      loanPurpose: ['',Validators.required],
       propertyLoc: ['',],
-      propertyArea: ['', ],
-      propertyValue: ['', ],
+      propertyArea: ['',],
+      propertyValue: ['',],
       ongoingLoan: [''],  
+      vehicleType:[''],
+      vehiclercNumber:[''],
+      vehiclePrice:[''],
+      vendorName:[''],
+      vendorAddress:[''],
+      educationType:[''],
+      courseName:[''],
+      courseDuration:[''],
+      instituteName:[''],
+      totalFee:[''],
+
     });
 
     this.loanBasic.controls['loanType'].valueChanges.subscribe(value => {
-     this.types = value;
+     this.loantypes = value;
       this.updateValidators();
     });
   
@@ -73,29 +84,75 @@ export class LoandetailsComponent {
       const propArea = this.loanBasic.controls['propertyArea']; 
     const propLoc = this.loanBasic.controls['propertyLoc']; 
     const propVal = this.loanBasic.controls['propertyValue']; 
-    const loanPurpose = this.loanBasic.controls['loanPurpose']; 
     const ongoingLoan = this.loanBasic.controls['ongoingLoan']; 
+    const vehicleType = this.loanBasic.controls['vehicleType']; 
+    const vehiclercNumber = this.loanBasic.controls['vehiclercNumber']; 
+    const vehiclePrice = this.loanBasic.controls['vehiclePrice']; 
+    const vendorName = this.loanBasic.controls['vendorName']; 
+    const vendorAddress = this.loanBasic.controls['vendorAddress']; 
+    const educationType = this.loanBasic.controls['educationType']; 
+    const totalFee = this.loanBasic.controls['totalFee']; 
+    const instituteName = this.loanBasic.controls['instituteName']; 
+    const courseDuration = this.loanBasic.controls['courseDuration']; 
+    const courseName = this.loanBasic.controls['courseName']; 
 
-    if(this.types == 'houseLoan'){
+    if(this.loantypes == 'houseLoan'){
       propArea.setValidators([Validators.required,Validators.pattern('^[0-9]*$')]);
       propLoc.setValidators(Validators.required);
-      propVal.setValidators([Validators.required,Validators.pattern('^[0-9]*$')]);
-      loanPurpose.setValidators([Validators.required]);
+      propVal.setValidators([Validators.required,Validators.pattern('^[0-9]*$')]);   
     }
-    else if(this.types == 'personalLoan')
+    else if(this.loantypes == 'personalLoan')
     {
             propArea.clearValidators();
             propLoc.clearValidators();
             propVal.clearValidators();
-            loanPurpose.setValidators([Validators.required]);
             ongoingLoan.setValidators([Validators.required]);
+    }
+    else if(this.loantypes == 'vehicleLoan')
+    {
+      propArea.clearValidators();
+      propLoc.clearValidators();
+      propVal.clearValidators();
+      ongoingLoan.clearValidators();
+      vehiclePrice.setValidators([Validators.required,Validators.pattern('^[0-9]*$')]);
+      vehicleType.setValidators(Validators.required);
+      vendorName.setValidators(Validators.required);
+      vendorAddress.setValidators(Validators.required);
+      vehiclercNumber.setValidators([Validators.required,Validators.pattern('^[0-9]*$')]);  
+    }
+    else if(this.loantypes == 'educationLoan')
+    {
+      propArea.clearValidators();
+      propLoc.clearValidators();
+      propVal.clearValidators();
+      ongoingLoan.clearValidators();
+      vehiclePrice.clearValidators();
+      vehicleType.clearValidators();
+      vendorName.clearValidators();
+      vendorAddress.clearValidators();
+      vehiclercNumber.clearValidators(); 
+      totalFee.setValidators([Validators.required,Validators.pattern('^[0-9]*$')]);
+      instituteName.setValidators(Validators.required);
+      courseName.setValidators(Validators.required);
+      educationType.setValidators(Validators.required);
+      courseDuration.setValidators([Validators.required,Validators.pattern('^[0-9]*$')]); 
+
     }
     
     propArea.updateValueAndValidity();
     propVal.updateValueAndValidity();
     propLoc.updateValueAndValidity();
-    loanPurpose.updateValueAndValidity();
     ongoingLoan.updateValueAndValidity();
+    vehiclePrice.updateValueAndValidity();
+    vehicleType.updateValueAndValidity();
+    vendorName.updateValueAndValidity();
+    vendorAddress.updateValueAndValidity();
+    vehiclercNumber.updateValueAndValidity();
+    courseDuration.updateValueAndValidity();
+    courseName.updateValueAndValidity();
+    instituteName.updateValueAndValidity();
+    educationType.updateValueAndValidity();
+    totalFee.updateValueAndValidity();
   }
 
   next(){

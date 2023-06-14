@@ -4,8 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { UserstoreService } from 'src/app/services/userstore.service';
 import jsPDF from 'jspdf';
-
-
+import { Html2CanvasOptions } from 'jspdf';
 import { HTMLOptions } from 'jspdf';
 
 @Component({
@@ -53,12 +52,10 @@ export class LoanFormComponent {
   downloadPdf() {
     const pdf = new jsPDF();
     const options: HTMLOptions = {
-      html2canvas: { scale: 0.185 },
-      // margin: [10, 10, 10, 10], 
+      html2canvas: { scale: 0.193,removeContainer:true},
+      margin:[0,0,0,18],
       filename: `${this.accountnumber}loanApplication.pdf`,
       image: { type: 'jpeg', quality: 0.98 },
-
-
     };
     const content = this.htmlData.nativeElement;
     pdf.html(content, options).save(`${this.accountnumber}loanApplication.pdf`).then(() => {
@@ -75,6 +72,8 @@ export class LoanFormComponent {
 
 
 }
+
+
 
 
 

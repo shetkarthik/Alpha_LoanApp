@@ -226,10 +226,9 @@ export class LoandetailsComponent {
       const formData = new FormData();
       console.log(this.loanBasic.value)
  
-
+      formData.append('accountNumber', this.accountNum);
+      formData.append('loanType', this.type);
       for (const file of this.files) {
-        formData.append('accountNumber', this.accountNum);
-        formData.append('loanType', this.type);
         formData.append('files', file);
       }
 

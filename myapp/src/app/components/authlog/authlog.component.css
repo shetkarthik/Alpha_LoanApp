@@ -10,6 +10,12 @@
     color: blue;
 }
 
+.otp_time{
+    font-size: 14px;
+    color: red;
+    font-variant-caps: all-petite-caps;
+}
+
 .info{
     font: caption;
     /* font-size: 15px; */

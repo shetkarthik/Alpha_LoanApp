@@ -21,6 +21,7 @@ export class LoanFormComponent {
   role: any;
   users: any = [];
   loans: any = [];
+  
 
   constructor(private auth: AuthService, private userStore: UserstoreService, private api: ApiService) {
 

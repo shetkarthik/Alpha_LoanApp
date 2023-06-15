@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <form [formGroup]="loanBasic">
-                        <ng-container *ngIf="next()">
+                       
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="mb-2">
@@ -226,7 +226,7 @@
                                 <div class="mb-2">
                                     <label for="courseDuration" class="form-label">Course Duration :</label>
                                     <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Enter duration of the course" class="input-field"
+                                        placeholder="Enter duration of the course in years" class="input-field"
                                         formControlName="courseDuration">
                                     <small
                                         *ngIf="loanBasic.get('courseDuration')?.invalid && loanBasic.get('courseDuration')?.touched"
@@ -250,7 +250,7 @@
                                         placeholder="Enter in months" class="input-field" formControlName="tenure" min="3" max="300">
                                     <small *ngIf="loanBasic.get('tenure')?.invalid && loanBasic.get('tenure')?.touched"
                                         class="error">
-                                        Tenure is required.
+                                        Tenure is required and is available for 3-300 months.
                                     </small>
                                 </div>
                                 <br>
@@ -328,6 +328,9 @@
                                             class="error">
                                             Vendor Name is required.
                                         </small>
+                                        <ng-container *ngIf="loanBasic.controls['vendorName'].dirty && loanBasic.hasError('pattern','vendorName')" >
+                                            <small class="text-danger">*Enter proper credentials</small>
+                                        </ng-container>
                                     </div>
                                     <br>
                                     <div class="mb-2">
@@ -355,6 +358,9 @@
                                             class="error">
                                             Course Name is required.
                                         </small>
+                                        <ng-container *ngIf="loanBasic.controls['courseName'].dirty && loanBasic.hasError('pattern','courseName')" >
+                                            <small class="text-danger">*Enter proper credentials</small>
+                                        </ng-container>
                                     </div>
                                     <br>
                                     <div class="mb-2">
@@ -371,11 +377,10 @@
                                     <br>
 
                                 </ng-container>
-                            <button class="btn btn-success m-auto d-block w-50" (click)="next()">Next</button>
+                            
                             </div>
                         </div>
-                    </ng-container>
-                        <ng-container *ngIf="next()">
+                 
                         <div class="mb-2">
                             <label class="form-label upload_label" for="file">Upload Documents :</label>
                             <div class="document_container">
@@ -413,10 +418,8 @@
                         </div>
                         <div class="d-flex justify-content-evenly">
                             <button class="btn btn-primary w-25" type="submit" (click)="onFinalSubmit()">Apply</button>
-                            <button class="btn btn-danger w-25" (click)="next()">Back</button>
+                            
                         </div>    
-                   
-                      </ng-container>
                     </form>
                 </div>
             </div>

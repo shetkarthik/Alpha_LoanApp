@@ -10,6 +10,7 @@ import { LoandetailsComponent } from './components/loandetails/loandetails.compo
 import { LoanFormComponent } from './components/loan-form/loan-form.component';
 import { LoancaltrComponent } from './components/loancaltr/loancaltr.component';
 import { LoantypeComponent } from './components/loantype/loantype.component';
+import { RouteGuardGuard } from './guards/route-guard.guard';
 
 
 
@@ -21,7 +22,7 @@ const routes: Routes = [
   {path:'applyLoan',component:LoandetailsComponent},
   {path:'loancaltr',component:LoancaltrComponent},
   {path:'loantype',component:LoantypeComponent},
-  {path:'loanForm',component:LoanFormComponent},
+  {path:'loanForm',component:LoanFormComponent, canActivate: [RouteGuardGuard]},
   {path:"",component:HomeComponent,canActivate:[AuthGuard]},
   
 ];

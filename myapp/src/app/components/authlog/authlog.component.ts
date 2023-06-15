@@ -21,6 +21,10 @@ export class AuthlogComponent {
   tokenotp :string =""
   customer:string = "";
   text :any = "";
+  remainingTime:any;
+  interval:any;
+  minutes:any;
+  seconds:any;
 
 
   constructor (private fb: FormBuilder,
@@ -41,6 +45,7 @@ export class AuthlogComponent {
         }
         
       });
+     
    }
 
   ngOnInit():void {
@@ -48,6 +53,8 @@ export class AuthlogComponent {
       customerid: [this.text,Validators.required],
       tokenotp:["",Validators.required]
      })
+
+     this.startTimer();
   }
 
   
@@ -57,6 +64,23 @@ export class AuthlogComponent {
   }
   OnChange2(event:any){
     this.customer = event.target.value;
+  }
+
+  startTimer() {
+    const totalSeconds = 120;
+    this.remainingTime = totalSeconds;
+  
+    this.interval = setInterval(() => {
+       this.minutes = Math.floor(this.remainingTime / 60);
+       this.seconds = this.remainingTime % 60;
+      this.remainingTime--;
+  
+      if (this.remainingTime === 0) {
+        clearInterval(this.interval);
+        window.location.reload();
+        this.toast.error({detail:"Error",summary:"Otp expired Try Again",duration:3000})
+      }
+    }, 1000);
   }
 
   

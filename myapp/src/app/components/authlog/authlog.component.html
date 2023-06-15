@@ -25,9 +25,11 @@
                                 <label for="tokenotp">One Time Password :</label>
                                 <div class="input-field" [class.error]="authLogForm.controls['tokenotp'].dirty && authLogForm.hasError('required','tokenotp')">
                                     <span class="fa fa-key pe-2"></span>
-                                    <input formControlName="tokenotp" [type]="type" placeholder="Please enter your tokenotp" (change)="OnChange($event)">    
+                                    <input formControlName="tokenotp" [type]="type" placeholder="Please enter your tokenotp" (change)="OnChange($event)"> 
+                                    
                                     <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
                                 </div>
+                                <small class="otp_time">Otp is only valid for {{ minutes }}:{{ seconds | number: '2.0' }}</small>
                             </div>             
                             <small  *ngIf="authLogForm.controls['tokenotp'].dirty && authLogForm.hasError('required','tokenotp')"  class="text-danger">*Otp is required</small>
                             <button (click)="onSubmit()" type="submit" class="btn btn-primary mt-4 w-100 d-block m-auto">Login</button>

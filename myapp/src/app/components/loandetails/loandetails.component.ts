@@ -116,9 +116,9 @@ export class LoandetailsComponent {
       ongoingLoan.clearValidators();
       vehiclePrice.setValidators([Validators.required,Validators.pattern('^[0-9]*$')]);
       vehicleType.setValidators(Validators.required);
-      vendorName.setValidators(Validators.required);
+      vendorName.setValidators([Validators.required,Validators.pattern('^[a-zA-Z]+$')]);
       vendorAddress.setValidators(Validators.required);
-      vehiclercNumber.setValidators([Validators.required,Validators.pattern('^[0-9]*$')]);  
+      vehiclercNumber.setValidators([Validators.required]);  
     }
     else if(this.loantypes == 'educationLoan')
     {
@@ -133,7 +133,7 @@ export class LoandetailsComponent {
       vehiclercNumber.clearValidators(); 
       totalFee.setValidators([Validators.required,Validators.pattern('^[0-9]*$')]);
       instituteName.setValidators(Validators.required);
-      courseName.setValidators(Validators.required);
+      courseName.setValidators([Validators.required,Validators.pattern('^[a-zA-Z]+$')]);
       educationType.setValidators(Validators.required);
       courseDuration.setValidators([Validators.required,Validators.pattern('^[0-9]*$')]); 
 
@@ -155,10 +155,7 @@ export class LoandetailsComponent {
     totalFee.updateValueAndValidity();
   }
 
-  next(){
-   this.section = !this.section;
-   return this.section;
-  }
+
   
 
   onFileSelected(event: any): void {
@@ -318,7 +315,7 @@ export class LoandetailsComponent {
     }
     else {
       this.loanBasic.markAllAsTouched();
-      this.next();
+      
     }
   }
   

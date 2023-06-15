@@ -13,26 +13,27 @@
     <li class="nav-item">
       <a class="nav-link" href="#portfolio">Services</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="loantype">Loans</a>
+    </li>
     <ng-container *ngIf="role==='user'">
       <li class="nav-item user_profile_info">
       
-          <p>Cust ID  : {{fullName}}</p>
-          <span></span>
+        <p>Cust ID  : <span class="text-primary">{{fullName}}</span></p>
+          
          
         </li>
       <li class="nav-item user_profile_info">
         
-          <p >Acc Num :{{accountnumber}}</p>
+        <p >Acc Num :<span class="text-primary">{{accountnumber}}</span></p>
          
         </li>
       <li class="nav-item user_profile_info">
      
-          <button  class="btn btn-danger user_profile_info" (click)="signOut()">Logout</button>
+          <button  class="btn btn-primary" (click)="signOut()">Logout</button>
          
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="loantype">Loans</a>
-        </li>
+     
         
     </ng-container>
     <ng-container *ngIf="role==='admin'">
@@ -51,18 +52,18 @@
               </div>
     
                <a href="#" class="sub-menu-link">
-                <p>Cust ID  : {{fullName}}</p>
-                <span></span>
+                <p>Cust ID  : <span class="text-primary">{{fullName}}</span></p>
+               
                </a>
     
                <a href="#" class="sub-menu-link">
-                <p >Acc Num :{{accountnumber}}</p>
-                <span></span>
+                <p >Acc Num :<span class="text-primary">{{accountnumber}}</span></p>
+               
                </a>
     
                <a href="#" class="sub-menu-link">
-                <button  class="btn btn-danger d-block m-auto" (click)="signOut()">Logout</button>
-                <span></span>
+                <button  class="btn btn-primary d-block m-auto" (click)="signOut()">Logout</button>
+                
                </a>
     
             </div>

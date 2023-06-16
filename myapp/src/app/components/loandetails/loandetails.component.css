@@ -55,6 +55,7 @@ small{
 
 .error{
     color: red;
+    font-family: monospace;
 }
 
 input{

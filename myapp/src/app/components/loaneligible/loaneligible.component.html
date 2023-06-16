@@ -61,6 +61,7 @@
                                                 *ngIf="loanEligible.controls['loanAmount'].dirty && loanEligible.hasError('pattern','loanAmount')">
                                                 <small class="error">Please enter proper credentials</small>
                                             </ng-container>
+                                            
                                         </div>
                                         <br>
                                         <div class="mb-2">
@@ -74,7 +75,7 @@
                                                 placeholder="Enter in months" class="input-field" formControlName="tenure" min="3" max="300">
                                             <small *ngIf="loanEligible.get('tenure')?.invalid && loanEligible.get('tenure')?.touched"
                                                 class="error">
-                                                Tenure is required.
+                                                Tenure is required & is only available for 3-300 months
                                             </small>
                                         </div>
                                         <br>
@@ -98,6 +99,7 @@
                                                 *ngIf="loanEligible.controls['monthlyIncome'].dirty && loanEligible.hasError('pattern','monthlyIncome')">
                                                 <small class="error">Please enter proper credentials</small>
                                             </ng-container>
+                                            
                                         </div>
                                         <br>
                                         <div class="mb-2">
@@ -114,6 +116,7 @@
                                                 *ngIf="loanEligible.controls['annualIncome'].dirty && loanEligible.hasError('pattern','annualIncome')">
                                                 <small class="error">Please enter proper credentials</small>
                                             </ng-container>
+                                        
                                         </div>
                                         <br>
                                         <div class="mb-2">
@@ -130,6 +133,7 @@
                                                 *ngIf="loanEligible.controls['otherEmi'].dirty && loanEligible.hasError('pattern','otherEmi')">
                                                 <small class="error">Please enter proper credentials</small>
                                             </ng-container>
+                                           
                                         </div>
                                         <br>
                                     </div>

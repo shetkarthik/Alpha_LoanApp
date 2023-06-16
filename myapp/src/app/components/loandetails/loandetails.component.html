@@ -82,6 +82,7 @@
                                         *ngIf="loanBasic.controls['loanAmount'].dirty && loanBasic.hasError('pattern','loanAmount')">
                                         <small class="error">Please enter proper credentials</small>
                                     </ng-container>
+                                    
                                 </div>
                                 <br>
                                 <div class="mb-2">
@@ -154,6 +155,7 @@
                                         *ngIf="loanBasic.controls['propertyValue'].dirty && loanBasic.hasError('pattern','propertyValue')">
                                         <small class="error">Please enter proper credentials</small>
                                     </ng-container>
+                                     
                                 </div>
                                 <br>
                                 <div class="mb-2">
@@ -169,6 +171,7 @@
                                         *ngIf="loanBasic.controls['propertyArea'].dirty && loanBasic.hasError('pattern','propertyArea')">
                                         <small class="error">Please enter proper credentials</small>
                                     </ng-container>
+                                   
                                 </div>
                                 <br>
                                 </ng-container>
@@ -187,6 +190,7 @@
                                         *ngIf="loanBasic.controls['vehiclePrice'].dirty && loanBasic.hasError('pattern','vehiclePrice')">
                                         <small class="error">Please enter proper credentials</small>
                                     </ng-container>
+                                     
                                 </div>
                                 <br>
                                 <div class="mb-2">
@@ -203,6 +207,7 @@
                                         *ngIf="loanBasic.controls['vehiclercNumber'].dirty && loanBasic.hasError('pattern','vehiclercNumber')">
                                         <small class="error">Please enter proper credentials</small>
                                     </ng-container>
+                                    
                                 </div>
                                 <br>
                                 </ng-container>
@@ -221,6 +226,7 @@
                                         *ngIf="loanBasic.controls['totalFee'].dirty && loanBasic.hasError('pattern','totalFee')">
                                         <small class="error">Please enter proper credentials</small>
                                     </ng-container>
+                                     
                                 </div>
                                 <br>
                                 <div class="mb-2">
@@ -237,6 +243,7 @@
                                         *ngIf="loanBasic.controls['courseDuration'].dirty && loanBasic.hasError('pattern','courseDuration')">
                                         <small class="error">Please enter proper credentials</small>
                                     </ng-container>
+                                     
                                 </div>
                                 <br>
                                 </ng-container>
@@ -268,6 +275,7 @@
                                         *ngIf="loanBasic.controls['monthlyIncome'].dirty && loanBasic.hasError('pattern','monthlyIncome')">
                                         <small class="error">Please enter proper credentials</small>
                                     </ng-container>
+                                     
                                 </div>
                                 <br>
                                 <div class="mb-2">
@@ -284,6 +292,7 @@
                                         *ngIf="loanBasic.controls['annualIncome'].dirty && loanBasic.hasError('pattern','annualIncome')">
                                         <small class="error">Please enter proper credentials</small>
                                     </ng-container>
+                                  
                                 </div>
                                 <br>
                                 <div class="mb-2">
@@ -300,6 +309,7 @@
                                         *ngIf="loanBasic.controls['otherEmi'].dirty && loanBasic.hasError('pattern','otherEmi')">
                                         <small class="error">Please enter proper credentials</small>
                                     </ng-container>
+                                   
                                 </div>
                                 <br>
                                 <ng-container *ngIf="this.type == 'houseLoan'">
@@ -329,7 +339,7 @@
                                             Vendor Name is required.
                                         </small>
                                         <ng-container *ngIf="loanBasic.controls['vendorName'].dirty && loanBasic.hasError('pattern','vendorName')" >
-                                            <small class="text-danger">*Enter proper credentials</small>
+                                            <small class="error">*Enter proper credentials</small>
                                         </ng-container>
                                     </div>
                                     <br>
@@ -359,7 +369,7 @@
                                             Course Name is required.
                                         </small>
                                         <ng-container *ngIf="loanBasic.controls['courseName'].dirty && loanBasic.hasError('pattern','courseName')" >
-                                            <small class="text-danger">*Enter proper credentials</small>
+                                            <small class="error">*Enter proper credentials</small>
                                         </ng-container>
                                     </div>
                                     <br>

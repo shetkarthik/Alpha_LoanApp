@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
 
+
 @Component({
   selector: 'app-loaneligible',
   templateUrl: './loaneligible.component.html',
@@ -31,11 +32,11 @@ export class LoaneligibleComponent {
    
     this.loanEligible = this.formBuilder.group({
       loanType: ['', Validators.required],
-      loanAmount: ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
+      loanAmount: ['', [Validators.required,Validators.pattern('^(?!0)[0-9]*$')]],
       tenure: ['', Validators.required],
-      monthlyIncome: ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
-      annualIncome: ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
-      otherEmi: ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
+      monthlyIncome: ['', [Validators.required,Validators.pattern('^(?!0)[0-9]*$')]],
+      annualIncome: ['', [Validators.required,Validators.pattern('^(?!0)[0-9]*$')]],
+      otherEmi: ['', [Validators.required,Validators.pattern('^(?!0)[0-9]*$')]],
     });
 
   }

@@ -10,7 +10,7 @@
                      <div class="panel-body p-3">
                         <form [formGroup]="loginForm">
                             <div class="form-group pt-3">
-                                <label for="customerid">Customer Id :</label>
+                                <label for="customerid">User Id :</label>
                                 <div class="input-field" [class.error]="loginForm.controls['customerid'].dirty && loginForm.hasError('required','customerid')">
                                     <span class="fa fa-user-circle pe-2"></span>
                                     <input formControlName="customerid" type="text" placeholder="Please enter your Customer Id">

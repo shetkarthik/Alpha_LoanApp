@@ -18,6 +18,10 @@ import { LoanFormComponent } from './components/loan-form/loan-form.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoancaltrComponent } from './components/loancaltr/loancaltr.component';
 import { LoantypeComponent } from './components/loantype/loantype.component';
+import { LoanReqComponent } from './components/loan-req/loan-req.component';
+import { LoanAccDetailsComponent } from './components/loan-acc-details/loan-acc-details.component';
+import { LoanAccInfoComponent } from './components/loan-acc-info/loan-acc-info.component';
+import { LoanStatusComponent } from './components/loan-status/loan-status.component';
 
 
 
@@ -34,6 +38,10 @@ import { LoantypeComponent } from './components/loantype/loantype.component';
     NavbarComponent,
     LoancaltrComponent,
     LoantypeComponent,
+    LoanReqComponent,
+    LoanAccDetailsComponent,
+    LoanAccInfoComponent,
+    LoanStatusComponent,
   ],
   imports: [
     BrowserModule,

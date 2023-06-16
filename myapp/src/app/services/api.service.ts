@@ -10,6 +10,7 @@ export class ApiService {
   private fileurl = "https://localhost:7080/api/Files";
   private checkurl = "https://localhost:7080/api/LoanEligible/checkEligible";
   private calciUrl="https://localhost:7080/api/LoanCalculator/calculateEMI";
+  // private apiUrl = "https://localhost:7080/api";
 
   constructor(private http:HttpClient) { }
 
@@ -42,5 +43,17 @@ export class ApiService {
     const url = `${this.baseUrl}getLoanByAccountNum?accountnum=${accountnum}`; 
     return this.http.get<any>(url);
   }
+  
+
+  // getLoan(id: number) {
+  //   const url = `${this.apiUrl}/loandetails/${id}`;
+  //   return this.http.get(url);
+  // }
+  // updateLoanStatus(loanId: number, status: string) {
+  //   const url = `${this.apiUrl}loans/${loanId}/status`;
+  //   const body = { loanStatus: status };
+
+  //   return this.http.put(url, body);
+  // }
   
 }

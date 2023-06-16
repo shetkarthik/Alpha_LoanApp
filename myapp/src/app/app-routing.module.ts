@@ -10,6 +10,10 @@ import { LoandetailsComponent } from './components/loandetails/loandetails.compo
 import { LoanFormComponent } from './components/loan-form/loan-form.component';
 import { LoancaltrComponent } from './components/loancaltr/loancaltr.component';
 import { LoantypeComponent } from './components/loantype/loantype.component';
+import { LoanReqComponent } from './components/loan-req/loan-req.component';
+import { LoanAccDetailsComponent } from './components/loan-acc-details/loan-acc-details.component';
+import { LoanAccInfoComponent } from './components/loan-acc-info/loan-acc-info.component';
+import { LoanStatusComponent } from './components/loan-status/loan-status.component';
 
 
 
@@ -23,6 +27,11 @@ const routes: Routes = [
   {path:'loantype',component:LoantypeComponent},
   {path:'loanForm',component:LoanFormComponent},
   {path:"",component:HomeComponent,canActivate:[AuthGuard]},
+  {path:'loanReq',component:LoanReqComponent},
+  {path:'AccountDetails/:accountNum',component:LoanAccDetailsComponent},
+  {path:'LoanAccountInfo/:id',component:LoanAccInfoComponent},
+  {path:'loan-tracking/:id',component:LoanStatusComponent},
+  
   
 ];
 

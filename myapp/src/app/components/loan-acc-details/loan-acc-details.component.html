@@ -1,0 +1,149 @@
+<body>
+    <div class="container">
+        <h3>Account  Details</h3>
+        <div class="user-details">
+            
+          <div>
+            <label class="text-dec">Name: {{ userDetails.userName }}</label>
+            <!-- <span>Male</span> -->
+          </div>
+          
+          <div>
+            <label>Account Number:{{ userDetails.accountNum }}</label>
+          </div>
+          <div>
+            <label>Gender:{{ userDetails.gender }}</label>
+            <!-- <span>Male</span> -->
+          </div>
+          <div>
+            <label>Address:{{ userDetails.addresss }}</label>
+            <!-- <span>123 Main St, City</span> -->
+          </div>
+          
+          <div>
+            <label>Mobile Number:{{ userDetails.contactNum }}</label>
+            <!-- <span>9876543210</span> -->
+          </div>
+          <div>
+            <label>Email ID:{{ userDetails.email }}</label>
+            <!-- <span>morton@gmail.com</span> -->
+          </div>
+          <div>
+            <label>Employee Type:{{ userDetails.empType }}</label>
+            <!-- <span>Salaried</span> -->
+          </div>
+          <div>
+            <label>Annual Income:{{ loanDetails.annualIncome }}</label>
+            <!-- <span>600000</span> -->
+          </div>
+       
+          <div *ngIf="userDetails.empType=='salaried'">
+          
+             <label style="margin-right: 150px;">Organization Name:{{ userDetails.organizationName }}</label>
+           
+            <label>Organization Address:{{ userDetails.organizationAddress }}</label>
+        </div>
+        <div *ngIf="userDetails.empType=='self-employed'">
+          
+            <label style="margin-right: 150px;">Occupation Name:{{ userDetails.occupationName }}</label>
+          
+           <label>Occupation Address:{{ userDetails.occupationAddress }}</label>
+       </div>
+
+        
+          <!-- <div>
+            <label>Organization Address:</label>
+            <span>123 Main St, City</span>
+          </div> -->
+        </div>
+        <h3>Loan  Details</h3>
+        <div class="user-details">
+          <div>
+            <label>Loan Type:{{loanDetails.loanType}}</label>
+            <!-- <span>house Loan</span> -->
+          </div>
+          <div>
+            <label>Loan Amount: {{loanDetails.loanAmount}}</label>
+            <!-- <span>2000000</span> -->
+          </div>
+          <div>
+            <label>Interest:{{loanDetails.interest}}%</label>
+            <!-- <span>9.15 %</span> -->
+          </div>
+          <div>
+            <label>Tenure (in months):{{loanDetails.tenure}}</label>
+            <!-- <span>120</span> -->
+          </div>
+          <div>
+            <label>Other EMI: {{loanDetails.otherEmi}}</label>
+            <!-- <span>123 Main St, City</span> -->
+          </div>
+          <div>
+            <label>Loan EMI: {{loanDetails.loanEmi}}</label>
+            
+            <!-- <span>123 Main St, City</span> -->
+          </div>
+          <div *ngIf="loanDetails.loanType=='houseLoan'">
+            <label style="margin-right: 90px;">Loan Purpose: {{loanDetails.loanPurpose}}</label>
+            <label>Property Area: {{loanDetails.propertyArea}} sq.ft</label>
+            
+          </div>
+          
+          
+          <!-- <div>
+            <label>Property Area(sq.ft):{{loanDetails.propertyArea}} sq.ft</label>
+            
+          </div> -->
+          <!------------------------------>
+      
+          <!-- <div>
+            <label>Monthly Income:</label>
+            <span>123 Main St, City</span>
+          </div> -->
+          <!-- <div>
+            <label>Annual Income:</label>
+            <span>123 Main St, City</span>
+          </div> -->
+          
+           <div>
+            <h3>Documents</h3> 
+             <div class="document-list">
+             
+                <div *ngFor="let document of documentList">
+                  <p>{{document.fileName}}</p>
+
+                  <div *ngFor="let file of document.fileName.split(',')">
+                    <a [href]="getFilePath(document.filePath, file)" target="_blank">{{ file }}</a>
+                  </div>
+                </div>
+              </div> 
+            
+    <!-- <div class="document-list">
+      <div *ngFor="let document of documentList">
+        <a [href]="document.filePath" target="_blank">{{ document.fileName }}</a>
+      </div>
+    </div> -->
+            <!-- <ul>
+                <li *ngFor="let document of documentList">
+                    <a [href]="document.filePath">{{ document.fileName }}</a>
+                  </li>
+            </ul> -->
+            <!-- <span>123 Main St, City</span> -->
+        
+          <!-- <ul>
+              <li *ngFor="let document of documentList">
+                <a [href]="document.filePath" style="color: black;">{{ document.fileName }}</a>
+              </li>
+            </ul> -->
+          </div>
+        </div>
+        <div class="button-container">
+          <!-- <button class="approve" (click)="approveLoan()">Approve</button> -->
+          <button class="approve">Approve</button>
+          <button class="need-info" >Need More Info</button>
+          <button class="reject">Reject</button>
+          <!-- <button class="reject" (click)="rejectLoan()" >Reject</button> -->
+          
+        </div> 
+      </div>
+    </body>

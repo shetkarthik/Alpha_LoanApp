@@ -78,8 +78,10 @@ width: 100%;
     font-size: 16px;
     margin-top: 30px;
     text-align: center;
+    text-transform: capitalize;
 }
 .content{
+    text-transform: capitalize;
 width: 75%;
 border-bottom: 1px solid black;
 font-size: 16px;

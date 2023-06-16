@@ -22,7 +22,7 @@ const routes: Routes = [
   {path:'applyLoan',component:LoandetailsComponent},
   {path:'loancaltr',component:LoancaltrComponent},
   {path:'loantype',component:LoantypeComponent},
-  {path:'loanForm',component:LoanFormComponent, canActivate: [RouteGuardGuard]},
+  {path:'loanForm',component:LoanFormComponent,canActivate:[RouteGuardGuard]},
   {path:"",component:HomeComponent,canActivate:[AuthGuard]},
   
 ];

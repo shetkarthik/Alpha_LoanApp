@@ -11,6 +11,8 @@ import { LoanFormComponent } from './components/client/loan-form/loan-form.compo
 import { LoancaltrComponent } from './components/client/loancaltr/loancaltr.component';
 import { LoantypeComponent } from './components/client/loantype/loantype.component';
 import { RouteGuardGuard } from './guards/route-guard.guard';
+import { LoanreqComponent } from './components/admin/loanreq/loanreq.component';
+import { AllloansComponent } from './components/admin/allloans/allloans.component';
 
 
 
@@ -22,6 +24,8 @@ const routes: Routes = [
   {path:'applyLoan',component:LoandetailsComponent},
   {path:'loancaltr',component:LoancaltrComponent},
   {path:'loantype',component:LoantypeComponent},
+  {path:'allLoans',component:AllloansComponent},
+  {path:'allLoans/:id',component:LoanreqComponent},
   {path:'loanForm',component:LoanFormComponent,canActivate:[RouteGuardGuard]},
   {path:"",component:HomeComponent,canActivate:[AuthGuard]},
   

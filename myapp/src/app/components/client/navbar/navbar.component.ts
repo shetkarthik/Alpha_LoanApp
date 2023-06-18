@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserstoreService } from 'src/app/services/userstore.service';
@@ -22,6 +23,9 @@ export class NavbarComponent {
   public fullName: string = "";
   public username:string="";
   public initials: string="";
+  isResultLoaded:any;
+  LoanArray:any;
+  count:any;
 
   constructor(private router: Router,private auth: AuthService, private api: ApiService, private userStore: UserstoreService,) { }
  
@@ -56,6 +60,14 @@ export class NavbarComponent {
         console.log(this.users);
       });
     }
+    const loanObservable: Observable<any> = this.api.getAllLoans();
+    loanObservable.subscribe((resultData: any) => {
+      this.isResultLoaded = true;
+      console.log(resultData);
+      this.LoanArray = resultData;
+      this.count = resultData.length;
+      console.log(this.count);
+    });
     
     // this.ngOnInit();
 

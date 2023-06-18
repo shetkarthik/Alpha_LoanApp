@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   private baseUrl: string = "https://localhost:7080/api/Loan/";
+  private loandetailsUrl : string = "https://localhost:7080/api/LoanDetails/"
   private fileurl = "https://localhost:7080/api/Files";
   private checkurl = "https://localhost:7080/api/LoanEligible/checkEligible";
   private calciUrl="https://localhost:7080/api/LoanCalculator/calculateEMI";
@@ -16,6 +17,16 @@ export class ApiService {
   getInterestByLoanType(loanType: string): Observable<number> {
     const url = `${this.baseUrl}getInterest?loanType=${loanType}`; 
     return this.http.get<number>(url);
+  }
+
+  getLoanDetailsById(id:any){
+    const url = `${this.loandetailsUrl}${id}`;
+    return this.http.get<any>(url);
+  }
+
+  updateLoanStatus(payload:any){
+    const url = `${this.baseUrl}status`; 
+    return this.http.put<any>(url,payload);
   }
 
   applyLoan(loanObj:any){
@@ -41,6 +52,10 @@ export class ApiService {
   getLoanDetails(accountnum:string){
     const url = `${this.baseUrl}getLoanByAccountNum?accountnum=${accountnum}`; 
     return this.http.get<any>(url);
+  }
+
+  getAllLoans(){
+     return this.http.get<any>(`${this.baseUrl}getAllLoans`)
   }
   
 }

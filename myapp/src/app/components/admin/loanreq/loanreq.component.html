@@ -1,0 +1,165 @@
+<app-navbar></app-navbar>
+
+<body>
+    <div class="container">
+        <h3>Account  Details</h3>
+        <div class="user-details">
+            
+          <div>
+            <label class="text-dec"><strong>Name:</strong> {{loanDetailsObj.customerAccountInfo.userName}}  </label>
+            
+          </div>
+          
+          <div>
+            <label><strong>Account Number:</strong> {{loanDetailsObj.customerAccountInfo.accountNum}}</label>
+          </div>
+          <div>
+            <label><strong>Gender:</strong> {{loanDetailsObj.customerAccountInfo.gender}}</label>
+           
+          </div>
+          <div>
+            <label><strong>Address:</strong> {{loanDetailsObj.customerAccountInfo.addresss}}</label>
+            
+          </div>
+          
+          <div>
+            <label><strong>Mobile Number:</strong> {{loanDetailsObj.customerAccountInfo.contactNum}}</label>
+            
+          </div>
+          <div>
+            <label><strong>Email ID:</strong> {{loanDetailsObj.customerAccountInfo.email}}</label>
+          </div>
+          <div>
+            <label><strong>Employee Type:</strong> {{loanDetailsObj.customerAccountInfo.empType}}</label>
+          </div>
+          <div>
+            <label><strong>Annual Income:</strong> {{loanDetailsObj.loanDetails.annualIncome}}</label>
+          </div>
+       
+          <div *ngIf="loanDetailsObj.customerAccountInfo.empType=='salaried'">
+          
+             <label style="margin-right: 130px;"><strong>Organization Name:</strong> {{loanDetailsObj.customerAccountInfo.organizationName}}</label>
+           
+            <label><strong>Organization Address:</strong> {{loanDetailsObj.customerAccountInfo.organizationAddress}}</label>
+        </div>
+        <div *ngIf="loanDetailsObj.customerAccountInfo.empType=='self-employed'">
+          
+            <label style="margin-right: 150px;"><strong>Occupation Name:</strong> {{loanDetailsObj.customerAccountInfo.occupationName}}</label>
+          
+           <label><strong>Occupation Address:</strong> {{loanDetailsObj.customerAccountInfo.occupationAddress}}</label>
+       </div>
+
+        
+         
+        </div>
+        <h3>Loan  Details</h3>
+        <div class="user-details">
+          <div>
+            <label><strong>Loan Type:</strong> {{loanDetailsObj.loanDetails.loanType}}</label>
+            <!-- <span>house Loan</span> -->
+          </div>
+          <div>
+            <label><strong>Loan Amount:</strong> {{loanDetailsObj.loanDetails.loanAmount}}</label>
+            <!-- <span>2000000</span> -->
+          </div>
+          <div>
+            <label><strong>Interest:</strong> {{loanDetailsObj.loanDetails.interest}}%</label>
+            <!-- <span>9.15 %</span> -->
+          </div>
+          <div>
+            <label><strong>Tenure (in months):</strong> {{loanDetailsObj.loanDetails.tenure}}</label>
+            <!-- <span>120</span> -->
+          </div>
+          <div>
+            <label><strong>Other EMI:</strong> {{loanDetailsObj.loanDetails.otherEmi}} </label>
+            <!-- <span>123 Main St, City</span> -->
+          </div>
+          <div>
+            <label><strong>Loan EMI:</strong> {{loanDetailsObj.loanDetails.loanEmi}} </label>
+            
+            <!-- <span>123 Main St, City</span> -->
+          </div>
+          <div *ngIf="loanDetailsObj.loanDetails.loanType=='houseLoan'">
+            <label style="margin-right: 90px;"><strong>Loan Purpose:</strong> {{loanDetailsObj.loanDetails.loanPurpose}} </label>
+            <label><strong>Property Area:</strong> {{loanDetailsObj.loanDetails.propertyArea}}  sq.ft</label>
+          </div>
+          
+          
+          <!-- <div>
+            <label>Property Area(sq.ft):{{loanDetails.propertyArea}} sq.ft</label>
+            
+          </div> -->
+          <!------------------------------>
+      
+          <!-- <div>
+            <label>Monthly Income:</label>
+            <span>123 Main St, City</span>
+          </div> -->
+          <!-- <div>
+            <label>Annual Income:</label>
+            <span>123 Main St, City</span>
+          </div> -->
+<!--           
+           <div>
+            <h3>Documents</h3>  -->
+             <!-- <div class="document-list">
+                <div *ngFor="let document of documentList">
+                  <div *ngFor="let file of document.fileName.split(',')">
+                    <a [href]="getFilePath(document.filePath, file)" target="_blank">{{ file }}</a>
+                  </div>
+                </div>
+              </div>  -->
+            
+    <!-- <div class="document-list">
+      <div *ngFor="let document of documentList">
+        <a [href]="document.filePath" target="_blank">{{ document.fileName }}</a>
+      </div>
+    </div> -->
+            <!-- <ul>
+                <li *ngFor="let document of documentList">
+                    <a [href]="document.filePath">{{ document.fileName }}</a>
+                  </li>
+            </ul> -->
+            <!-- <span>123 Main St, City</span> -->
+        
+          <!-- <ul>
+              <li *ngFor="let document of documentList">
+                <a [href]="document.filePath" style="color: black;">{{ document.fileName }}</a>
+              </li>
+            </ul> -->
+          <!-- </div> -->
+        </div>
+        <h3>Documents</h3>
+         <ul>
+          <p>{{this.id}}</p>
+          <p  > <strong>{{this.fpath}}</strong></p>
+            <p>{{this.fName}}</p>
+          <!-- <div *ngFor="let file of this.fName.split('/')">
+
+          </div> -->
+
+                <!-- <li *ngFor="let filename of this.fName">
+                    <a [href]="filename.fName">{{ filename.fileName }}</a>
+                  </li> -->
+            </ul>
+        
+       
+        <form [formGroup]="commentForm" >
+          <h3 style="text-align: center;">Add a Comment</h3>
+          
+          <textarea id="comment" name="comment" formControlName="comment" placeholder="Enter your comment" required style="height: 100px;width: 500px;margin-left: 130px;"></textarea>
+          
+          
+        </form>
+        
+        <div class="button-container">
+         
+          <button class="approve" (click)="updateLoanStatus('Approved')" >Approve</button>
+          <button class="need-info" (click)="updateLoanStatus('Need More Info')" >Need More Info</button>
+          <button class="reject" (click)="updateLoanStatus('Rejected')" >Reject</button>
+          
+        </div> 
+      </div>
+    </body>
+
+    <app-footer></app-footer>

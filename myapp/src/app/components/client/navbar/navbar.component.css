@@ -125,6 +125,16 @@ p{
 	background: #ccc;
 	margin: 15px 0px 10px ;
    }
+   .badge {
+	position: relative;
+    top: -17px;
+    right: 0;
+    background-color: rgb(25, 0, 255);
+    color: white;
+    padding: 2px 2px;
+    border-radius: 50%;
+	/* Add other badge styles */
+  }
    .sub-menu-link
    {
 	display: flex;

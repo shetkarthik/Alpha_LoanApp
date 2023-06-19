@@ -53,6 +53,10 @@ export class ApiService {
     const url = `${this.baseUrl}getLoanByAccountNum?accountnum=${accountnum}`; 
     return this.http.get<any>(url);
   }
+  getLoanStatusDetails(accountnum:string){
+    const url = `${this.baseUrl}getLoanStatusByAccountNum?accountnum=${accountnum}`; 
+    return this.http.get<any>(url);
+  }
 
   getAllLoans(){
      return this.http.get<any>(`${this.baseUrl}getAllLoans`)

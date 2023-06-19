@@ -20,6 +20,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let loan of LoanArray">
+        
           <td ><a  [routerLink]="['/allLoans/'+loan.loanId]">{{ loan.loanId }}</a> </td>
           <td style="font-weight: bold;">{{ loan.accountNum }}</td>
           <td style="text-transform: capitalize;">{{ loan.loanType }}</td>
@@ -29,6 +30,8 @@
           <td>&#x20B9;{{loan.otherEmi}}</td>
           <td>&#x20B9;{{loan.loanEmi}}</td>
           <td>&#x20B9;{{loan.loanTotalAmount}}</td>
+        
+      
         </tr>
       </tbody>
     </table>

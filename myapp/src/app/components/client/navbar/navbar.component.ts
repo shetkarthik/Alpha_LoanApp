@@ -60,20 +60,32 @@ export class NavbarComponent {
         console.log(this.users);
       });
     }
-    const loanObservable: Observable<any> = this.api.getAllLoans();
-    loanObservable.subscribe((resultData: any) => {
-      this.isResultLoaded = true;
-      console.log(resultData);
-      this.LoanArray = resultData;
-      this.count = resultData.length;
-      console.log(this.count);
-    });
-    
-    // this.ngOnInit();
+    if(this.role == "admin")
+    {
+      
+      this.initials =this.fullName.charAt(0).toUpperCase();
+      const loanObservable: Observable<any> = this.api.getAllLoans();
+      loanObservable.subscribe((resultData: any) => {
+        this.isResultLoaded = true;
+        console.log(resultData);
+        this.LoanArray = resultData;
+        this.count = resultData.length;
+        console.log(this.count);
+      });
+    }
+   
 
 }
 
 signOut() {
   this.auth.signOut();
+}
+
+routetoallLoans(){
+  this.router.navigate(["allLoans"])
+}
+
+routetoLoanType(){
+  this.router.navigate(["loantype"])
 }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserstoreService } from 'src/app/services/userstore.service';
@@ -15,6 +16,8 @@ export class HomeComponent {
   public accountnumber!:string;
   public cust_name! : string;
   public fullName: string = "";
+  LoanArray:any = [];
+  isResultLoaded:boolean = false;
 
   constructor(private auth: AuthService, private api: ApiService, private userStore: UserstoreService) { }
 
@@ -42,9 +45,21 @@ export class HomeComponent {
         this.cust_name = this.users["userName"]
         console.log(this.users);
       });
+      const loanObservable: Observable<any> = this.api.getLoanStatusDetails(this.accountnumber)
+      loanObservable.subscribe((resultData: any) => {
+        this.isResultLoaded = true;
+       this.LoanArray = resultData;
+        // console.log(this.LoanArray.length);
+         console.log(resultData); 
+        
+      });
     }
     // this.ngOnInit();
   }
+
+
+
+
 
   signOut() {
     this.auth.signOut();

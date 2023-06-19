@@ -20,7 +20,7 @@
             </div>
           </div>
     </section>
-      <!-- portfolio strats -->
+    <ng-container *ngIf="this.role === 'user'">
       <section id="services" class="portfolio section-padding mt-5">
         <div class="container">
             <div class="row">
@@ -66,17 +66,85 @@
                             <h4 class="card-title">Loan Status</h4>
                             <p>Track your Loan application and know step by step  updates  about your application and enjoy our services.</p><hr>
                             <!-- <button class="btn bg-primary text-light" ><a href="LoanStatus.html" class="btn-dec">View now</a></button> -->
-                            <button class="btn bg-primary text-light"><a routerLink="status"  class="btn-dec card-title">View</a></button>
+                            <button class="btn bg-primary text-light"><a type="button"  class="btn-dec card-title" data-bs-toggle="modal" data-bs-target="#exampleModal">View</a></button>
                            
                             
                         </div>
                     </div>
                 </div>
+              
+                  
                </div>
             </div>
         </div>
       </section>
-      
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <ng-container *ngIf="this.LoanArray.length > 0">
+              <div class="modal-header">
+                <h3 class="text-primary card-title text-center" id="exampleModalLabel">LOAN STATUS</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <div class="table-container">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Loan ID</th>
+                            <th>Loan Type</th>
+                            <th>Loan Amount</th>
+                            <th>Tenure(m)</th>
+                            <th>Loan Status</th>
+                            <th>Loan Comments</th>
+                            
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let loan of LoanArray">
+                          
+                            <td class="fw-bold text-primary" >{{ loan.loanId }} </td>
+                            <td style="text-transform: capitalize;">{{ loan.loanType }}</td>
+                            <td>&#x20B9;{{ loan.loanAmount }}</td>
+                            <td>{{ loan.tenure }}</td>
+                            <ng-container *ngIf="loan.loanStatus == 'Approved'">
+                              <td class="text-success fw-bold">{{loan.loanStatus}}</td>
+                            </ng-container>
+                            <ng-container *ngIf="loan.loanStatus == 'Rejected'">
+                              <td class="text-danger fw-bold">{{loan.loanStatus}}</td>
+                            </ng-container>
+                            <ng-container *ngIf="loan.loanStatus == 'Need More Info'">
+                              <td class="text-primary fw-bold">{{loan.loanStatus}}</td>
+                            </ng-container>
+                            <ng-container *ngIf="loan.loanStatus == null || undefined">
+                              <td class="text-primary fw-bold">Processing</td>
+                            </ng-container>
+                            <td>{{loan.comment}}</td>
+                
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div> 
+              </div>
+            </ng-container>
+            <ng-container *ngIf="this.LoanArray.length == 0">
+              <div class="modal-header">
+                <h3 class="text-primary card-title text-center" id="exampleModalLabel">LOAN STATUS</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <h2 class="text-center card-title">No Loans taken</h2>
+              </div>
+          </ng-container>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+      <!-- portfolio strats -->
+     
+      <app-footer></app-footer>    
 </div>
 
-<app-footer></app-footer>
+
+
+

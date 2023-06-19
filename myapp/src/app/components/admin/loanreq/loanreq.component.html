@@ -1,16 +1,208 @@
 <app-navbar></app-navbar>
 
-<body>
+<div class="container-fluid loan_container">
+  <div class="container card">
+    <div class="row">
+    
+      <h2 class="text-center text-primary">Loan-details</h2>
+      <!----------User Account Details Part Card------>
+      <div class="col-lg-6 col-md-12 col-12 divide_bottom">
+        <h4 class="text-primary text-center">Account Details</h4>
+        <!-- <div class="row"> -->
+          <!-- <div class="col-6"> -->
+            <div class="details_container">
+  
+           
+            <p class="text-dec"><strong>Name: </strong>{{ loanDetailsObj.customerAccountInfo.userName }}</p>
+            <p class="text-dec"><strong>Account Number: </strong>{{loanDetailsObj.customerAccountInfo.accountNum}}</p>
+            <p class="text-dec"><strong>Gender: </strong>{{ loanDetailsObj.customerAccountInfo.gender }}</p>
+            <p class="text-dec"><strong>Address: </strong>{{ loanDetailsObj.customerAccountInfo.addresss }}</p>
+            <p class="text-dec"><strong>Mobile Number: </strong>{{ loanDetailsObj.customerAccountInfo.contactNum }}</p>
+            <p class="text-dec"><strong>Email ID:</strong>{{ loanDetailsObj.customerAccountInfo.email }}</p>
+          <!-- </div> -->
+          <!-- <div class="col-6"> -->
+            <p class="text-dec"><strong>Employee Type: </strong>{{ loanDetailsObj.customerAccountInfo.empType }}</p>
+            <p class="text-dec"><strong>Annual Income: </strong>&#x20B9;{{ loanDetailsObj.loanDetails.annualIncome }}</p>
+            <div *ngIf="loanDetailsObj.customerAccountInfo.empType=='salaried'">
+              <p class="text-dec"><strong>Organization Name: </strong>{{
+                loanDetailsObj.customerAccountInfo.organizationName }}</p>
+              <p class="text-dec"><strong>Organization Address: </strong>{{
+                loanDetailsObj.customerAccountInfo.organizationAddress }}</p>
+            </div>
+            <div *ngIf="loanDetailsObj.customerAccountInfo.empType=='self-employed'">
+              <p class="text-dec"><strong>Occupation Name: </strong>{{ loanDetailsObj.customerAccountInfo.occupationName
+                }}</p>
+              <p class="text-dec"><strong>Occupation Address: </strong>{{
+                loanDetailsObj.customerAccountInfo.occupationAddress }}</p>
+            </div>
+          <!-- </div> -->
+        <!-- </div> -->
+      </div>
+    </div>
+  
+  
+  
+  
+      <!-----User Loan Details part card------------>
+      <div class="col-lg-6 col-md-12 col-12 divide divide_bottom">
+        <h4 class="text-primary text-center">{{loanDetailsObj.loanDetails.loanType}} Details</h4>
+        <!-- <div class="row"> -->
+          <!-- <div class="col-6"> -->
+            <div class="details_container">
+            <p class="text-dec"><strong>Loan Amount: </strong>&#x20B9;{{loanDetailsObj.loanDetails.loanAmount}}</p>
+            <p class="text-dec"><strong>Interest: </strong>{{loanDetailsObj.loanDetails.interest}}%</p>
+            <p class="text-dec"><strong>Tenure (in months): </strong>{{loanDetailsObj.loanDetails.tenure}}</p>
+            <p class="text-dec"><strong>Other EMI:</strong>&#x20B9;{{loanDetailsObj.loanDetails.otherEmi}}</p>
+            <p class="text-dec"><strong>Loan EMI:</strong>&#x20B9;{{loanDetailsObj.loanDetails.loanEmi}}</p>
+          <!-- </div> -->
+          <!-- <div class="col-6"> -->
+            <div *ngIf="loanDetailsObj.loanDetails.loanType=='houseLoan'">
+              <p class="text-dec"><strong>Loan Purpose:</strong>{{loanDetailsObj.loanDetails.loanPurpose}}</p>
+              <p class="text-dec"><strong>Property Area:</strong>{{loanDetailsObj.loanDetails.propertyArea}}</p>
+              <p class="text-dec"><strong>Property Location:</strong>{{loanDetailsObj.loanDetails.propertyLoc}}</p>
+              <p class="text-dec"><strong>Property Value:</strong>&#x20B9;{{loanDetailsObj.loanDetails.propertyValue}}</p>
+            </div>
+            <div *ngIf="loanDetailsObj.loanDetails.loanType=='vehicleLoan'">
+              <p class="text-dec"><strong>Loan Purpose:</strong></p>
+              <p class="text-dec"><strong>RC Number:</strong></p>
+              <p class="text-dec"><strong>Vehicle Price:</strong>&#x20B9;</p>
+              <p class="text-dec"><strong>Vendor Address:</strong></p>
+            </div>
+            <div *ngIf="loanDetailsObj.loanDetails.loanType=='personalLoan'">
+              <p class="text-dec"><strong>Loan Purpose:</strong>{{loanDetailsObj.loanDetails.loanPurpose}}</p>
+              <p class="text-dec"><strong>Ongoing Loan:</strong>{{loanDetailsObj.loanDetails.ongoingLoan}}</p>
+            </div>
+            <div *ngIf="loanDetailsObj.loanDetails.loanType=='educationLoan'">
+              <p class="text-dec"><strong>Education Type:</strong>{{loanDetailsObj.loanDetails.educationType}}</p>
+              <p class="text-dec"><strong>Course Name:</strong>{{loanDetailsObj.loanDetails.courseName}}</p>
+              <p class="text-dec"><strong>Course Duration:</strong>{{loanDetailsObj.loanDetails.courseDuration}}</p>
+              <p class="text-dec"><strong>Institute Name:</strong>{{loanDetailsObj.loanDetails.instituteName}}</p>
+              <p class="text-dec"><strong>Total Fee:</strong>&#x20B9;{{loanDetailsObj.loanDetails.totalFee}}</p>
+            </div>
+          <!-- </div> -->
+        <!-- </div> -->
+      </div>
+      </div>
+  
+  
+      <!-------Document and Available Loan Part------>
+      <div class="container-fluid">
+  
+        <div class="row">
+  
+          <div class="col-lg-6 col-md-12 col-12 divide_bottom">
+            <h4 class="text-center text-primary">Documents</h4>
+            <div class="details_container">
+            <iframe id="fileViewer" style="display: none;"></iframe>
+            <ul>
+              <!-- <li>{{fName}}</li> -->
+              <li *ngFor="let file of fName; let i = index">
+                <a (click)="openModal(fpath[i])" class="filename">{{ file }}</a>
+              </li>
+            </ul>
+            <div id="fileModal" class="modal">
+              <div class="modal-content">
+                <span class="close" (click)="closeModal()">&times;</span>
+                <iframe [src]="getSafeUrl(selectedFile)" frameborder="0"></iframe>
+              </div>
+            </div>
+            </div>
+          </div>
+  
+          <!----Available USER EMI Part----->
+          <div class="col-lg-6 col-md-12 col-12 divide divide_bottom ">
+            <h4 class="text-center text-primary">Available EMI</h4>
+            <div class="row" style="margin-bottom: 20px;">
+              <!-- <div class="d-flex"> -->
+              <!-- <div class="col-6 text-center">
+                <div class="title1" for="loanAmount" class="input-title">Loan EMI : <span>&#x20B9;{{loanDetailsObj.loanDetails.loanEmi}}</span></div>
+             
+               
+              </div>
+           
+              <div class="col-6 text-center">
+                <div class="title1" for="loanAmount" class="input-title">Available EMI : <span>&#x20B9;{{availableEmi}}</span></div>
+             
+              </div> -->
+              <canvas id="myChart"></canvas>
+
+            </div>
+            <!-- </div> -->
+          </div>
+  
+        </div>
+  
+      </div>
+      <!---END of Document and Available EMI part-->
+  
+      <!---Add comments and Buttons section------>
+      <div class="container-fluid">
+  
+        <div class="row">
+          <!---ADD Comments part---->
+          <div class="col-lg-12 col-md-12 col-12 divide_bottom">
+            <div class="form-group" [formGroup]="commentForm">
+              <h4 class="text-center text-primary">Add Comments</h4>
+              <div class="w-50 d-block m-auto">
+                <textarea class="form-control" id="comment" name="comment" formControlName="comment" rows="4"
+                placeholder="Enter your comment" required style="margin-bottom: 20px;"></textarea>
+              </div>
+              <!-- <label for="exampleFormControlTextarea3">Rounded corners</label> -->
+             
+            </div>
+            <!-- <form [formGroup]="commentForm" >
+                    <h4>Add Comments</h4>
+                    <textarea id="comment" name="comment" formControlName="comment" placeholder="Enter your comment" required  class="textarea"></textarea>
+                  </form> -->
+          </div>
+  
+          <!--Buttons part---->
+          <div class="col-lg-12 col-md-12 col-12">
+            <div class="row">
+              <div class="col-lg-2 col-md-2 col-0">
+            
+              </div>
+              <div class="col-lg-8 col-md-8 col-12">
+                <button type="button" class="btn btn-success "
+                (click)="updateLoanStatus('Approved')">Accept</button>
+                <button type="button" class="btn btn-primary "
+                (click)="updateLoanStatus('Need More Info')">Need more info</button>
+                <button type="button" class="btn btn-danger "
+                (click)="updateLoanStatus('Rejected')">Reject</button>
+              </div>
+              <div class="col-lg-2 col-md-2 col-0">
+                
+              </div>
+              </div>
+            </div>
+            
+              
+        
+        </div>
+  
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- <body>
     <div class="container">
         <h3>Account  Details</h3>
-        <div class="user-details">
-            
-          <div>
+        <div class="user-details"> -->
+
+<!-- <div>
             <label class="text-dec"><strong>Name:</strong> {{loanDetailsObj.customerAccountInfo.userName}}  </label>
             
-          </div>
-          
-          <div>
+          </div> -->
+
+<!-- <div>
             <label><strong>Account Number:</strong> {{loanDetailsObj.customerAccountInfo.accountNum}}</label>
           </div>
           <div>
@@ -28,12 +220,15 @@
           </div>
           <div>
             <label><strong>Email ID:</strong> {{loanDetailsObj.customerAccountInfo.email}}</label>
+         
           </div>
           <div>
             <label><strong>Employee Type:</strong> {{loanDetailsObj.customerAccountInfo.empType}}</label>
+   
           </div>
           <div>
             <label><strong>Annual Income:</strong> {{loanDetailsObj.loanDetails.annualIncome}}</label>
+   
           </div>
        
           <div *ngIf="loanDetailsObj.customerAccountInfo.empType=='salaried'">
@@ -56,28 +251,27 @@
         <div class="user-details">
           <div>
             <label><strong>Loan Type:</strong> {{loanDetailsObj.loanDetails.loanType}}</label>
-            <!-- <span>house Loan</span> -->
+         
           </div>
           <div>
             <label><strong>Loan Amount:</strong> {{loanDetailsObj.loanDetails.loanAmount}}</label>
-            <!-- <span>2000000</span> -->
+        
           </div>
           <div>
             <label><strong>Interest:</strong> {{loanDetailsObj.loanDetails.interest}}%</label>
-            <!-- <span>9.15 %</span> -->
+        
           </div>
           <div>
             <label><strong>Tenure (in months):</strong> {{loanDetailsObj.loanDetails.tenure}}</label>
-            <!-- <span>120</span> -->
+          
           </div>
           <div>
             <label><strong>Other EMI:</strong> {{loanDetailsObj.loanDetails.otherEmi}} </label>
-            <!-- <span>123 Main St, City</span> -->
+         
           </div>
           <div>
             <label><strong>Loan EMI:</strong> {{loanDetailsObj.loanDetails.loanEmi}} </label>
-            
-            <!-- <span>123 Main St, City</span> -->
+         
           </div>
           <div *ngIf="loanDetailsObj.loanDetails.loanType=='houseLoan'">
             <label style="margin-right: 90px;"><strong>Loan Purpose:</strong> {{loanDetailsObj.loanDetails.loanPurpose}} </label>
@@ -85,65 +279,37 @@
           </div>
           
           
-          <!-- <div>
-            <label>Property Area(sq.ft):{{loanDetails.propertyArea}} sq.ft</label>
-            
-          </div> -->
-          <!------------------------------>
-      
-          <!-- <div>
-            <label>Monthly Income:</label>
-            <span>123 Main St, City</span>
-          </div> -->
-          <!-- <div>
-            <label>Annual Income:</label>
-            <span>123 Main St, City</span>
-          </div> -->
-<!--           
-           <div>
-            <h3>Documents</h3>  -->
-             <!-- <div class="document-list">
-                <div *ngFor="let document of documentList">
-                  <div *ngFor="let file of document.fileName.split(',')">
-                    <a [href]="getFilePath(document.filePath, file)" target="_blank">{{ file }}</a>
-                  </div>
-                </div>
-              </div>  -->
-            
-    <!-- <div class="document-list">
-      <div *ngFor="let document of documentList">
-        <a [href]="document.filePath" target="_blank">{{ document.fileName }}</a>
-      </div>
-    </div> -->
-            <!-- <ul>
-                <li *ngFor="let document of documentList">
-                    <a [href]="document.filePath">{{ document.fileName }}</a>
-                  </li>
-            </ul> -->
-            <!-- <span>123 Main St, City</span> -->
-        
-          <!-- <ul>
-              <li *ngFor="let document of documentList">
-                <a [href]="document.filePath" style="color: black;">{{ document.fileName }}</a>
-              </li>
-            </ul> -->
-          <!-- </div> -->
+
         </div>
+        <iframe id="fileViewer" style="display: none;"></iframe>
         <h3>Documents</h3>
-         <ul>
-          <p>{{this.id}}</p>
-          <p  > <strong>{{this.fpath}}</strong></p>
-            <p>{{this.fName}}</p>
-          <!-- <div *ngFor="let file of this.fName.split('/')">
-
-          </div> -->
-
-                <!-- <li *ngFor="let filename of this.fName">
-                    <a [href]="filename.fName">{{ filename.fileName }}</a>
-                  </li> -->
-            </ul>
-        
        
+        <ul>
+          <li *ngFor="let file of fName; let i = index">
+           
+            <a  (click)="openModal(fpath[i])" style="cursor: pointer;color:blue;text-decoration: underline;">{{ file }}</a>
+       
+          </li>
+        </ul>
+  
+
+
+
+<div id="fileModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <iframe [src]="getSafeUrl(selectedFile)" frameborder="0" ></iframe>
+  </div>
+</div> -->
+<!-- <ul> starting one
+         
+            <li *ngFor="let file of fName; let i = index">
+              <a [href]="fpath[i]" target="_blank">{{ file }}</a>
+            </li>
+          
+            </ul> -->
+
+<!--        
         <form [formGroup]="commentForm" >
           <h3 style="text-align: center;">Add a Comment</h3>
           
@@ -157,9 +323,49 @@
           <button class="approve" (click)="updateLoanStatus('Approved')" >Approve</button>
           <button class="need-info" (click)="updateLoanStatus('Need More Info')" >Need More Info</button>
           <button class="reject" (click)="updateLoanStatus('Rejected')" >Reject</button>
+      
           
         </div> 
-      </div>
-    </body>
+      </div> -->
 
-    <app-footer></app-footer>
+
+
+
+<!-------DOCUMENT SECTION-->
+<!-- <div>
+        <iframe id="fileViewer" style="display: none;"></iframe>
+        <h3>Documents</h3>
+
+        <ul>
+          <li *ngFor="let file of fName; let i = index">
+            <a  (click)="openModal(fpath[i])" style="cursor: pointer;color:blue;text-decoration: underline;">{{ file }}</a>
+          </li>
+        </ul> -->
+
+<!-- <div id="fileModal" class="modal">
+          <div class="modal-content">
+            <span class="close" (click)="closeModal()">&times;</span>
+            <iframe [src]="getSafeUrl(selectedFile)" frameborder="0" ></iframe>
+          </div>
+        </div>
+
+      </div> -->
+
+
+<!----------COMMENT SECTION-------->
+<!-- <div>
+      <form [formGroup]="commentForm" >
+        <h3 style="text-align: center;">Add a Comment</h3>
+        <textarea id="comment" name="comment" formControlName="comment" placeholder="Enter your comment" required style="height: 100px;width: 500px;margin-left: 130px;"></textarea>
+      </form>
+    </div> -->
+
+
+<!---------Button------->
+<!-- <div class="button-container">
+         <button class="approve" (click)="updateLoanStatus('Approved')" >Approve</button>
+        <button class="need-info" (click)="updateLoanStatus('Need More Info')" >Need More Info</button>
+        <button class="reject" (click)="updateLoanStatus('Rejected')" >Reject</button>
+      </div>  -->
+
+<!-- </body> -->

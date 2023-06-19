@@ -9,25 +9,24 @@
           <li class="nav-item">
             <a class="nav-link" href="">Home</a>
           </li>
-          
-    <li class="nav-item">
-      <a class="nav-link" href="#services">Services</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="loantype">Loans</a>
-    </li>
-    <ng-container *ngIf="role==='user'">
+    <ng-container *ngIf="role =='user'">
+      <li class="nav-item">
+        <a class="nav-link" href="#services">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="routetoLoanType()">Loans</a>
+      </li>
       <li class="nav-item user_profile_info">
       
-        <p>Cust ID  : <span class="text-primary">{{fullName}}</span></p>
+        <p>User ID  : <span class="text-primary">{{fullName}}</span></p>
           
          
         </li>
-      <li class="nav-item user_profile_info">
+        <li class="nav-item user_profile_info">
         
-        <p >Acc Num :<span class="text-primary">{{accountnumber}}</span></p>
-         
-        </li>
+          <p >Acc Num :<span class="text-primary">{{accountnumber}}</span></p>
+           
+          </li>
       <li class="nav-item user_profile_info">
      
           <button  class="btn btn-primary" (click)="signOut()">Logout</button>
@@ -36,11 +35,10 @@
      
         
     </ng-container>
-    <ng-container *ngIf="role==='admin'">
+    <ng-container *ngIf="role ==='admin'">
         <li class="nav-item">
-            <a  class="nav-link" routerLink="allLoans">Loan Requests<span class="badge">{{this.count}}</span></a>
+            <a  class="nav-link" (click)="routetoallLoans()">Loan Requests<span class="badge">{{this.count}}</span></a>
             <!-- <sup>{{this.count}}</sup> -->
-            
           </li>
       </ng-container>
     <li class="nav-item user_profile_container">
@@ -54,14 +52,16 @@
               </div>
     
                <a href="#" class="sub-menu-link">
-                <p>Cust ID  : <span class="text-primary">{{fullName}}</span></p>
+                <p>User ID  : <span class="text-primary">{{fullName}}</span></p>
                
                </a>
-    
-               <a href="#" class="sub-menu-link">
-                <p >Acc Num :<span class="text-primary">{{accountnumber}}</span></p>
-               
-               </a>
+               <ng-container *ngIf="role !='admin'">
+                <a href="#" class="sub-menu-link">
+                  <p >Acc Num :<span class="text-primary">{{accountnumber}}</span></p>
+                 
+                 </a>
+               </ng-container>
+             
     
                <a href="#" class="sub-menu-link">
                 <button  class="btn btn-primary d-block m-auto" (click)="signOut()">Logout</button>

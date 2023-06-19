@@ -169,6 +169,8 @@ export class LoandetailsComponent {
   // }
 
   onFinalSubmit() {
+  if (this.loanBasic.valid)
+  {
     const formData = new FormData();
     console.log(this.loanBasic.value);
 
@@ -204,7 +206,7 @@ export class LoandetailsComponent {
         formData.append('loanId', response1.loanId.toString());
         console.log(response1);
         console.log(formData);
-        this.toast.success({ detail: 'Success', summary: response1.message, duration: 5000 });
+        this.toast.success({ detail: 'Success', summary: "Loan Applied Successfully", duration: 5000 });
         console.log(response2);
         this.router.navigate(['loanForm']);
       },
@@ -214,6 +216,10 @@ export class LoandetailsComponent {
     );
 
   }
-
+  else{
+    this.loanBasic.markAllAsTouched();
+  }
+  }
+ 
 }
 

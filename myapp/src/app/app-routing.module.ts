@@ -17,6 +17,7 @@ import { LoanStatusComponent } from './components/loan-status/loan-status.compon
 
 
 
+
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path:'AccountDetails/:accountNum',component:LoanAccDetailsComponent},
   {path:'LoanAccountInfo/:id',component:LoanAccInfoComponent},
   {path:'loan-tracking/:id',component:LoanStatusComponent},
+
   
   
 ];

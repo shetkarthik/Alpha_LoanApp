@@ -1,11 +1,11 @@
-<body>
+<!-- <body>
     <div class="container">
         <h3>Account  Details</h3>
         <div class="user-details">
             
           <div>
             <label class="text-dec">Name: {{ userDetails.userName }}</label>
-            <!-- <span>Male</span> -->
+          
           </div>
           
           <div>
@@ -13,28 +13,28 @@
           </div>
           <div>
             <label>Gender:{{ userDetails.gender }}</label>
-            <!-- <span>Male</span> -->
+     
           </div>
           <div>
             <label>Address:{{ userDetails.addresss }}</label>
-            <!-- <span>123 Main St, City</span> -->
+           
           </div>
           
           <div>
             <label>Mobile Number:{{ userDetails.contactNum }}</label>
-            <!-- <span>9876543210</span> -->
+         
           </div>
           <div>
             <label>Email ID:{{ userDetails.email }}</label>
-            <!-- <span>morton@gmail.com</span> -->
+       
           </div>
           <div>
             <label>Employee Type:{{ userDetails.empType }}</label>
-            <!-- <span>Salaried</span> -->
+        
           </div>
           <div>
             <label>Annual Income:{{ loanDetails.annualIncome }}</label>
-            <!-- <span>600000</span> -->
+      
           </div>
        
           <div *ngIf="userDetails.empType=='salaried'">
@@ -51,37 +51,33 @@
        </div>
 
         
-          <!-- <div>
-            <label>Organization Address:</label>
-            <span>123 Main St, City</span>
-          </div> -->
+   
         </div>
         <h3>Loan  Details</h3>
         <div class="user-details">
           <div>
             <label>Loan Type:{{loanDetails.loanType}}</label>
-            <!-- <span>house Loan</span> -->
+   
           </div>
           <div>
             <label>Loan Amount: {{loanDetails.loanAmount}}</label>
-            <!-- <span>2000000</span> -->
+
           </div>
           <div>
             <label>Interest:{{loanDetails.interest}}%</label>
-            <!-- <span>9.15 %</span> -->
+
           </div>
           <div>
             <label>Tenure (in months):{{loanDetails.tenure}}</label>
-            <!-- <span>120</span> -->
+   
           </div>
           <div>
             <label>Other EMI: {{loanDetails.otherEmi}}</label>
-            <!-- <span>123 Main St, City</span> -->
+          
           </div>
           <div>
             <label>Loan EMI: {{loanDetails.loanEmi}}</label>
-            
-            <!-- <span>123 Main St, City</span> -->
+        
           </div>
           <div *ngIf="loanDetails.loanType=='houseLoan'">
             <label style="margin-right: 90px;">Loan Purpose: {{loanDetails.loanPurpose}}</label>
@@ -90,20 +86,7 @@
           </div>
           
           
-          <!-- <div>
-            <label>Property Area(sq.ft):{{loanDetails.propertyArea}} sq.ft</label>
-            
-          </div> -->
-          <!------------------------------>
-      
-          <!-- <div>
-            <label>Monthly Income:</label>
-            <span>123 Main St, City</span>
-          </div> -->
-          <!-- <div>
-            <label>Annual Income:</label>
-            <span>123 Main St, City</span>
-          </div> -->
+       
           
            <div>
             <h3>Documents</h3> 
@@ -117,33 +100,139 @@
                   </div>
                 </div>
               </div> 
-            
-    <!-- <div class="document-list">
-      <div *ngFor="let document of documentList">
-        <a [href]="document.filePath" target="_blank">{{ document.fileName }}</a>
-      </div>
-    </div> -->
-            <!-- <ul>
-                <li *ngFor="let document of documentList">
-                    <a [href]="document.filePath">{{ document.fileName }}</a>
-                  </li>
-            </ul> -->
-            <!-- <span>123 Main St, City</span> -->
-        
-          <!-- <ul>
-              <li *ngFor="let document of documentList">
-                <a [href]="document.filePath" style="color: black;">{{ document.fileName }}</a>
-              </li>
-            </ul> -->
+
           </div>
         </div>
         <div class="button-container">
-          <!-- <button class="approve" (click)="approveLoan()">Approve</button> -->
+        
           <button class="approve">Approve</button>
           <button class="need-info" >Need More Info</button>
           <button class="reject">Reject</button>
-          <!-- <button class="reject" (click)="rejectLoan()" >Reject</button> -->
+         
           
         </div> 
       </div>
-    </body>
+    </body> -->
+
+
+  <div class="container">
+    <div class="row" style="margin-top: 30px;">
+         <div class="col-lg-6 card" style="background-color: rgb(69, 136, 243);" >
+          <h4 style="font-weight: bolder;margin-bottom: 20px;color:rgb(0, 0, 74);">Account Details</h4>
+
+          <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Name: </strong>{{ userDetails.userName }}</p>
+          <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Account Number: </strong>{{ userDetails.accountNum}}</p>
+          <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Gender: </strong>{{ userDetails.gender }}</p>
+          <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Address: </strong>{{ userDetails.addresss }}</p>
+          <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Mobile Number: </strong>{{ userDetails.contactNum }}</p>
+          <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Email ID:</strong>{{ userDetails.email }}</p>
+          <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Employee Type: </strong>{{ userDetails.empType }}</p>
+          <!-- <p style="font-size: 16px;color:white;font-family: sans-serif;" id="monthly-income"><strong>Monthly Income: </strong>{{ loanDetails.monthlyIncome }}</p> -->
+          <p style="font-size: 16px;color:white;font-family: sans-serif;" id="annual-income"><strong>Annual Income: </strong>{{ loanDetails.annualIncome }}</p>
+          <div *ngIf="userDetails.empType=='salaried'">
+            <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Organization Name: </strong>{{ userDetails.organizationName }}</p>
+            <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Organization Address: </strong>{{ userDetails.organizationAddress }}</p>
+          </div>
+          <div *ngIf="userDetails.empType=='self-employed'">
+            <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Occupation Name: </strong>{{ userDetails.occupationName }}</p>
+            <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Occupation Address: </strong>{{ userDetails.occupationAddress }}</p>
+          </div>
+          
+          
+         </div>
+         <div class="col-lg-6 card" style="background-color: rgb(97, 154, 245);">
+          <h4 style="font-weight: bolder;margin-bottom: 20px;">Loan Details</h4>
+          <p style="font-size: 16px;color:white;font-family: sans-serif;" ><strong>Loan Type: </strong>{{loanDetails.loanType}}</p>
+          <p style="font-size: 16px;color:white;font-family: sans-serif;" id="loan-amount"><strong>Loan Amount: </strong>{{loanDetails.loanAmount}}</p>
+          <p style="font-size: 16px;color:white;font-family: sans-serif;" id="loan-interest"><strong>Interest: </strong>{{loanDetails.interest}}</p>
+          <p style="font-size: 16px;color:white;font-family: sans-serif;" id="loan-tenure"><strong>Tenure (in months): </strong>{{loanDetails.tenure}}</p>
+          <p style="font-size: 16px;color:white;font-family: sans-serif;" id="other-emi"><strong>Other EMI:</strong>{{loanDetails.otherEmi}}</p>
+          <p style="font-size: 16px;color:white;font-family: sans-serif;" id="loan-emi"><strong>Loan EMI:</strong>{{loanDetails.loanEmi}}</p>
+          <div *ngIf="loanDetails.loanType=='houseLoan'">
+            <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Loan Purpose:</strong>{{loanDetails.loanPurpose}}</p>
+            <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Property Area:</strong>{{loanDetails.propertyArea}}</p>
+            <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Property Location:</strong>{{loanDetails.propertyLoc}}</p>
+            <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Property Value:</strong>{{loanDetails.propertyValue}}</p>
+          </div>
+          <div *ngIf="loanDetails.loanType=='vehicleLoan'">
+            <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Loan Purpose:</strong>{{loanDetails.loanPurpose}}</p>
+            <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Property Area:</strong>{{loanDetails.propertyArea}}</p>
+            <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Property Location:</strong>{{loanDetails.propertyLoc}}</p>
+            <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Property Value:</strong>{{loanDetails.propertyValue}}</p>
+          </div>
+          <div *ngIf="loanDetails.loanType=='personalLoan'">
+            <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Loan Purpose:</strong>{{loanDetails.loanPurpose}}</p>
+            <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Ongoing Loan:</strong>{{loanDetails.ongoingLoan}}</p>
+            <!-- <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Property Location:</strong>{{loanDetails.propertyLoc}}</p>
+            <p style="font-size: 16px;color:white;font-family: sans-serif;"><strong>Property Value:</strong>{{loanDetails.propertyValue}}</p>-->
+          </div> 
+
+         </div>
+         <div class="card" style="background-color: rgb(130, 172, 240);">
+          <div class="row">
+            <div class="col-lg-6 ">
+              <h4 style="font-weight: bolder;margin-bottom: 20px;">Documents</h4>
+              <p>1</p>
+              <p>2</p>
+              <p>3</p>
+            </div>
+            <div class="col-lg-6 ">
+              <h4 style="font-weight: bolder;margin-bottom: 20px;">Available EMI</h4>
+              
+              
+              <div class="row" style="margin-bottom: 20px;">
+                <div class="col"><div class="title" for="loanAmount" style="font-weight: bolder;">Loan EMI</div>
+                <div style="border: solid transparent 2px;width: 150px;height: 35px;margin-top: 10px;background-color: rgb(253, 251, 248);">&#8377; {{loanDetails.loanEmi}}</div>
+                </div>
+                <div class="col"></div>
+                <div class="col"><div class="title" for="loanAmount" style="font-weight: bolder;">Available EMI</div>
+                <div style="border: solid transparent 2px;width: 150px;height: 35px;margin-top: 10px;background-color: rgb(253, 251, 248);" id="available-emi">&#8377; {{availableEmi}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col"></div>
+                  <div class="col"><button type="button" class="btn btn-primary " style="width:200px;margin: 10px 10px 10px 10px;" (click)="Calculate()">Calculate</button></div>
+                  <div class="col"></div>
+  
+                </div>
+
+              </div>
+                
+              
+              
+
+            </div>
+          </div>
+         
+         
+         </div>
+         <div>
+          
+          <div class="row" style="background-color: rgb(171, 202, 251);">
+            <div class="col-lg-9">
+              <h4 style="font-weight: bolder;margin-bottom: 20px;">Add Comments</h4>
+          <textarea id="comment" name="comment" formControlName="comment" placeholder="Enter your comment" required style="height: 150px;width: 600px;align-items: center;"></textarea>
+            </div>
+            
+            <div class="col-lg-3">
+              <div class="row" style="margin-top: 20px;">
+               <button type="button" class="btn btn-primary " style="width:200px;margin: 10px 10px 10px 10px;">Accept</button></div> 
+        
+                <div class="row"><button type="button" class="btn btn-secondary " style="width:200px;margin: 10px 10px 10px 10px;">Need more info</button></div>
+                
+                <div class="row"><button type="button" class="btn btn-danger " style="width:200px;margin: 10px 10px 10px 10px;">Reject</button></div>
+              
+              </div>
+              
+              
+              
+          </div>
+  
+            
+            
+          
+          
+
+         </div>
+    </div>
+</div>

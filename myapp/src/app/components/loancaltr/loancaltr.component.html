@@ -9,7 +9,7 @@
           <small
           *ngIf="calculate.get('loanAmount')?.invalid && calculate.get('loanAmount')?.touched"
           class="error">
-          Loan amount must be minimum of 50000.
+          Loan amount is require.
       </small>
       <ng-container
       *ngIf="calculate.controls['loanAmount'].dirty && calculate.hasError('pattern','loanAmount')">

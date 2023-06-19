@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
-
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 // import { LoanDetailsService } from 'src/app/services/loan-details.service';
 
 
@@ -21,12 +21,14 @@ export class LoanAccInfoComponent implements OnInit {
   fName:[]=[];
   fpath:[]=[];
 
- 
+  selectedFile: string = '';
+  modalElement: HTMLElement | null = null;
+  availableEmi:number=0;
 
-  // isCommentSubmitted: boolean = false;
  
  
-  constructor(private route: ActivatedRoute, private http: HttpClient,private fb:FormBuilder,private toast:NgToastService,private router: Router) { }
+ 
+  constructor(private route: ActivatedRoute, private http: HttpClient,private fb:FormBuilder,private toast:NgToastService,private router: Router,private sanitizer: DomSanitizer) { }
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.loanId = params['id'];
@@ -43,8 +45,17 @@ export class LoanAccInfoComponent implements OnInit {
     
         this.loanDetailsObj = response;
         this.id=this.loanDetailsObj.document.id;
-        this.fName=this.loanDetailsObj.document.fileName;
-        this.fpath=this.loanDetailsObj.document.filePath;
+        this.fName=this.loanDetailsObj.document.fileName.split(',');
+        this.fpath=this.loanDetailsObj.document.filePath.split(',');
+        const otherEmi = this.loanDetailsObj.loanDetails.otherEmi;
+  const annualIncome =this.loanDetailsObj.loanDetails.annualIncome;
+  const monthlyIncome=this.loanDetailsObj.loanDetails.monthlyIncome ;
+  
+
+  const monthemi =(monthlyIncome/2) ;
+  const annualemi=(annualIncome/24);
+  const avgemi=(monthemi+annualemi)/2;
+  this.availableEmi=Math.round(avgemi - otherEmi);
 
 
         console.log(response);
@@ -95,5 +106,58 @@ export class LoanAccInfoComponent implements OnInit {
   
   }
 
+  // openFile(filePath: string) {
+  //   const fileViewer = document.getElementById('fileViewer') as HTMLIFrameElement;
+  //   fileViewer.src = filePath;
+  //   fileViewer.style.display = 'block';
+  // }
+
+  // 
+  
+  // openModal(file: string) {
+  //   this.selectedFile = file;
+  //   this.modalElement = document.getElementById('fileModal');
+  //   if (this.modalElement) {
+  //     this.modalElement.style.display = 'block';
+  //   }
+  // }
+  
+  // closeModal() {
+  //   if (this.modalElement) {
+  //     this.modalElement.style.display = 'none';
+  //   }
+  // }
+  
+
+  
+openModal(file: string) {
+  this.selectedFile = file;
+  this.modalElement = document.getElementById('fileModal');
+  if (this.modalElement) {
+    this.modalElement.style.display = 'block';
+  }
+}
+
+closeModal() {
+  if (this.modalElement) {
+    this.modalElement.style.display = 'none';
+  }
+}
+
+getSafeUrl(url: string): SafeResourceUrl {
+  return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+}
+
+// Calculate(){
+//   const otherEmi = this.loanDetailsObj.loanDetails.otherEmi;
+//   const annualIncome =this.loanDetailsObj.loanDetails.annualIncome;
+//   const monthlyIncome=this.loanDetailsObj.loanDetails.monthlyIncome ;
+  
+
+//   const monthemi =(monthlyIncome/2) ;
+//   const annualemi=(annualIncome/24);
+//   const avgemi=(monthemi+annualemi)/2;
+//   this.availableEmi=Math.round(avgemi - otherEmi);
+// }
   
 }

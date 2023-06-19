@@ -17,6 +17,7 @@ export class LoanAccDetailsComponent implements OnInit {
   loanDetails: any;
   documentList: any[]=[];
   loanId: number=0;
+  availableEmi:number=0;
   
 
   constructor(private route: ActivatedRoute, private http: HttpClient,private router:Router) { }
@@ -62,7 +63,19 @@ export class LoanAccDetailsComponent implements OnInit {
         
   //     });
   // }
+
   
+  Calculate(){
+    const otherEmi = this.loanDetails.otherEmi;
+    const annualIncome =this.loanDetails.annualIncome;
+    const monthlyIncome=this.loanDetails.monthlyIncome ;
+    
+
+    const monthemi =(monthlyIncome/2) ;
+    const annualemi=(annualIncome/24);
+    const avgemi=(monthemi+annualemi)/2;
+    this.availableEmi=Math.round(avgemi - otherEmi);
+  }
   }
  
 

@@ -189,3 +189,14 @@ p{
 	
 	
 }
+
+.notification-badge {
+	background-color: red;
+	color: white;
+	padding: 2px 6px;
+	border-radius: 50%;
+	font-size: 12px;
+	position: absolute;
+	top: -8px;
+	right: -8px;
+  }

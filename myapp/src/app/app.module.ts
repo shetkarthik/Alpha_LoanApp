@@ -25,6 +25,7 @@ import { LoanStatusComponent } from './components/loan-status/loan-status.compon
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { LoanStatusComponent } from './components/loan-status/loan-status.compon
     LoanAccDetailsComponent,
     LoanAccInfoComponent,
     LoanStatusComponent,
+ 
   ],
   imports: [
     BrowserModule,

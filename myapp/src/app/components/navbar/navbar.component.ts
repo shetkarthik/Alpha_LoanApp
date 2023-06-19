@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
+import { Component , OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserstoreService } from 'src/app/services/userstore.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   isSubMenuOpen = false;
+  
 
   toggleSubMenu() {
     this.isSubMenuOpen = !this.isSubMenuOpen;
@@ -23,7 +25,7 @@ export class NavbarComponent {
   public username:string="";
   public initials: string="";
 
-  constructor(private router: Router,private auth: AuthService, private api: ApiService, private userStore: UserstoreService,) { }
+  constructor(private router: Router,private auth: AuthService, private api: ApiService, private userStore: UserstoreService,private http: HttpClient) { }
  
 
 
@@ -58,8 +60,11 @@ export class NavbarComponent {
     }
     
     // this.ngOnInit();
+    
 
 }
+
+
 
 signOut() {
   this.auth.signOut();

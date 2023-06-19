@@ -1,6 +1,7 @@
 
 <app-navbar></app-navbar>
-<div>
+<ng-container *ngIf="this.LoanArray.length > 0">
+  <div>
     <h3 class="title" >Loan Request List</h3>
 </div>
  <div class="table-container">
@@ -36,6 +37,13 @@
       </tbody>
     </table>
   </div> 
+</ng-container>
+<ng-container *ngIf="this.LoanArray.length == 0">
+  <div class="container">
+    <h1>No new Requests</h1>
+  </div>
+</ng-container>
+
   <app-footer></app-footer>
 
   <!-- Pagination controls -->

@@ -4,6 +4,17 @@
     font-weight: bold;
     color:blue;
   }
+
+  h1{
+    font-variant-caps: petite-caps;
+    font-size: 3rem;
+    color: #009fff;
+  }
+  .container{
+    height: 100%;
+    margin-top: 120px;
+    text-align: center;
+  }
   .table-container {
     width: 100%;
     overflow-x: auto;

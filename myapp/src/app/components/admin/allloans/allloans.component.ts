@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class AllloansComponent {
   // LoanArray:any[]=[];
-  LoanArray:any;
+  LoanArray:any = [];
   isResultLoaded=false;
   // currentPage = 1;
   // itemsPerPage = 15;

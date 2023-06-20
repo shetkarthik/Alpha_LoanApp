@@ -77,8 +77,8 @@ export class AuthlogComponent {
   
       if (this.remainingTime === 0) {
         clearInterval(this.interval);
-        // window.location.reload();
-        this.router.navigate(["login"]);
+        window.location.reload();
+        // this.router.navigate(["login"]);
         this.toast.error({detail:"Error",summary:"Otp expired Try Again",duration:3000})
       }
     }, 1000);

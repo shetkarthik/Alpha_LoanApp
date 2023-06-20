@@ -102,9 +102,10 @@ export class LoanreqComponent {
     this.api.getLoanDetailsById(this.loanId).subscribe((response: any) => {
       this.loanDetailsObj = response;
       this.id = this.loanDetailsObj.document.id;
-      this.fName.push(this.loanDetailsObj.document.fileName);
-    
-      this.fpath.push(this.loanDetailsObj.document.filePath);
+      this.fName=this.loanDetailsObj.document.fileName.split(',');
+
+      this.fpath=this.loanDetailsObj.document.filePath.split(',');
+
       const otherEmi = this.loanDetailsObj.loanDetails.otherEmi;
       this.loanEmi = this.loanDetailsObj.loanDetails.loanEmi;
       this.totalAmount = this.loanDetailsObj.loanDetails.loanAmount;

@@ -25,7 +25,7 @@ export class LoancaltrComponent {calculate!: FormGroup;
     this.calculate = this.formBuilder.group({
       loanAmount: ['', [Validators.required,Validators.pattern('^[0-9]*$'),Validators.min(50000)]],
       tenure: ['', [Validators.required,Validators.pattern('^[0-9]*$'),Validators.pattern('^[0-9]*$'),Validators.min(3),Validators.max(300)]],
-      interest: ['', [Validators.required,Validators.pattern('^[0-9]+(\.[0-9]{1,2})?$'),Validators.min(1)]]
+      interest: ['', [Validators.required, Validators.pattern(/^\s*[0-9]+(\.[0-9]{1,2})?\s*$/), Validators.min(1)]]
     });
   }
 

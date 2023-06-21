@@ -23,12 +23,13 @@ export class LoanreqComponent {
   modalElement: HTMLElement | null = null;
   availableEmi:number=0;
   loanEmi:number=0;
+  loanStatus:any;
   totalAmount:number=0;
   tenure:any;
   interest:any;
   totalAvailableAmount:any;
   selectedFile: string = '';
-
+  color:string = '';
   myChart!: Chart;
 
   ngAfterViewInit() {
@@ -64,20 +65,20 @@ export class LoanreqComponent {
     }
 
     const chartData = {
-      labels: ['Loan-EMI', 'Available-EMI','Total Loan Amount'],
+      labels: ['Loan-EMI', 'Available-EMI'],
       datasets: [{
         label: 'EMIs',
-        data: [this.loanEmi,this.availableEmi,this.totalAmount],
+        data: [this.loanEmi,this.availableEmi],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)'
+          
         
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
           'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
+      
           
         ],
         borderWidth: 1
@@ -108,6 +109,7 @@ export class LoanreqComponent {
 
       const otherEmi = this.loanDetailsObj.loanDetails.otherEmi;
       this.loanEmi = this.loanDetailsObj.loanDetails.loanEmi;
+      this.loanStatus = this.loanDetailsObj.loanDetails.loanStatus;
       this.totalAmount = this.loanDetailsObj.loanDetails.loanAmount;
       this.tenure = this.loanDetailsObj.loanDetails.tenure;
       this.interest = this.loanDetailsObj.loanDetails.interest;

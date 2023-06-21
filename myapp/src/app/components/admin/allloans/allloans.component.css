@@ -5,6 +5,28 @@
     color:blue;
   }
 
+  .nav-tabs .nav-link.active {
+    color: #ffffff;
+    background-color: #4f5bf2;
+    border-color: #4f5bf2;
+  }
+
+  nav{
+    border-bottom: 1px solid grey;
+  }
+
+  .navtab{
+    margin-top: 70px;
+    /* display: block; */
+    /* margin: auto; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container-fluid{
+    height: 100vh;
+  }
+
   h1{
     font-variant-caps: petite-caps;
     font-size: 3rem;
@@ -15,7 +37,12 @@
     margin-top: 120px;
     text-align: center;
   }
-  .table-container {
+  .loan-table-container {
+    width: 100%;
+    overflow-x: auto;
+    height: 100%;
+  }
+  .allloan-table-container {
     width: 100%;
     overflow-x: auto;
     height: 100%;
@@ -35,6 +62,11 @@
   
   .table th {
     background-color: #95c8f1;
+  }
+  
+  .status_color{
+  background-color: #95c8f1;
+
   }
   
   /* Media queries for responsive design */

@@ -11,6 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class AllloansComponent {
   // LoanArray:any[]=[];
   LoanArray:any = [];
+  allLoanArray:any = [];
   isResultLoaded=false;
   // currentPage = 1;
   // itemsPerPage = 15;
@@ -30,8 +31,12 @@ export class AllloansComponent {
         this.isResultLoaded = true;
        this.LoanArray = resultData;
           
+      });
+      const loanAckObservable: Observable<any> = this.api.getAllAckLoans();
+      loanAckObservable.subscribe((resultData: any) => {
+        this.isResultLoaded = true;
+       this.allLoanArray = resultData;
           
-        
       });
   }
  

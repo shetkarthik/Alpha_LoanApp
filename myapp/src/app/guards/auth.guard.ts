@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     else{
-      this.toast.error({detail:"ERROR",summary:"Please Login First"});
+      // this.toast.error({detail:"ERROR",summary:"Please Login First"});
       this.router.navigate(["login"]);
       return false;
     }

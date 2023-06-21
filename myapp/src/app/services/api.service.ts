@@ -60,6 +60,11 @@ export class ApiService {
 
   getAllLoans(){
      return this.http.get<any>(`${this.baseUrl}getAllLoans`)
+    }
+    
+getAllAckLoans(){
+      
+      return this.http.get<any>(`${this.baseUrl}getAllAckLoans`)
   }
   
 }

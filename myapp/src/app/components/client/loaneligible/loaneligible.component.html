@@ -69,6 +69,11 @@
                                             <div class="interest_div" disabled>{{interest}}%</div>
                                         </div>
                                         <br>
+                                       
+                                      
+                                    </div>
+                                    
+                                    <div class="col-lg-6 col-md-6 col-12">
                                         <div class="mb-2">
                                             <label for="tenure" class="form-label">Tenure :</label>
                                             <input type="number" class="form-control" id="exampleFormControlInput1"
@@ -77,29 +82,6 @@
                                                 class="error">
                                                 Tenure is required & is only available for 3-300 months
                                             </small>
-                                        </div>
-                                        <br>
-                                      
-                                    </div>
-                                    
-                                    <div class="col-lg-6 col-md-6 col-12">
-        
-                                       
-                                        <div class="mb-2">
-                                            <label for="monthlyIncome" class="form-label">Monthly Income :</label>
-                                            <input type="text" class="form-control" id="exampleFormControlInput1"
-                                                placeholder="Enter your Monthly Income" class="input-field"
-                                                formControlName="monthlyIncome">
-                                            <small
-                                                *ngIf="loanEligible.get('monthlyIncome')?.invalid && loanEligible.get('monthlyIncome')?.touched"
-                                                class="error">
-                                                MonthlyIncome is required.
-                                            </small>
-                                            <ng-container
-                                                *ngIf="loanEligible.controls['monthlyIncome'].dirty && loanEligible.hasError('pattern','monthlyIncome')">
-                                                <small class="error">Please enter proper credentials</small>
-                                            </ng-container>
-                                            
                                         </div>
                                         <br>
                                         <div class="mb-2">

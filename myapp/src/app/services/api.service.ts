@@ -66,5 +66,10 @@ getAllAckLoans(){
       
       return this.http.get<any>(`${this.baseUrl}getAllAckLoans`)
   }
+
+  getSearchResults(params:any){
+    const url = `${this.loandetailsUrl}search/?${params}`;
+    return this.http.get<any>(url);
+  }
   
 }

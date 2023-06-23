@@ -261,23 +261,7 @@
                                     </small>
                                 </div>
                                 <br>
-                                <div class="mb-2">
-                                    <label for="monthlyIncome" class="form-label">Monthly Income :</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Enter your Monthly Income" class="input-field"
-                                        formControlName="monthlyIncome">
-                                    <small
-                                        *ngIf="loanBasic.get('monthlyIncome')?.invalid && loanBasic.get('monthlyIncome')?.touched"
-                                        class="error">
-                                        MonthlyIncome is required.
-                                    </small>
-                                    <ng-container
-                                        *ngIf="loanBasic.controls['monthlyIncome'].dirty && loanBasic.hasError('pattern','monthlyIncome')">
-                                        <small class="error">Please enter proper credentials</small>
-                                    </ng-container>
-                                     
-                                </div>
-                                <br>
+                              
                                 <div class="mb-2">
                                     <label for="annualIncome" class="form-label">Annual Income :</label>
                                     <input type="text" class="form-control" id="exampleFormControlInput1"

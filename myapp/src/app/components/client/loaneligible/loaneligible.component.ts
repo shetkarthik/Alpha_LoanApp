@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { ApiService } from 'src/app/services/api.service';
 
 
@@ -25,7 +26,7 @@ export class LoaneligibleComponent {
 
 
   constructor(private formBuilder: FormBuilder,
-    private api: ApiService,private router:Router
+    private api: ApiService,private router:Router,private toast:NgToastService
   ) { }
 
   ngOnInit() {
@@ -34,7 +35,7 @@ export class LoaneligibleComponent {
       loanType: ['', Validators.required],
       loanAmount: ['', [Validators.required,Validators.pattern('^(?!0)[0-9]*$')]],
       tenure: ['', Validators.required],
-      monthlyIncome: ['', [Validators.required,Validators.pattern('^(?!0)[0-9]*$')]],
+      // monthlyIncome: ['', [Validators.required,Validators.pattern('^(?!0)[0-9]*$')]],
       annualIncome: ['', [Validators.required,Validators.pattern('^(?!0)[0-9]*$')]],
       otherEmi: ['', [Validators.required,Validators.pattern('^(?!0)[0-9]*$')]],
     });
@@ -46,6 +47,7 @@ export class LoaneligibleComponent {
     const name = target.getAttribute('formControlName');
     this.type = target.value;
     console.log(name);
+  
     if (name == "loanType") {
       console.log(target.value)
 
@@ -53,13 +55,16 @@ export class LoaneligibleComponent {
         (interest: number) => {
           this.interest = interest;
           console.log(interest);
+       
         },
         (error: any) => {
 
           console.error(error);
         }
       );
+     
     }
+  
     
   }
 
@@ -79,6 +84,7 @@ export class LoaneligibleComponent {
         this.color = res["color"]
       }, (err: any) => {
         console.log(err);
+        this.toast.error({detail:"Error",summary:err.error.message,duration:3000})
       })
 
     } else {

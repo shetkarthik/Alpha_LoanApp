@@ -85,7 +85,7 @@
       </div>
       </div>
       
-      <ng-container *ngIf="this.loanStatus != null">
+      <ng-container *ngIf="this.loanStatus != 'Processing'">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-12 divide_bottom">
           <h4 class="text-center text-primary">Loan Status</h4>
@@ -109,7 +109,7 @@
             <ul>
               <!-- <li>{{fName}}</li> -->
               <li *ngFor="let file of fName; let i = index">
-                <a (click)="openModal(fpath[i])" class="filename">{{ file }}</a>
+                <span>Document {{i}}</span> : <a (click)="openModal(fpath[i])" class="filename">{{ file }}</a>
               </li>
             </ul>
             <div id="fileModal" class="modal">

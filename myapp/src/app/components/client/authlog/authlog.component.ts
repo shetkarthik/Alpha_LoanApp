@@ -16,6 +16,7 @@ export class AuthlogComponent {
 
   type:string = "password";
   isText:boolean = false;
+//  isOtp:boolean = false;
   authLogForm! : FormGroup;
   eyeIcon: string = "fa-eye-slash"
   tokenotp :string =""
@@ -45,7 +46,7 @@ export class AuthlogComponent {
         }
         
       });
-     
+      // this.startTimer();
    }
 
   ngOnInit():void {
@@ -54,7 +55,12 @@ export class AuthlogComponent {
       tokenotp:["",Validators.required]
      })
 
-     this.startTimer();
+     
+   
+    //  {
+       this.startTimer();
+    //  }
+     console.log(this.auth.getToken())
   }
 
   
@@ -66,8 +72,12 @@ export class AuthlogComponent {
     this.customer = event.target.value;
   }
 
+
+  
+  
+
   startTimer() {
-    const totalSeconds = 120;
+    const totalSeconds = 60;
     this.remainingTime = totalSeconds;
   
     this.interval = setInterval(() => {
@@ -76,13 +86,23 @@ export class AuthlogComponent {
       this.remainingTime--;
   
       if (this.remainingTime === 0) {
+          if(this.auth.getToken() == null)
+         {
         clearInterval(this.interval);
+        // this.isOtp = true;
         window.location.reload();
+        // setTimeout(()=>window.location.reload(),1000);
         // this.router.navigate(["login"]);
-        this.toast.error({detail:"Error",summary:"Otp expired Try Again",duration:3000})
+         this.toast.error({detail:"Error",summary:"Otp expired Try Again",duration:3000})
+         }
+       
       }
     }, 1000);
+  
   }
+
+  
+  
 
   
   hideShowPass(){
@@ -93,7 +113,9 @@ export class AuthlogComponent {
   }
 
   onSubmit(){
-   if(this.authLogForm.valid){
+   if(this.authLogForm.valid)
+   {
+    
     console.log(this.authLogForm.value);
     console.log(this.tokenotp);
      this.auth.authlog(this.authLogForm.value,this.tokenotp).subscribe({next:(res)=>{
@@ -110,7 +132,9 @@ export class AuthlogComponent {
       this.toast.error({detail:"Error",summary:err.error.message,duration:3000})
      }
     
+    
     })
+  
    }
    else{
      this.validateAllfields(this.authLogForm);

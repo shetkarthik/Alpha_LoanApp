@@ -1,5 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container-fluid">
+    <h1 class="text-center text-primary loan_header">Download your Loan-Application</h1>
+   <p class="text-center caption">Verify the loan details in the application form, For any queries please contact our Customer support.</p>
     <div class="form-container" #htmlData>
         <div class="header">
             <div class="row">
@@ -20,10 +22,13 @@
                 </div>
             </div>
                 <div class="col-lg-2 col-md-2 col-0">
-                    <div class="floating-button">
+                    
+                    <div class="floating-button ">
                         <button class="btn btn-primary" (click)="downloadPdf()">
-                            <i class="fa fa-download" aria-hidden="true"></i></button>
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                        </button>
                       </div>
+                     
                 </div>
         
             </div>
@@ -270,7 +275,13 @@
         </div>
         <div class="privacy text-center"><p>Privacy Policy:The Bank recognizes the expectations of its customers with regard to privacy, confidentiality and security of their personal information that resides with the Bank. Keeping personal information of customers secure and using it solely for activities related to the Bank and preventing any misuse thereof is a top priority of the Bank. The Bank has adopted the privacy policy aimed at protecting the personal information entrusted and disclosed by the customers. </p> <P style="margin-left: 10px;font-size: larger;text-align: center;">©ALPHA_TEAM_2023 </P></div>   
         </div>
+        <ngx-loading
+[show]="loading"
+[config]="{ backdropBorderRadius: '3px' }"
+></ngx-loading>
 </div>
+
+
 <app-footer></app-footer>
 
 

@@ -8,11 +8,15 @@
           type="button" role="tab" aria-controls="loan-request" aria-selected="true">Loan Requests</button>
         <button class="nav-link" id="loan-details-tab" data-bs-toggle="tab" data-bs-target="#loan-details" type="button"
           role="tab" aria-controls="loan-details" aria-selected="false">Loan Acknowledged</button>
+        <button class="nav-link" id="search-tab" data-bs-toggle="tab" data-bs-target="#search" type="button" role="tab"
+          aria-controls="search" aria-selected="false">Search</button>
       </div>
     </nav>
   </div>
+
+
   <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="loan-request" role="tabpanel" aria-labelledby="loan-request-tab"
+     <div class="tab-pane fade show active" id="loan-request" role="tabpanel" aria-labelledby="loan-request-tab"
       tabindex="0">
       <ng-container *ngIf="this.LoanArray.length > 0">
 
@@ -29,6 +33,7 @@
                 <th>Other EMI</th>
                 <th>Loan EMI</th>
                 <th>Total Loan Amount</th>
+
               </tr>
             </thead>
             <tbody>
@@ -43,6 +48,7 @@
                 <td>&#x20B9;{{loan.otherEmi}}</td>
                 <td>&#x20B9;{{loan.loanEmi}}</td>
                 <td>&#x20B9;{{loan.loanTotalAmount}}</td>
+
               </tr>
             </tbody>
           </table>
@@ -54,6 +60,7 @@
         </div>
       </ng-container>
     </div>
+  
     <div class="tab-pane fade" id="loan-details" role="tabpanel" aria-labelledby="loan-details-tab" tabindex="0">
       <ng-container *ngIf="this.allLoanArray.length > 0">
         <div class="allloan-table-container">
@@ -66,12 +73,10 @@
                 <th>Loan Amount</th>
                 <th>Tenure(m)</th>
                 <th>Loan Status</th>
-
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let loan of allLoanArray">
-
                 <td><a [routerLink]="['/allLoans/'+loan.loanId]">{{ loan.loanId }}</a> </td>
                 <td style="font-weight: bold;">{{ loan.accountNum }}</td>
                 <td style="text-transform: capitalize;">{{ loan.loanType }}</td>
@@ -84,10 +89,104 @@
         </div>
       </ng-container>
     </div>
+
+    <div class="tab-pane fade" id="search" role="tabpanel" aria-labelledby="search-tab" tabindex="0">
+      <div class="search-tab">
+        <div class="card">
+          <div class="card-body">
+            <form [formGroup]="searchform">
+              <div class="row">
+                <div class="col-lg-3 col-md-3 col-12">
+                  <div class="mb-2">
+                    <label for="loanid" class="form-label">Loan-Id :</label>
+                    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder=""
+                      formControlName="loanId">
+                  </div>
+                  <br>
+                </div>
+                <div class="col-lg-3 col-md-3 col-12">
+                  <div class="mb-2">
+                    <label for="accountnum" class="form-label">Accountnumber :</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder=""
+                      formControlName="accountNum">
+                  </div>
+                  <br>
+                </div>
+                <div class="col-lg-3 col-md-3 col-12">
+                  <div class="mb-2">
+                    <label for="loanType" class="form-label">Loan Type :</label>
+                    <select class="form-select" formControlName="loanType">
+                      <option value="" selected>Choose type of Loan</option>
+                      <option value="houseLoan">House Loan</option>
+                      <option value="personalLoan">Personal Loan</option>
+                      <option value="educationLoan">Education Loan</option>
+                      <option value="vehicleLoan">Vehicle Loan</option>
+                    </select>
+                  </div>
+                  <br>
+                </div>
+                <div class="col-lg-3 col-md-3 col-12">
+                  <div class="mb-2">
+                    <label for="loanStatus" class="form-label">Loan Staus :</label>
+                    <select class="form-select" formControlName="loanStatus">
+                      <option value="">Choose loan status</option>
+                      <option value="Approved">Approved</option>
+                      <option value="Rejected">Rejected</option>
+                      <option value="Need More Info">Need More Info</option>
+                      <option value="Processing">Not Processed</option>
+                    </select>
+                  </div>
+                  <br>
+                </div>
+              </div>
+              <div class="d-flex justify-content-evenly">
+                <button class="btn btn-secondary w-25" type="submit" (click)="onSearch()">Search</button>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <ng-container *ngIf="this.searchArray.length > 0">
+        <div class="loan-table-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Loan ID</th>
+                <th>Account Number</th>
+                <th>Loan Type</th>
+                <th>Loan Amount</th>
+                <th>Tenure(m)</th>
+                <th>Interest</th>
+                <th>Other EMI</th>
+                <th>Loan EMI</th>
+                <th>Total Loan Amount</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let loan of searchArray">
+
+                <td><a [routerLink]="['/allLoans/'+loan.loanId]">{{ loan.loanId }}</a> </td>
+                <td style="font-weight: bold;">{{ loan.accountNum }}</td>
+                <td style="text-transform: capitalize;">{{ loan.loanType }}</td>
+                <td>&#x20B9;{{ loan.loanAmount }}</td>
+                <td>{{ loan.tenure }}</td>
+                <td>{{loan.interest}}%</td>
+                <td>&#x20B9;{{loan.otherEmi}}</td>
+                <td>&#x20B9;{{loan.loanEmi}}</td>
+                <td>&#x20B9;{{loan.loanTotalAmount}}</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </ng-container>
+    </div>
   </div>
- 
+  
+
 </div>
 
 
 <app-footer></app-footer>
-

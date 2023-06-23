@@ -53,7 +53,7 @@ export class LoandetailsComponent {
       loanType: ['', Validators.required],
       loanAmount: ['', [Validators.required, Validators.pattern('^(?!0)[0-9]*$')]],
       tenure: ['', Validators.required],
-      monthlyIncome: ['', [Validators.required, Validators.pattern('^(?!0)[0-9]*$')]],
+      // monthlyIncome: ['', [Validators.required, Validators.pattern('^(?!0)[0-9]*$')]],
       annualIncome: ['', [Validators.required, Validators.pattern('^(?!0)[0-9]*$')]],
       otherEmi: ['', [Validators.required, Validators.pattern('^(?!0)[0-9]*$')]],
       loanPurpose: ['', Validators.required],

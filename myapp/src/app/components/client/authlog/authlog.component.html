@@ -10,17 +10,7 @@
                         <span class="info">Please check your registered Email for OTP</span>
                      <div class="panel-body p-3">
                         <form [formGroup]="authLogForm">
-                            
-                            <div class="form-group pt-3">
-                                <label for="customerid">Customer Id : <span class="customer_id">{{text}}</span></label>                
-                                <!-- <div class="input-field" [class.error]="authLogForm.controls['customerid'].dirty && authLogForm.hasError('required','customerid')">
-                                    <span class="fa fa-user-circle pe-2"></span>
-                                    <h1>{{text}}</h1>
-                                    <input formControlName="customerid" type="text" placeholder="Please enter your Customer Id">
-                                </div>
-                            </div>
-                            <small *ngIf="authLogForm.controls['customerid'].dirty && authLogForm.hasError('required','customerid')" class="text-danger">*Customer-Id is required</small> -->
-                        </div>
+                         
                             <div class="form-group pt-3">
                                 <label for="tokenotp">One Time Password :</label>
                                 <div class="input-field" [class.error]="authLogForm.controls['tokenotp'].dirty && authLogForm.hasError('required','tokenotp')">

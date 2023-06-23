@@ -2,8 +2,14 @@
     text-align: center;
     margin: 20px 20px 10px 10px;
     font-weight: bold;
-    color:blue;
+    /* color:blue; */
   }
+  input,label{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
 
   .nav-tabs .nav-link.active {
     color: #ffffff;

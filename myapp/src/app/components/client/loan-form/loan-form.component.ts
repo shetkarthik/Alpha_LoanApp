@@ -6,6 +6,8 @@ import { UserstoreService } from 'src/app/services/userstore.service';
 import jsPDF from 'jspdf';
 import { Html2CanvasOptions } from 'jspdf';
 import { HTMLOptions } from 'jspdf';
+import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-loan-form',
@@ -17,13 +19,14 @@ export class LoanFormComponent {
   @ViewChild('htmlData', { static: false }) htmlData!: ElementRef;
   type: any;
   emptype: any;
+  public loading = false;
   accountnumber: any;
   role: any;
   users: any = [];
   loans: any = [];
   
 
-  constructor(private auth: AuthService, private userStore: UserstoreService, private api: ApiService) {
+  constructor(private auth: AuthService, private userStore: UserstoreService, private api: ApiService,private router:Router,private toast:NgToastService) {
 
   }
   ngOnInit() {
@@ -51,6 +54,7 @@ export class LoanFormComponent {
   }
 
   downloadPdf() {
+   
     const pdf = new jsPDF();
     const options: HTMLOptions = {
       html2canvas: { scale: 0.193,removeContainer:true},
@@ -64,8 +68,12 @@ export class LoanFormComponent {
       const formData = new FormData();
       formData.append('file', pdfBlob, options.filename);
       this.api.sendFile(formData).subscribe(res=>{
+        this.loading = true;
         console.log(res);
+        this.toast.success({detail:"Thank you",summary:"Loan Document has been sent to your registered Email-Id",sticky:true})
+        this.router.navigate([""]);
       },err=>{
+        this.loading = false;
         console.log(err);
       })
     });

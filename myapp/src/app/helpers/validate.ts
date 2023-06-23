@@ -1,4 +1,4 @@
-import { Validators } from "@angular/forms";
+import { AbstractControl, ValidatorFn, Validators } from "@angular/forms";
 
 export function updateValidators(loanBasic:any,loantypes:any){
       const propArea = loanBasic.controls['propertyArea']; 
@@ -36,7 +36,7 @@ export function updateValidators(loanBasic:any,loantypes:any){
       ongoingLoan.clearValidators();
       vehiclePrice.setValidators([Validators.required,Validators.pattern('^(?!0)[0-9]*$')]);
       vehicleType.setValidators(Validators.required);
-      vendorName.setValidators([Validators.required,Validators.pattern('^[a-zA-Z]+$')]);
+      vendorName.setValidators([Validators.required,Validators.pattern('^[a-zA-Z ]+$')]);
       vendorAddress.setValidators(Validators.required);
       vehiclercNumber.setValidators([Validators.required]);  
     }
@@ -51,11 +51,11 @@ export function updateValidators(loanBasic:any,loantypes:any){
       vendorName.clearValidators();
       vendorAddress.clearValidators();
       vehiclercNumber.clearValidators(); 
-      totalFee.setValidators([Validators.required,Validators.pattern('^(?!0)[0-9]*$')]);
+      totalFee.setValidators([Validators.required,Validators.pattern('^(?!0)[0-9]*$'),maxValueValidator(10000,1000000)]);
       instituteName.setValidators(Validators.required);
-      courseName.setValidators([Validators.required,Validators.pattern('^[a-zA-Z]+$')]);
+      courseName.setValidators([Validators.required,Validators.pattern('^[a-zA-Z ]+$')]);
       educationType.setValidators(Validators.required);
-      courseDuration.setValidators([Validators.required,Validators.pattern('^(?!0)[0-9]*$')]); 
+      courseDuration.setValidators([Validators.required,Validators.pattern('^(?!0)[0-9]*$'),maxValueValidator(1,10)]); 
 
     }
     
@@ -73,6 +73,18 @@ export function updateValidators(loanBasic:any,loantypes:any){
     instituteName.updateValueAndValidity();
     educationType.updateValueAndValidity();
     totalFee.updateValueAndValidity();
+  }
+
+  export function maxValueValidator( minValue : number ,maxValue: number): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const value = parseInt(control.value, 10);
+  
+      if (isNaN(value) || value > maxValue || value < minValue) {
+        return { maxValue: { valid: false } };
+      }
+  
+      return null;
+    };
   }
   
 

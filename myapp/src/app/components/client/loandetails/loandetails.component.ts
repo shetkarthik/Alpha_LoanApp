@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { UserstoreService } from 'src/app/services/userstore.service';
-import { updateValidators } from 'src/app/helpers/validate';
+import { maxValueValidator, updateValidators } from 'src/app/helpers/validate';
 
 
 
@@ -51,11 +51,11 @@ export class LoandetailsComponent {
     this.loanBasic = this.formBuilder.group({
       accountNum: [this.accountNum, Validators.required],
       loanType: ['', Validators.required],
-      loanAmount: ['', [Validators.required, Validators.pattern('^(?!0)[0-9]*$')]],
+      loanAmount: ['', [Validators.required, Validators.pattern('^(?!0)[0-9]*$'),maxValueValidator(10000,10000000)]],
       tenure: ['', Validators.required],
       // monthlyIncome: ['', [Validators.required, Validators.pattern('^(?!0)[0-9]*$')]],
-      annualIncome: ['', [Validators.required, Validators.pattern('^(?!0)[0-9]*$')]],
-      otherEmi: ['', [Validators.required, Validators.pattern('^(?!0)[0-9]*$')]],
+      annualIncome: ['', [Validators.required, Validators.pattern('^(?!0)[0-9]*$'),maxValueValidator(10000,10000000)]],
+      otherEmi: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       loanPurpose: ['', Validators.required],
       propertyLoc: ['',],
       propertyArea: ['',],

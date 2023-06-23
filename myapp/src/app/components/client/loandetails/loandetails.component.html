@@ -73,15 +73,21 @@
                                     <input type="text" class="form-control" id="exampleFormControlInput1"
                                         placeholder="Enter your Loan Amount" class="input-field"
                                         formControlName="loanAmount">
-                                    <small
-                                        *ngIf="loanBasic.get('loanAmount')?.invalid && loanBasic.get('loanAmount')?.touched"
+                                       
+                                        <small *ngIf="loanBasic.get('loanAmount')?.hasError('required') && loanBasic.get('loanAmount')?.touched"
                                         class="error">
-                                        Loan Amount is required.
-                                    </small>
-                                    <ng-container
-                                        *ngIf="loanBasic.controls['loanAmount'].dirty && loanBasic.hasError('pattern','loanAmount')">
-                                        <small class="error">Please enter proper credentials</small>
-                                    </ng-container>
+                                        Loan Amount is required<br>
+                                      </small>
+                                    
+                                      <small *ngIf="loanBasic.get('loanAmount')?.hasError('pattern') && loanBasic.get('loanAmount')?.touched"
+                                        class="error">
+                                        Please enter a valid credentials<br>
+                                      </small>
+                                    
+                                      <small *ngIf="loanBasic.get('loanAmount')?.hasError('maxValue') && loanBasic.get('loanAmount')?.touched"
+                                        class="error">
+                                        Loan Amount must be between 10000 - 1crore<br>
+                                      </small>
                                     
                                 </div>
                                 <br>
@@ -217,15 +223,20 @@
                                     <input type="text" class="form-control" id="exampleFormControlInput1"
                                         placeholder="Enter fees for the course" class="input-field"
                                         formControlName="totalFee">
-                                    <small
-                                        *ngIf="loanBasic.get('totalFee')?.invalid && loanBasic.get('totalFee')?.touched"
+                                        <small *ngIf="loanBasic.get('totalFee')?.hasError('required') && loanBasic.get('totalFee')?.touched"
                                         class="error">
-                                        Total Fees is required.
-                                    </small>
-                                    <ng-container
-                                        *ngIf="loanBasic.controls['totalFee'].dirty && loanBasic.hasError('pattern','totalFee')">
-                                        <small class="error">Please enter proper credentials</small>
-                                    </ng-container>
+                                        Total Fees is required<br>
+                                      </small>
+                                    
+                                      <small *ngIf="loanBasic.get('totalFee')?.hasError('pattern') && loanBasic.get('totalFee')?.touched"
+                                        class="error">
+                                        Please enter a valid credentials<br>
+                                      </small>
+                                    
+                                      <small *ngIf="loanBasic.get('totalFee')?.hasError('maxValue') && loanBasic.get('totalFee')?.touched"
+                                        class="error">
+                                        Fees must be between 10000 - 10 Lakhs<br>
+                                      </small>
                                      
                                 </div>
                                 <br>
@@ -234,15 +245,21 @@
                                     <input type="text" class="form-control" id="exampleFormControlInput1"
                                         placeholder="Enter duration of the course in years" class="input-field"
                                         formControlName="courseDuration">
-                                    <small
-                                        *ngIf="loanBasic.get('courseDuration')?.invalid && loanBasic.get('courseDuration')?.touched"
+
+                                        <small *ngIf="loanBasic.get('courseDuration')?.hasError('required') && loanBasic.get('courseDuration')?.touched"
                                         class="error">
-                                        Course Duration is required.
-                                    </small>
-                                    <ng-container
-                                        *ngIf="loanBasic.controls['courseDuration'].dirty && loanBasic.hasError('pattern','courseDuration')">
-                                        <small class="error">Please enter proper credentials</small>
-                                    </ng-container>
+                                        Course Duration is required<br>
+                                      </small>
+                                    
+                                      <small *ngIf="loanBasic.get('courseDuration')?.hasError('pattern') && loanBasic.get('courseDuration')?.touched"
+                                        class="error">
+                                        Please enter a valid credentials<br>
+                                      </small>
+                                    
+                                      <small *ngIf="loanBasic.get('courseDuration')?.hasError('maxValue') && loanBasic.get('courseDuration')?.touched"
+                                        class="error">
+                                        Please provide valid Duration<br>
+                                      </small>
                                      
                                 </div>
                                 <br>
@@ -267,15 +284,20 @@
                                     <input type="text" class="form-control" id="exampleFormControlInput1"
                                         placeholder="Enter your Annual Income" class="input-field"
                                         formControlName="annualIncome">
-                                    <small
-                                        *ngIf="loanBasic.get('annualIncome')?.invalid && loanBasic.get('annualIncome')?.touched"
-                                        class="error">
-                                        Annual Income is required.
-                                    </small>
-                                    <ng-container
-                                        *ngIf="loanBasic.controls['annualIncome'].dirty && loanBasic.hasError('pattern','annualIncome')">
-                                        <small class="error">Please enter proper credentials</small>
-                                    </ng-container>
+                                        <small *ngIf="loanBasic.get('annualIncome')?.hasError('required') && loanBasic.get('annualIncome')?.touched"
+                                                class="error">
+                                                Annual Income is required<br>
+                                              </small>
+                                            
+                                              <small *ngIf="loanBasic.get('annualIncome')?.hasError('pattern') && loanBasic.get('annualIncome')?.touched"
+                                                class="error">
+                                                Please enter a valid credentials<br>
+                                              </small>
+                                            
+                                              <small *ngIf="loanBasic.get('annualIncome')?.hasError('maxValue') && loanBasic.get('annualIncome')?.touched"
+                                                class="error">
+                                                Please provide legit credentials<br>
+                                              </small>
                                   
                                 </div>
                                 <br>
@@ -298,7 +320,7 @@
                                 <br>
                                 <ng-container *ngIf="this.type == 'houseLoan'">
                                     <div class="mb-2">
-                                        <label for="propertyLoc" class="form-label">Property Location :</label>
+                                        <label for="propertyLoc" class="form-label">Property Address :</label>
                                         <input type="text" class="form-control" id="exampleFormControlInput1"
                                             placeholder="Enter your Property Location" class="input-field"
                                             formControlName="propertyLoc">

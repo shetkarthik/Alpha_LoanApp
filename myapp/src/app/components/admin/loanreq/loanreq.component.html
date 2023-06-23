@@ -64,10 +64,11 @@
               <p class="text-dec"><strong>Property Value:</strong>&#x20B9;{{loanDetailsObj.loanDetails.propertyValue}}</p>
             </div>
             <div *ngIf="loanDetailsObj.loanDetails.loanType=='vehicleLoan'">
-              <p class="text-dec"><strong>Loan Purpose:</strong></p>
-              <p class="text-dec"><strong>RC Number:</strong></p>
-              <p class="text-dec"><strong>Vehicle Price:</strong>&#x20B9;</p>
-              <p class="text-dec"><strong>Vendor Address:</strong></p>
+              <p class="text-dec"><strong>Loan Purpose:</strong>{{loanDetailsObj.loanDetails.loanPurpose}}</p>
+              <p class="text-dec"><strong>RC Number:</strong>{{loanDetailsObj.loanDetails.vehicleRCNumber}}</p>
+              <p class="text-dec"><strong>Vehicle Price:</strong>&#x20B9;{{loanDetailsObj.loanDetails.vehiclePrice}}</p>
+              <p class="text-dec"><strong>Vendor Address:</strong>{{loanDetailsObj.loanDetails.vendorAddress}}</p>
+              <p class="text-dec"><strong>Vendor Name:</strong>{{loanDetailsObj.loanDetails.vendorName}}</p>
             </div>
             <div *ngIf="loanDetailsObj.loanDetails.loanType=='personalLoan'">
               <p class="text-dec"><strong>Loan Purpose:</strong>{{loanDetailsObj.loanDetails.loanPurpose}}</p>
@@ -109,7 +110,7 @@
             <ul>
               <!-- <li>{{fName}}</li> -->
               <li *ngFor="let file of fName; let i = index">
-                <span>Document {{i}}</span> : <a (click)="openModal(fpath[i])" class="filename">{{ file }}</a>
+                <span>Document {{i + 1}}</span> : <a (click)="openModal(fpath[i])" class="filename">{{ file }}</a>
               </li>
             </ul>
             <div id="fileModal" class="modal">

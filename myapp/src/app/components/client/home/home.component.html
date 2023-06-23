@@ -99,10 +99,10 @@
                           <tr>
                             <th>Loan ID</th>
                             <th>Loan Type</th>
-                            <th>Loan Amount</th>
-                            <th>Tenure(m)</th>
+                            <th class="area-hidden">Loan Amount</th>
+                            <th class="area-hidden">Tenure(m)</th>
                             <th>Loan Status</th>
-                            <th>Loan Comments</th>
+                            <th class="area-hidden">Loan Comments</th>
                             
                           </tr>
                         </thead>
@@ -111,8 +111,8 @@
                           
                             <td class="fw-bold text-primary" >{{ loan.loanId }} </td>
                             <td style="text-transform: capitalize;">{{ loan.loanType }}</td>
-                            <td>&#x20B9;{{ loan.loanAmount }}</td>
-                            <td>{{ loan.tenure }}</td>
+                            <td class="area-hidden">&#x20B9;{{ loan.loanAmount }}</td>
+                            <td class="area-hidden">{{ loan.tenure }}</td>
                             <ng-container *ngIf="loan.loanStatus == 'Approved'">
                               <td class="text-success fw-bold">{{loan.loanStatus}}</td>
                             </ng-container>
@@ -122,10 +122,10 @@
                             <ng-container *ngIf="loan.loanStatus == 'Need More Info'">
                               <td class="text-primary fw-bold">{{loan.loanStatus}}</td>
                             </ng-container>
-                            <ng-container *ngIf="loan.loanStatus == null || undefined">
+                            <ng-container *ngIf="loan.loanStatus == 'Processing'">
                               <td class="text-primary fw-bold">Processing</td>
                             </ng-container>
-                            <td>{{loan.comment}}</td>
+                            <td class="area-hidden">{{loan.comment}}</td>
                 
                           </tr>
                         </tbody>

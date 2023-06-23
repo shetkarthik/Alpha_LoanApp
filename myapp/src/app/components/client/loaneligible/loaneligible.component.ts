@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { ApiService } from 'src/app/services/api.service';
+import { maxValueValidator } from 'src/app/helpers/validate';
+
 
 
 
@@ -33,11 +35,10 @@ export class LoaneligibleComponent {
    
     this.loanEligible = this.formBuilder.group({
       loanType: ['', Validators.required],
-      loanAmount: ['', [Validators.required,Validators.pattern('^(?!0)[0-9]*$')]],
+      loanAmount: ['', [Validators.required,Validators.pattern('^(?!0)[0-9]*$'),maxValueValidator(10000,10000000)]],
       tenure: ['', Validators.required],
-      // monthlyIncome: ['', [Validators.required,Validators.pattern('^(?!0)[0-9]*$')]],
-      annualIncome: ['', [Validators.required,Validators.pattern('^(?!0)[0-9]*$')]],
-      otherEmi: ['', [Validators.required,Validators.pattern('^(?!0)[0-9]*$')]],
+      annualIncome: ['', [Validators.required,Validators.pattern('^(?!0)[0-9]*$'),maxValueValidator(10000,10000000)]],
+      otherEmi: ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
     });
 
   }

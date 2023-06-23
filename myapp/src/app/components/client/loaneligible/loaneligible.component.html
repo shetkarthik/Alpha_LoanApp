@@ -46,8 +46,30 @@
                                             </small>
                                         </div>
                                       
-        
                                         <div class="mb-2">
+                                            <label for="loanAmount" class="form-label">Loan Amount :</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1"
+                                              placeholder="Enter your Loan Amount" class="input-field"
+                                              formControlName="loanAmount">
+                                          
+                                            <small *ngIf="loanEligible.get('loanAmount')?.hasError('required') && loanEligible.get('loanAmount')?.touched"
+                                              class="error">
+                                              Loan Amount is required<br>
+                                            </small>
+                                          
+                                            <small *ngIf="loanEligible.get('loanAmount')?.hasError('pattern') && loanEligible.get('loanAmount')?.touched"
+                                              class="error">
+                                              Please enter a valid credentials<br>
+                                            </small>
+                                          
+                                            <small *ngIf="loanEligible.get('loanAmount')?.hasError('maxValue') && loanEligible.get('loanAmount')?.touched"
+                                              class="error">
+                                              Loan Amount must be between 10000 - 1crore<br>
+                                            </small>
+                                          </div>
+                                          
+                                          
+                                        <!-- <div class="mb-2">
                                             <label for="loanAmount" class="form-label">Loan Amount :</label>
                                             <input type="text" class="form-control" id="exampleFormControlInput1"
                                                 placeholder="Enter your Loan Amount" class="input-field"
@@ -55,14 +77,16 @@
                                             <small
                                                 *ngIf="loanEligible.get('loanAmount')?.invalid && loanEligible.get('loanAmount')?.touched"
                                                 class="error">
-                                                Loan Amount is required.
+                                                Loan Amount is required 
                                             </small>
+                                            
                                             <ng-container
                                                 *ngIf="loanEligible.controls['loanAmount'].dirty && loanEligible.hasError('pattern','loanAmount')">
                                                 <small class="error">Please enter proper credentials</small>
                                             </ng-container>
+                                          
                                             
-                                        </div>
+                                        </div> -->
                                         <br>
                                         <div class="mb-2">
                                             <label for="interest" class="form-label">Interest :</label>
@@ -89,15 +113,20 @@
                                             <input type="text" class="form-control" id="exampleFormControlInput1"
                                                 placeholder="Enter your Annual Income" class="input-field"
                                                 formControlName="annualIncome">
-                                            <small
-                                                *ngIf="loanEligible.get('annualIncome')?.invalid && loanEligible.get('annualIncome')?.touched"
+                                                <small *ngIf="loanEligible.get('annualIncome')?.hasError('required') && loanEligible.get('annualIncome')?.touched"
                                                 class="error">
-                                                Annual Income is required.
-                                            </small>
-                                            <ng-container
-                                                *ngIf="loanEligible.controls['annualIncome'].dirty && loanEligible.hasError('pattern','annualIncome')">
-                                                <small class="error">Please enter proper credentials</small>
-                                            </ng-container>
+                                                Annual Income is required<br>
+                                              </small>
+                                            
+                                              <small *ngIf="loanEligible.get('annualIncome')?.hasError('pattern') && loanEligible.get('annualIncome')?.touched"
+                                                class="error">
+                                                Please enter a valid credentials<br>
+                                              </small>
+                                            
+                                              <small *ngIf="loanEligible.get('annualIncome')?.hasError('maxValue') && loanEligible.get('annualIncome')?.touched"
+                                                class="error">
+                                                Please provide legit credentials<br>
+                                              </small>
                                         
                                         </div>
                                         <br>

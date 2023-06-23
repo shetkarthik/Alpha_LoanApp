@@ -56,6 +56,8 @@
     text-align: center;
     font-size: 14px;
   }
+
+
   
   .table th {
     background-color: #95c8f1;
@@ -65,7 +67,17 @@
     width: 50vw;
   }
 
-@media screen and (max-width:400px) 
+  @media screen and (max-width:1000px) 
+{
+    .modal-content{
+        width: 100%;
+      }
+      .table-container{
+        transform: scale(0.9);
+      }
+}
+
+@media screen and (max-width:550px) 
 {
     .section-padding{
         margin-top: 80px;
@@ -76,4 +88,11 @@
     .about-text h1{
         font-size: 26px;
     }
+    .modal-content{
+        width: 100%;
+      }
+
+      .area-hidden{
+        display: none;
+      }
 }

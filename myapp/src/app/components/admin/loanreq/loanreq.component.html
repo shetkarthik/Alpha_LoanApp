@@ -107,10 +107,19 @@
             <h4 class="text-center text-primary">Documents</h4>
             <div class="details_container">
             <iframe id="fileViewer" style="display: none;"></iframe>
-            <ul>
-              <!-- <li>{{fName}}</li> -->
+            <!-- <ul>
+             
               <li *ngFor="let file of fName; let i = index">
                 <span>Document {{i + 1}}</span> : <a (click)="openModal(fpath[i])" class="filename">{{ file }}</a>
+                
+              </li>
+            </ul> -->
+            <ul>
+              <li *ngFor="let file of fName let i = index">
+
+               <span>Document {{i + 1}}</span> : <a href={{fpath[i]}} target="_blank">{{ file }}
+
+                </a>
               </li>
             </ul>
             <div id="fileModal" class="modal">

@@ -120,12 +120,18 @@
                               <td class="text-danger fw-bold">{{loan.loanStatus}}</td>
                             </ng-container>
                             <ng-container *ngIf="loan.loanStatus == 'Need More Info'">
-                              <td class="text-primary fw-bold">{{loan.loanStatus}}</td>
+                              <td class="text-primary fw-bold">{{loan.loanStatus}}
+                              
+                            </td>
                             </ng-container>
                             <ng-container *ngIf="loan.loanStatus == 'Processing'">
                               <td class="text-primary fw-bold">Processing</td>
                             </ng-container>
-                            <td class="area-hidden">{{loan.comment}}</td>
+                            <td class="area-hidden">{{loan.comment}}<br>
+                              <ng-container *ngIf="loan.loanStatus == 'Need More Info'">
+                                <a [href]="['update/'+loan.loanId]">Edit<span class="fa fa-pencil"></span></a>
+                              </ng-container>
+                            </td>
                 
                           </tr>
                         </tbody>

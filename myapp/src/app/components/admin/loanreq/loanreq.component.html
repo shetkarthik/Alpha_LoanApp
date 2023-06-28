@@ -114,12 +114,12 @@
                 
               </li>
             </ul> -->
-            <ul>
-              <li *ngFor="let file of fName let i = index">
-
-               <span>Document {{i + 1}}</span> : <a href={{fpath[i]}} target="_blank">{{ file }}
-
-                </a>
+            <ul *ngFor="let file of fName let i = index">
+              <li *ngIf="file != ''">
+                
+                  <span>Document {{i + 1}}</span> : <a href={{fpath[i]}} target="_blank">{{ file }}
+                  </a>
+                
               </li>
             </ul>
             <div id="fileModal" class="modal">

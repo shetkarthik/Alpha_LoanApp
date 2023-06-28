@@ -88,6 +88,7 @@ export class AllloansComponent {
       data => {
             console.log(data);
             this.searchArray = data;
+            this.ngOnInit();
           },
           error => {
             console.log(error);

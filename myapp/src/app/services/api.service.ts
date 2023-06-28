@@ -71,5 +71,14 @@ getAllAckLoans(){
     const url = `${this.loandetailsUrl}search/?${params}`;
     return this.http.get<any>(url);
   }
+
+  deleteFile(loanId:any,file:any)
+  {
+    const url =  `${this.fileurl}/deleteFile?fileName=${file}&loanId=${loanId}`;
+    return this.http.put<any>(url,file,loanId);
+  }
+
+
+
   
 }

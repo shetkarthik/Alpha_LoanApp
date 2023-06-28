@@ -32,6 +32,7 @@ export class LoanreqComponent {
   color:string = '';
   myChart!: Chart;
 
+
   ngAfterViewInit() {
     this.createChart();
   }
@@ -104,7 +105,7 @@ export class LoanreqComponent {
       this.loanDetailsObj = response;
       this.id = this.loanDetailsObj.document.id;
       this.fName=this.loanDetailsObj.document.fileName.split(',');
-
+     
       this.fpath=this.loanDetailsObj.document.filePath.split(',');
 
       const otherEmi = this.loanDetailsObj.loanDetails.otherEmi;

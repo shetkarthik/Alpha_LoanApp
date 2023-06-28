@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { DatePipe } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/client/login/login.component';
@@ -21,6 +21,7 @@ import { LoantypeComponent } from './components/client/loantype/loantype.compone
 import { LoanreqComponent } from './components/admin/loanreq/loanreq.component';
 import { AllloansComponent } from './components/admin/allloans/allloans.component';
 import { FooterComponent } from './components/client/footer/footer.component';
+import { UpdateloanComponent } from './components/admin/updateloan/updateloan.component';
 
 
 
@@ -40,6 +41,7 @@ import { FooterComponent } from './components/client/footer/footer.component';
     LoanreqComponent,
     AllloansComponent,
     FooterComponent,
+    UpdateloanComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,8 +54,9 @@ import { FooterComponent } from './components/client/footer/footer.component';
   providers: [{
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptor,
-    multi:true
-  }
+    multi:true,
+  },
+  DatePipe
   ],
   bootstrap: [AppComponent]
 })

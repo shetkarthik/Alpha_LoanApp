@@ -18,6 +18,10 @@ export class AllloansComponent {
   isResultLoaded=false;
   searchform!: FormGroup;
   searchParams: any = {};
+  page:number=1;
+  count:number=0;
+  tableSize:number=7;
+  tableSizes:any=[5,10,15,20];
  
 
 
@@ -99,6 +103,24 @@ export class AllloansComponent {
     
 
    
+  }
+
+  onTableDataChange(event:any){
+
+    this.page=event;
+
+    this.getAllLoanReq();
+
+  }
+
+  onTableSizeChange(event:any):void{
+
+    this.tableSize=event.target.value;
+
+    this.page=1;
+
+    this.getAllLoanReq();
+
   }
  
 }

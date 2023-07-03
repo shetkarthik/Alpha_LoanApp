@@ -135,6 +135,36 @@ p{
     border-radius: 50%;
 	/* Add other badge styles */
   }
+
+  .date{
+	font-size: 9px;
+    font-style: italic;
+    color: grey;
+  }
+
+  
+
+  .message{
+	font-size: 12px;
+	padding-bottom: 5px;
+	font-weight: bold;
+    /* font-variant: all-petite-caps; */
+	font-family: inherit;
+	/* border-bottom: 1px solid rgb(179, 177, 177); */
+	text-align: start;
+  }
+
+  .dropdown-menu{
+   
+    width: 320px;
+    left: -156px;
+	
+    padding: 10px;
+    overflow: scroll;
+    height: 400px;
+    overflow-x: hidden;
+  }
+
    .sub-menu-link
    {
 	display: flex;

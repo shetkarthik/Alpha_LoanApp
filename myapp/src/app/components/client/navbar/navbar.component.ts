@@ -24,8 +24,10 @@ export class NavbarComponent {
   public username:string="";
   public initials: string="";
   isResultLoaded:any;
-  LoanArray:any;
+  LoanArray:any = [];
   count:any;
+  notification_count:any;
+  
 
   constructor(private router: Router,private auth: AuthService, private api: ApiService, private userStore: UserstoreService,) { }
  
@@ -59,6 +61,18 @@ export class NavbarComponent {
         this.initials =this.cust_name.charAt(0).toUpperCase();
         console.log(this.users);
       });
+     
+      const loanObservable: Observable<any> = this.api.getLoanStatusDetails(this.accountnumber)
+      loanObservable.subscribe((resultData: any) => {
+        this.isResultLoaded = true;
+       this.LoanArray = resultData;
+       this.notification_count = this.LoanArray.length;
+       console.log(this.notification_count);
+
+        // console.log(this.LoanArray.length);
+         console.log(resultData); 
+        
+      });
     }
     if(this.role == "admin")
     {
@@ -89,3 +103,4 @@ routetoLoanType(){
   this.router.navigate(["loantype"])
 }
 }
+

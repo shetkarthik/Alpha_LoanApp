@@ -37,7 +37,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let loan of LoanArray">
+              <tr *ngFor="let loan of LoanArray | paginate :{itemsPerPage :tableSize,currentPage:page,totalItems:count}; let i=index">
 
                 <td><a [routerLink]="['/allLoans/'+loan.loanId]">{{ loan.loanId }}</a> </td>
                 <td style="font-weight: bold;">{{ loan.accountNum }}</td>
@@ -52,6 +52,9 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div class="text-center">
+          <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)" ></pagination-controls>
         </div>
       </ng-container>
       <ng-container *ngIf="this.LoanArray.length == 0">
@@ -76,7 +79,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let loan of allLoanArray">
+              <tr *ngFor="let loan of allLoanArray | paginate :{itemsPerPage :tableSize,currentPage:page,totalItems:count}; let i=index">
                 <td><a [routerLink]="['/allLoans/'+loan.loanId]">{{ loan.loanId }}</a> </td>
                 <td style="font-weight: bold;">{{ loan.accountNum }}</td>
                 <td style="text-transform: capitalize;">{{ loan.loanType }}</td>
@@ -86,6 +89,9 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div class="text-center">
+          <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)" ></pagination-controls>
         </div>
       </ng-container>
     </div>
@@ -116,7 +122,7 @@
                   <div class="mb-2">
                     <label for="loanType" class="form-label">Loan Type :</label>
                     <select class="form-select" formControlName="loanType">
-                      <option value="" selected>Choose type of Loan</option>
+                      <option value="" selected>--Not Selected--</option>
                       <option value="houseLoan">House Loan</option>
                       <option value="personalLoan">Personal Loan</option>
                       <option value="educationLoan">Education Loan</option>
@@ -129,7 +135,7 @@
                   <div class="mb-2">
                     <label for="loanStatus" class="form-label">Loan Staus :</label>
                     <select class="form-select" formControlName="loanStatus">
-                      <option value="">Choose loan status</option>
+                      <option value="">--Not Selected--</option>
                       <option value="Approved">Approved</option>
                       <option value="Rejected">Rejected</option>
                       <option value="Need More Info">Need More Info</option>
@@ -160,12 +166,11 @@
                 <th>Interest</th>
                 <th>Other EMI</th>
                 <th>Loan EMI</th>
-                <th>Total Loan Amount</th>
-
+                <th>Loan Status</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let loan of searchArray">
+              <tr *ngFor="let loan of searchArray | paginate :{itemsPerPage :tableSize,currentPage:page,totalItems:count}; let i=index">
 
                 <td><a [routerLink]="['/allLoans/'+loan.loanId]">{{ loan.loanId }}</a> </td>
                 <td style="font-weight: bold;">{{ loan.accountNum }}</td>
@@ -175,11 +180,13 @@
                 <td>{{loan.interest}}%</td>
                 <td>&#x20B9;{{loan.otherEmi}}</td>
                 <td>&#x20B9;{{loan.loanEmi}}</td>
-                <td>&#x20B9;{{loan.loanTotalAmount}}</td>
-
+                <td>{{loan.loanStatus}}</td>
               </tr>
             </tbody>
           </table>
+        </div>
+        <div class="text-center">
+          <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)" ></pagination-controls>
         </div>
     </ng-container>
     </div>
@@ -190,3 +197,4 @@
 
 
 <app-footer></app-footer>
+

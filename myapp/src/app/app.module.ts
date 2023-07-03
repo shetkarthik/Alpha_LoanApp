@@ -22,7 +22,8 @@ import { LoanreqComponent } from './components/admin/loanreq/loanreq.component';
 import { AllloansComponent } from './components/admin/allloans/allloans.component';
 import { FooterComponent } from './components/client/footer/footer.component';
 import { UpdateloanComponent } from './components/admin/updateloan/updateloan.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -50,6 +51,8 @@ import { UpdateloanComponent } from './components/admin/updateloan/updateloan.co
     HttpClientModule,
     NgToastModule,
     NgxLoadingModule.forRoot({}),
+    NgxPaginationModule,
+   
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,

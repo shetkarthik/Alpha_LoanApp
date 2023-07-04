@@ -96,7 +96,7 @@ export class AllloansComponent {
           },
           error => {
             console.log(error);
-            this.toast.info({detail:"Please try again",summary:error.error.message,duration:5000});
+            this.toast.info({detail:"No such records found",summary:error.error.message,duration:5000});
           }
         );
 

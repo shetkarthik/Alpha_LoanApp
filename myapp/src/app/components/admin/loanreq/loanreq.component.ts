@@ -31,11 +31,9 @@ export class LoanreqComponent {
   selectedFile: string = '';
   color:string = '';
   myChart!: Chart;
+  type:any;
 
 
-  ngAfterViewInit() {
-    this.createChart();
-  }
 
 
 
@@ -54,58 +52,14 @@ export class LoanreqComponent {
 
   
 
-  createChart() {
-    Chart.register(...registerables); // Register all modules
-
-    const canvas = <HTMLCanvasElement>document.getElementById('myChart');
-    const ctx = canvas.getContext('2d');
-
-    if (!ctx) {
-      console.error('Canvas context is null');
-      return;
-    }
-
-    const chartData = {
-      labels: ['Loan-EMI', 'Available-EMI'],
-      datasets: [{
-        label: 'EMIs',
-        data: [this.loanEmi,this.availableEmi],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          
-        
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-      
-          
-        ],
-        borderWidth: 1
-      }]
-    };
-
-    new Chart(ctx, {
-      type: 'bar',
-      data: chartData,
-      options: {
-        scales: {
-          y: {
-            type: 'linear',
-            beginAtZero: true
-          }
-        }
-      }
-    });
-  }
+ 
 
   getLoanDetails() {
     this.api.getLoanDetailsById(this.loanId).subscribe((response: any) => {
       this.loanDetailsObj = response;
       this.id = this.loanDetailsObj.document.id;
       this.fName=this.loanDetailsObj.document.fileName.split(',');
-     
+      this.type = this.loanDetailsObj.loanDetails.loantype;
       this.fpath=this.loanDetailsObj.document.filePath.split(',');
 
       const otherEmi = this.loanDetailsObj.loanDetails.otherEmi;

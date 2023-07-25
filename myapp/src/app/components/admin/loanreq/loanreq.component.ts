@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import {Chart,registerables} from 'chart.js';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-loanreq',
@@ -17,9 +18,11 @@ export class LoanreqComponent {
   loanId: number = 0;
   id: number = 0;
   loanDetailsObj: any;
+  disabled:boolean = false;
   commentForm!: FormGroup;
   fName: any = [];
   fpath: any = [];
+  formattedDate:any;
   modalElement: HTMLElement | null = null;
   availableEmi:number=0;
   loanEmi:number=0;
@@ -38,7 +41,7 @@ export class LoanreqComponent {
 
 
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private fb: FormBuilder, private toast: NgToastService, private router: Router, private api: ApiService,private sanitizer: DomSanitizer) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient, private fb: FormBuilder, private toast: NgToastService, private router: Router, private api: ApiService,private sanitizer: DomSanitizer,private datePipe: DatePipe) { }
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.loanId = params['id'];
@@ -50,7 +53,9 @@ export class LoanreqComponent {
 
   }
 
-  
+  toBack(){
+    this.router.navigate(['allLoans']);
+  }
 
  
 
@@ -69,6 +74,14 @@ export class LoanreqComponent {
       this.tenure = this.loanDetailsObj.loanDetails.tenure;
       this.interest = this.loanDetailsObj.loanDetails.interest;
 
+      if(this.loanStatus != 'Processing'){
+        this.disabled = true;
+      }
+
+      const dateString = this.loanDetailsObj.loanDetails.modified_At;
+       this.formattedDate = this.datePipe.transform(dateString, 'dd-MM-yyyy');
+
+    console.log(typeof(this.loanDetailsObj.loanDetails.modified_At));
 
       const annualIncome =this.loanDetailsObj.loanDetails.annualIncome;
       const monthlyIncome=this.loanDetailsObj.loanDetails.monthlyIncome ;

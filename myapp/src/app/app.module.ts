@@ -26,6 +26,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule } from '@angular/router';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import { RouterModule } from '@angular/router';
     AllloansComponent,
     FooterComponent,
     UpdateloanComponent,
+    
   ],
   imports: [
     BrowserModule,

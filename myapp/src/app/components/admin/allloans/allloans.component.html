@@ -175,6 +175,7 @@
                 <td><a [routerLink]="['/allLoans/'+loan.loanId]">{{ loan.loanId }}</a> </td>
                 <td style="font-weight: bold;">{{ loan.accountNum }}</td>
                 <td style="text-transform: capitalize;">{{ loan.loanType }}</td>
+                <!-- <td>&#x20B9;{{ loan.loanAmount | number:'1.0-2' }}</td> -->
                 <td>&#x20B9;{{ loan.loanAmount }}</td>
                 <td>{{ loan.tenure }}</td>
                 <td>{{loan.interest}}%</td>
@@ -189,6 +190,7 @@
           <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)" ></pagination-controls>
         </div>
     </ng-container>
+     
     </div>
   </div>
   

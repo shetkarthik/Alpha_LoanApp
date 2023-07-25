@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgToastService } from 'ng-angular-popup';
 import { Observable, map } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-allloans',
@@ -91,17 +92,21 @@ export class AllloansComponent {
     this.api.getSearchResults(params).subscribe(
       data => {
             console.log(data);
-            this.searchArray = data;
-            this.ngOnInit();
+            
+              this.searchArray = data;
+            
+           
+            // this.ngOnInit();
           },
           error => {
+            this.searchArray = 0;
             console.log(error);
             this.toast.info({detail:"No such records found",summary:error.error.message,duration:5000});
           }
         );
 
     
-
+    
    
   }
 
